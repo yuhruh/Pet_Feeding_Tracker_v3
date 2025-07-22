@@ -1,0 +1,41 @@
+<h1 class="text-center mt-4">
+  <%= @user.name.split(' ').map(&:capitalize).join(' ') %>
+</h1>
+
+<%= form_with(model: @user) do |form| %>
+  <div class="d-flex justify-content-center">
+    <%= render 'shared/errors', obj: @user %>
+  </div>
+
+  <div class="col-12">
+    <div class="row mb-3 justify-content-center">
+    <%= form.label "User Name", class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
+    <div class="col-sm-3">
+      <%= form.text_field :username, class: "form-control", value: @user.name, :required => true %>
+      </div> 
+  </div>
+
+  <div class="col-12">
+    <div class="row mb-3 justify-content-center">
+    <%= form.label "Email Address", class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
+    <div class="col-sm-3">
+      <%= form.text_field :email_address, class: "form-control", value: @user.email_address, :required => true %>
+      </div> 
+  </div>
+
+
+  <div class="col-12">
+    <div class="row mb-3 justify-content-center" data-controller="time-zone">
+      <%= form.label t('.time_zone'), class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-3">
+        <fieldset disabled>
+          <%= form.text_field :time_zone, data: @user.time_zone, id: "disabledTextInput", class: "form-control" %>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <%= form.submit(@user.new_record? ? t('.submit.create') : t('.submit.update'), class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb") %>
+  </div>
+<% end %>

@@ -3,7 +3,7 @@ module Authentication
 
   included do
     before_action :require_authentication
-    helper_method :authenticated?
+    helper_method :authenticated?, :resume_session
   end
 
   class_methods do
@@ -31,6 +31,7 @@ module Authentication
 
     def request_authentication
       session[:return_to_after_authenticating] = request.url
+      flash[:alert] = "You must be logged in to access the page"
       redirect_to new_session_path
     end
 

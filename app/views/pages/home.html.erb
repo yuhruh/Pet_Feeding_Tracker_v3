@@ -1,0 +1,26 @@
+<div id="aji_header">
+  <h1 class="text-center">🐾 Cat Feeding Tracker App<%= image_tag("yamiyami-removebg-preview.png", width: "150px") %></h1>
+  <h4 class="text-center">🐾 Track your cat's eating 🐾</h4>
+  <% if authenticated? %>
+    <div class="d-flex justify-content-center">
+      <%= button_to 'Log Out', session_path, class:"btn mb-3", style: "color: #515a5a; font-weight: bold; background-color: #75cddd", method: :delete %>
+    </div> 
+  <% else %>
+    <div class="d-flex justify-content-center">
+      <%= link_to 'Sign In', new_session_path, class:"btn mb-3", style: "color: #515a5a; font-weight: bold; background-color: #75cddd " %>
+    </div>
+  <% end %>
+</div>
+<br>
+
+<div class="row mb-3">
+  <div class="col">
+    <div class="p-3"><%= image_tag("chart.png", width:"800px", alt: "Chart of tracking", class: "rounded-4 shadow-lg")%></div>
+  </div>
+  <div class="col">
+    <div class="p-3", style="color: #919097; font-weight: bold; font-size: 36px">The Cat Feeding Tracker V2 is a web-based application designed to help
+      cat owners meticulously monitor cats' feeding habits and amounts. The app offers a clear,
+      visualized approach to tracking dietary intake, catering to multiple indoor
+      cats.</div>
+  </div>
+</div>

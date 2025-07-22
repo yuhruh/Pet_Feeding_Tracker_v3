@@ -1,0 +1,80 @@
+# Files in the config/locales directory are used for internationalization and
+# are automatically loaded by Rails. If you want to use locales other than
+# English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more about the API, please read the Rails Internationalization guide
+# at https://guides.rubyonrails.org/i18n.html.
+#
+# Be aware that YAML interprets the following case-insensitive strings as
+# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
+# must be quoted to be interpreted as strings. For example:
+#
+#     en:
+#       "yes": yup
+#       enabled: "ON"
+
+en:
+  pages:
+    about:
+      about_aji: "About"
+      note: "If you're interested in learning more about cat eating behavior, I highly
+        recommend consulting a professional. I personally found great insights from "
+      paragraph1: "This app was inspired by my mischievous cat, Aji — a ginger-and-white
+        furball with a surprisingly picky palate. Unlike most ginger cats, Aji has
+        his own unique favorites. For example, he loves chicken more than tuna or
+        salmon."
+      paragraph2: "How do I know? I used to track his meals in an Excel sheet, and
+        over time, I started noticing patterns. If I served him something he didn’t
+        like… he’d skip the meal entirely (me: 😅)."
+      paragraph3: "You might say I spoil him — and you''d be absolutely right. I love
+        Aji, and I want him to enjoy every single meal. But using Excel was tedious
+        — every input was manual, and there was no easy way to visualize trends over
+        time. So, I built this app: a smarter way to track meals, spot preferences,
+        and keep Aji well-fed and happy."
+      paragraph4: "✨ Want to join me? Sign up and try it yourself: "
+      petbuddy: "Pet Buddy Cat Behavior, LLC"
+      signup: "Sign Up"
+    started:
+      get_started_title: "Get Started with Cat Feeding Tracker V2 🐾"
+      welcome_message: "Welcome to the Cat Feeding Tracker V2! Follow these simple steps to begin monitoring your cats' 😸 eating habits and gain valuable insights."
+      step1_title: "Step 1: Access the Application"
+      step1_description_html: "Open your web browser and navigate to the app's home page: "
+      step1_link: "Cat Feeding Tracker V2"
+      step2_title: "Step 2: Sign Up or Log In"
+      step2_description: "To start tracking, you'll need an account."
+      new_user_tip: "New Users: Look for a 'Sign Up' button/link on the navigation bar. Click it and follow the prompts to register a new account. This typically involves providing an email address and creating a password. Your time zone will likely be set during this process."
+      existing_user_tip: "Existing Users: Click on the 'Log In' button/link and enter your credentials to access your dashboard.(Shown as below image)"
+      step3_title: "Step 3: Add Your First Pet"
+      step3_description: "Once logged in, the first thing you might want to do is add your cat's profile. You can also skip this and add it later. The app supports tracking for multiple cats. Here is the pet adding form looks like:"
+      step3_dropdown_instruction: "On your dashboard or home screen, look for an dropdown 'Profile [your registered usernam]', first item 'Add Pet'. Click on it and enter the necessary details for your cat (e.g., name, birthday, gender, breed, wight....). Save the pet's profile."
+      step3_after_add: "After adding your first pet, you'll see related items appear in the nav bar."
+      step3_before_add: "Before adding any pet, the nav bar will look like this:"
+      step4_title: "Step 4: Log Your First Feeding"
+      step4_intro: "Once your cat’s profile is set up, you're ready to log their first meal."
+      step4_tracker_nav: "Navigate to your cat’s tracking page from the 'Tracker Records' dropdown and select their name."
+      auto_datetime: "Automatic Date & Time: These will likely be pre-filled for you."
+      feeding_details: "Enter Feeding Details: Input the amount of food and, if applicable, the time your cat returned to eat. Set a camera 📷 at the feeding spot helps."
+      visual_reminder: "(Visual Reminder!) Pay attention to the following cues:"
+      red_background: "A red background indicates you need to fill out the 'left amount'."
+      yellow_background: "A yellow background suggests you should enter the 'time they came back to eat'."
+      save_action: "Save: Click 'Save' or 'Add Feeding' to record the entry."
+      step5_title: "Step 5: Explore & Track!"
+      step5_log_more: "You've successfully logged your first feeding! Keep adding entries to build a record."
+      step5_explore: "Explore the charts to visualize your cat’s eating patterns and amount over time."
+      add_more_pets: "You can add more pets if you have them."
+      manage_info: "Manage your feeding records, pet profiles, or user information via 'Edit' and 'Delete' options."
+      closing: "Enjoy tracking your cat's journey to better health and diet management! 🐾🐾"

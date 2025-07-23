@@ -1,0 +1,21 @@
+# Exported from Render on 2025-07-23T09:08:25Z
+services:
+- type: web
+  name: Pet_Feeding_Tracker_v3
+  runtime: ruby
+  repo: https://github.com/yuhruh/Pet_Feeding_Tracker_v3
+  plan: free
+  envVars:
+  - key: NODE_VERSION
+    sync: false
+  - key: RAILS_MASTER_KEY
+    sync: false
+  - key: WEB_CONCURRENCY
+    sync: false
+  region: oregon
+  buildCommand: bin/render-build.sh; bundle exec rails db:migrate
+  startCommand: bundle exec rails server
+  autoDeployTrigger: commit
+  previews:
+    generation: automatic
+version: "1"

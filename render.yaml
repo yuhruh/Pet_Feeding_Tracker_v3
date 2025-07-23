@@ -5,16 +5,21 @@ services:
   runtime: ruby
   repo: https://github.com/yuhruh/Pet_Feeding_Tracker_v3
   plan: free
+  region: oregon
+  # buildCommand: bundle install && bundle exec rake assets:precompile
+  startCommand: bundle exec rails server -b 0.0.0.0 -p 3000
+  migrateCommand: bundle exec rails db:migrate
   envVars:
   - key: NODE_VERSION
     sync: false
   - key: RAILS_MASTER_KEY
     sync: false
   - key: WEB_CONCURRENCY
+    value: 2
     sync: false
   region: oregon
   buildCommand: bin/render-build.sh; bundle exec rails db:migrate
-  startCommand: bundle exec rails server
+  # startCommand: bundle exec rails server
   autoDeployTrigger: commit
   previews:
     generation: automatic

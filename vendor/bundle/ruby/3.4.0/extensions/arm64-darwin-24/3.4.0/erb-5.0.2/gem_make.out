@@ -1,0 +1,19 @@
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/erb-5.0.2/ext/erb/escape
+/Users/ritahuang/.rvm/rubies/ruby-3.4.1/bin/ruby extconf.rb
+checking for rb_ext_ractor_safe() in ruby.h... yes
+creating Makefile
+
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/erb-5.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20250723-16193-8vm9m5 sitelibdir\=./.gem.20250723-16193-8vm9m5 clean
+
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/erb-5.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20250723-16193-8vm9m5 sitelibdir\=./.gem.20250723-16193-8vm9m5
+compiling escape.c
+linking shared-object erb/escape.bundle
+
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/erb-5.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20250723-16193-8vm9m5 sitelibdir\=./.gem.20250723-16193-8vm9m5 install
+/opt/homebrew/opt/coreutils/bin/ginstall -c -m 0755 escape.bundle ./.gem.20250723-16193-8vm9m5/erb
+
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/erb-5.0.2/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20250723-16193-8vm9m5 sitelibdir\=./.gem.20250723-16193-8vm9m5 clean

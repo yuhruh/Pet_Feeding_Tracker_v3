@@ -1,0 +1,18 @@
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/ritahuang/.rvm/rubies/ruby-3.4.1/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20250723-16193-uk6lq sitelibdir\=./.gem.20250723-16193-uk6lq clean
+
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20250723-16193-uk6lq sitelibdir\=./.gem.20250723-16193-uk6lq
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20250723-16193-uk6lq sitelibdir\=./.gem.20250723-16193-uk6lq install
+/opt/homebrew/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20250723-16193-uk6lq/skiptrace/internal
+
+current directory: /Users/ritahuang/Desktop/Pet_Tracker/Version3/Pet_Feeding_Tracker_v3/vendor/bundle/ruby/3.4.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= sitearchdir\=./.gem.20250723-16193-uk6lq sitelibdir\=./.gem.20250723-16193-uk6lq clean

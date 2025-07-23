@@ -9,10 +9,11 @@ test:
   adapter: test
 
 production:
-  adapter: async
-  connects_to:
-    database: pet_feeding_tracker_v3_production
-    writing: cable
+  adapter: redis
+  # connects_to:
+  #   database: pet_feeding_tracker_v3_production
+  #   writing: cable
+  channel_prefix: pet_feeding_tracker_v3_production
   polling_interval: 0.1.seconds
   message_retention: 1.day
 

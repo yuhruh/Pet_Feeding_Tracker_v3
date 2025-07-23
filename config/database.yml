@@ -15,6 +15,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  url: <%= ENV["DATABASE_URL"] %>
   # database: pet_feeding_tracker_v3_production
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
@@ -59,6 +60,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: pet_feeding_tracker_v3_test
 
 # As with config/credentials.yml, you never want to store sensitive information,

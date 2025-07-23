@@ -90,20 +90,20 @@ production:
   <<: *default
   database: pet_feeding_tracker_v3_production
   username: pet_feeding_tracker_v3
-  url: <%= ENV['PET_FEEDING_TRACKER_V3_DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   password: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
-    url: <%= ENV['PET_FEEDING_TRACKER_V3_DATABASE_URL'] %>
+    url: <%= ENV['DATABASE_URL'] %>
     database: pet_feeding_tracker_v3_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    url: <%= ENV['PET_FEEDING_TRACKER_V3_DATABASE_URL'] %>
+    url: <%= ENV['DATABASE_URL'] %>
     database: pet_feeding_tracker_v3_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    url: <%= ENV['PET_FEEDING_TRACKER_V3_DATABASE_URL'] %>
+    url: <%= ENV['DATABASE_URL'] %>
     database: pet_feeding_tracker_v3_production_cable
     migrations_paths: db/cable_migrate

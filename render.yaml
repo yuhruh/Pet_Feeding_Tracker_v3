@@ -6,7 +6,6 @@ services:
   repo: https://github.com/yuhruh/Pet_Feeding_Tracker_v3
   plan: free
   region: oregon
-  # buildCommand: bundle install && bundle exec rake assets:precompile
   buildCommand: bin/render-build.sh; bundle exec rails db:migrate
   startCommand: bin/rails server
   # migrateCommand: bundle exec rails db:migrate

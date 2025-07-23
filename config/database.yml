@@ -16,18 +16,23 @@ default: &default
   adapter: postgresql
   encoding: unicode
   url: <%= ENV["DATABASE_URL"] %>
-  # database: pet_feeding_tracker_v3_production
+  database: pet_feeding_tracker_v3
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: <%= ENV["pet_feeding_tracker_v3_production"] %>
   port: 5432
+  username: pet_feeding_tracker_v3
+  password: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_PASSWORD"] %>
 
 
 development:
   <<: *default
   # url: <%= ENV["DATABASE_URL"] %>
   database: pet_feeding_tracker_v3_development
+  # username: pet_feeding_tracker_v3
+  # url: <%= ENV['DATABASE_URL'] %>
+  # password: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_PASSWORD"] %>
 
 
   # The specified database role being used to connect to PostgreSQL.
@@ -88,6 +93,7 @@ test:
 production:
   # primary: &primary_production
   <<: *default
+  adapter: postgresql
   database: pet_feeding_tracker_v3_production
   username: pet_feeding_tracker_v3
   url: <%= ENV['DATABASE_URL'] %>
@@ -107,3 +113,19 @@ production:
     url: <%= ENV['DATABASE_URL'] %>
     database: pet_feeding_tracker_v3_production_cable
     migrations_paths: db/cable_migrate
+
+development:
+  adapter: async
+
+test:
+  adapter: test
+
+production:
+  adapter: async
+  connects_to:
+    database: pet_feeding_tracker_v3_production
+    writing: cable
+  polling_interval: 0.1.seconds
+  message_retention: 1.day
+
+  migrations_paths: db/cable_migrate

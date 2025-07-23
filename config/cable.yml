@@ -11,7 +11,10 @@ test:
 production:
   adapter: async
   connects_to:
-    database:
-      writing: cable
+    database: pet_feeding_tracker_v3_production
+    writing: cable
   polling_interval: 0.1.seconds
   message_retention: 1.day
+
+  migrations_paths: db/cable_migrate
+

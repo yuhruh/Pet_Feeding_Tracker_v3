@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :require_same_user, only: %i[ edit update destroy ]
+  before_action :set_user, only: %i[edit update destroy]
+  before_action :authencate_user!, only: %i[ edit update destroy ]
+
+
+  def edit
+  end
 
   def update
     respond_to do |format|
@@ -13,6 +18,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy!
+    session[:user_id] = nil if @user == Current.user
+
+    respond_to do |format|
+      format.html { redirect_to '/home', status: :see_other, alert: "#{@user.name} and all associated records were successfully deleted." }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -22,12 +37,5 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.expect(user: [ :username, :email ])
-    end
-
-    def require_same_user
-      if current_user != @user && !current_user.admin?
-        flash[:alert] = "You can only edit or delete your own account...."
-        redirect_to @user
-      end
     end
 end

@@ -24,18 +24,38 @@ test:
 # Store production database in the storage/ directory, which by default
 # is mounted as a persistent Docker volume in config/deploy.yml.
 production:
-  primary:
+  # primary:
+  #   <<: *default
+  #   database: storage/production.sqlite3
+  # cache:
+  #   <<: *default
+  #   database: storage/production_cache.sqlite3
+  #   migrations_paths: db/cache_migrate
+  # queue:
+  #   <<: *default
+  #   database: storage/production_queue.sqlite3
+  #   migrations_paths: db/queue_migrate
+  # cable:
+  #   <<: *default
+  #   database: storage/production_cable.sqlite3
+  #   migrations_paths: db/cable_migrate
+
+  primary: &primary_production
     <<: *default
-    database: storage/production.sqlite3
+    url: <%= ENV["DATABASE_URL"] %>
+    # database: pet_feeding_tracker_v2_production
+    # username: pet_feeding_tracker_v2
+    # password: <%= ENV["PET_FEEDING_TRACKER_V2_DATABASE_PASSWORD"] %>
   cache:
-    <<: *default
-    database: storage/production_cache.sqlite3
+    <<: *primary_production
+    database: pet_feeding_tracker_v3_production_cache
     migrations_paths: db/cache_migrate
   queue:
-    <<: *default
-    database: storage/production_queue.sqlite3
-    migrations_paths: db/queue_migrate
+    <<: *primary_production
+    database: pet_feeding_tracker_v3_production_queue
+    migrations_paths: 
   cable:
-    <<: *default
-    database: storage/production_cable.sqlite3
+    <<: *primary_production
+    adapter: postgresql
+    database: pet_feeding_tracker_v3_production_cable
     migrations_paths: db/cable_migrate

@@ -15,6 +15,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  database: pet_feeding_tracker_v3_production
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -84,6 +85,7 @@ production:
   primary: &primary_production
     <<: *default
     url: <%= ENV["DATABASE_URL"] %>
+    database: pet_feeding_tracker_v3_production
     username: pet_feeding_tracker_v3
     password: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_PASSWORD"] %>
   cache:

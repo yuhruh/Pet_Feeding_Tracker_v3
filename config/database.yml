@@ -22,7 +22,9 @@ default: &default
 
 development:
   <<: *default
-  database: pet_feeding_tracker_v3_development
+  url: <%= ENV["DATABASE_URL"] %>
+  # database: pet_feeding_tracker_v3_development
+
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -81,7 +83,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: pet_feeding_tracker_v3_production
+    url: <%= ENV["DATABASE_URL"] %>
     username: pet_feeding_tracker_v3
     password: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_PASSWORD"] %>
   cache:

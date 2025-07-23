@@ -20,6 +20,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV["pet_feeding_tracker_v3_production"] %>
+  port: 5432
 
 
 development:
@@ -87,9 +89,9 @@ production:
   primary: &primary_production
     <<: *default
     url: <%= ENV['DATABASE_URL'] %>
-    database: pet_feeding_tracker_v3_production
-    username: pet_feeding_tracker_v3
+    username: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_USER"] %>
     password: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_PASSWORD"] %>
+    database: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_NAME"] %>
   cache:
     <<: *primary_production
     url: <%= ENV['DATABASE_URL'] %>

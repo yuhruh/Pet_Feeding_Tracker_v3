@@ -7,7 +7,7 @@ services:
  - type: web
    name: pet_feeding_tracker_v3
    runtime: ruby
-   region: ohio
+   region: oregon
    buildCommand: "./bin/render-build.sh"
   #  startCommand: "bundle exec puma -C config/puma.rb"
    startCommand: './bin/rails server'

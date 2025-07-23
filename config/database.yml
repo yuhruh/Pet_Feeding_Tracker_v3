@@ -102,8 +102,8 @@ production:
     url: <%= ENV['DATABASE_URL'] %>
     database: pet_feeding_tracker_v3_production_queue
     migrations_paths: db/queue_migrate
-  cable:
-    <<: *default
-    url: <%= ENV['DATABASE_URL'] %>
-    database: pet_feeding_tracker_v3_production_cable
-    migrations_paths: db/cable_migrate
+  # cable:
+  #   <<: *default
+  #   url: <%= ENV['DATABASE_URL'] %>
+  #   database: pet_feeding_tracker_v3_production_cable
+  #   migrations_paths: db/cable_migrate

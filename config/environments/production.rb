@@ -69,14 +69,14 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address:         "smtp.gmail.com",
     port:            587,
-    domain:          "example.com",
+    # domain:          "example.com",
     user_name:       Rails.application.credentials.dig(:smtp, :user_name),
     password:        Rails.application.credentials.dig(:smtp, :password),
     authentication:  "plain",
     enable_starttls: true,
     open_timeout:    5,
     read_timeout:    5 }
-    
+
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.delivery_method = :stmp
   # config.action_mailer.smtp_settings = {

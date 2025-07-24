@@ -7,6 +7,7 @@ class PasswordsController < ApplicationController
 
   # responsible for sending the password reset email 
   def create
+    # @user = User.find_by(email_address: params[:email_address])
     if user = User.find_by(email_address: params[:email_address])
       PasswordsMailer.reset(user).deliver_later
     end

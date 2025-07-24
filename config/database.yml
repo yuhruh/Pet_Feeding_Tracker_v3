@@ -25,14 +25,23 @@ default: &default
   username: pet_feeding_tracker_v3
   password: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_PASSWORD"] %>
 
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
 
 development:
   <<: *default
-  # url: <%= ENV["DATABASE_URL"] %>
-  database: pet_feeding_tracker_v3_development
-  # username: pet_feeding_tracker_v3
-  # url: <%= ENV['DATABASE_URL'] %>
-  # password: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_PASSWORD"] %>
+  database: storage/development.sqlite3
+
+# development:
+#   <<: *default
+#   # url: <%= ENV["DATABASE_URL"] %>
+#   database: pet_feeding_tracker_v3_development
+#   # username: pet_feeding_tracker_v3
+#   # url: <%= ENV['DATABASE_URL'] %>
+#   # password: <%= ENV["PET_FEEDING_TRACKER_V3_DATABASE_PASSWORD"] %>
 
 
   # The specified database role being used to connect to PostgreSQL.

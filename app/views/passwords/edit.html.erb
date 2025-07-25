@@ -1,7 +1,7 @@
 <div class="container text-center">
   <h1 class="mb-3">Reset your password 🐾🐾</h1>
 
-  <%= form_with url: password_path(token: params[:token]), method: :patch do |form| %>
+  <%= form_with url: password_path, method: :patch do |form| %>
     <div class="col-12">
       <div class="row mb-3 justify-content-center">
         <div class="col-sm-3">
@@ -15,3 +15,4 @@
     </div>
   <% end %>
 </div>
+

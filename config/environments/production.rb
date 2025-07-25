@@ -63,7 +63,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_options = { from: "no-reply@example.com" }
-  config.action_mailer.default_url_options = { host: "pet-feeding-tracker-v3-bv01.onrender.com/", port: 10000 }
+  config.action_mailer.default_url_options = { host: "pet-feeding-tracker-v3-bv01.onrender.com" }
   # config.active_job.queue_adapter = :async
 
   config.action_mailer.delivery_method = :smtp

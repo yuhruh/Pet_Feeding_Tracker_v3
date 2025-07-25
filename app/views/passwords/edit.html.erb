@@ -1,7 +1,7 @@
 <div class="container text-center">
-  <h1 class="mb-3">Update your password 🐾🐾</h1>
+  <h1 class="mb-3">Reset your password 🐾🐾</h1>
 
-  <%= form_with url: password_path(params[:token]), method: :put do |form| %>
+  <%= form_with url: password_path(token: params[:token]), method: :patch do |form| %>
     <div class="col-12">
       <div class="row mb-3 justify-content-center">
         <div class="col-sm-3">
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-center">
-        <%= form.submit "Save", class: "btn mb-3", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb" %>
+        <%= form.submit "Reset Password", class: "btn mb-3", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb" %>
       </div>
     </div>
   <% end %>

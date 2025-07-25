@@ -7,7 +7,6 @@ class PasswordsController < ApplicationController
 
   # responsible for sending the password reset email 
   def create
-    # @user = User.find_by(email_address: params[:email_address])
     if user = User.find_by(email_address: params[:email_address])
       PasswordsMailer.reset(user).deliver_later
     end
@@ -18,7 +17,7 @@ class PasswordsController < ApplicationController
   def edit
   end
 
-  def update
+  def update 
     if @user.update(params.permit(:password, :password_confirmation))
       redirect_to new_session_path, notice: "Password has been reset."
     else
@@ -33,3 +32,4 @@ class PasswordsController < ApplicationController
       redirect_to new_password_path, alert: "Password reset link is invalid or has expired."
     end
 end
+

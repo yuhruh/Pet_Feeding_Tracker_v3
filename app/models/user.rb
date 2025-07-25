@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :password, presence: true, 
                     length: { maximum: 105 }
   validates :password_confirmation, presence: { message: "Upper and lower case should be the same."}
-  validates :timezone, presence: true
+  validates :timezone, presence: true, on: :create
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 end

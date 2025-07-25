@@ -22,6 +22,7 @@
             </li>
           </ul>
         </li>
+        <%= link_to "Edit Profile", edit_user_path(Current.user), class: "nav-link"%>
 
         <li class="nav-item">
           <%= button_to 'Log Out', session_path, class: "nav-link", method: :delete %>

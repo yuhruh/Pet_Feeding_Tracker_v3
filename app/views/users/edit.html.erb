@@ -1,5 +1,5 @@
 <h1 class="text-center mt-4">
-  <%= @user.name.split(' ').map(&:capitalize).join(' ') %>
+  Edit <%= Current.user.username.capitalize %>'s Profile
 </h1>
 
 <%= form_with(model: @user) do |form| %>
@@ -9,33 +9,48 @@
 
   <div class="col-12">
     <div class="row mb-3 justify-content-center">
-    <%= form.label "User Name", class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
+    <%= form.label "User Name", class: "col-sm-2 col-form-label optional", style: "color: #515a5a; font-weight: bold" %>
     <div class="col-sm-3">
-      <%= form.text_field :username, class: "form-control", value: @user.name, :required => true %>
+      <%= form.text_field :username, class: "form-control", value: @user.username, :required => true %>
       </div> 
   </div>
 
   <div class="col-12">
     <div class="row mb-3 justify-content-center">
-    <%= form.label "Email Address", class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
+    <%= form.label "Email Address", class: "col-sm-2 col-form-label optional", style: "color: #515a5a; font-weight: bold" %>
     <div class="col-sm-3">
       <%= form.text_field :email_address, class: "form-control", value: @user.email_address, :required => true %>
       </div> 
   </div>
 
+  <div class="mb-3 row justify-content-center">
+    <%= form.label 'Password', class: "col-sm-2 col-form-label text-start optional", style: "color: #515a5a; font-weight: bold" %>
+    <div class="col-sm-3 text-start"> 
+      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your new password", class: "form-control" %>
+      <span id="passwordHelpBlock" class="form-text">Must contain at least 5 characters long.</span>
+    </div>
+  </div>
+
+  <div class="mb-3 row justify-content-center">
+    <%= form.label 'Password Confirmation', class: "col-sm-2 col-form-label text-start optional", style: "color: #515a5a; font-weight: bold" %>
+    <div class="col-sm-3">
+      <%= form.password_field :password_confirmation, required: true, autocomplete: "current-password", placeholder: "Password confirmation", class: "form-control" %>
+    </div>
+  </div>
+
 
   <div class="col-12">
     <div class="row mb-3 justify-content-center" data-controller="time-zone">
-      <%= form.label t('.time_zone'), class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
+      <%= form.label "Time Zone", class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-3">
         <fieldset disabled>
-          <%= form.text_field :time_zone, data: @user.time_zone, id: "disabledTextInput", class: "form-control" %>
+          <%= form.text_field :timezone, data: @user.timezone, id: "disabledTextInput", class: "form-control" %>
         </fieldset>
       </div>
     </div>
   </div>
 
   <div class="d-flex justify-content-center">
-    <%= form.submit(@user.new_record? ? t('.submit.create') : t('.submit.update'), class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb") %>
+    <%= form.submit "Update Profile", class: "btn mb-3", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb" %>
   </div>
 <% end %>

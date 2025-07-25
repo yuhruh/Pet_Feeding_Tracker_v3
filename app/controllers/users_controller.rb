@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy]
-  before_action :authencate_user!, only: %i[ edit update destroy ]
+  before_action :authenticated?, only: %i[edit update destroy]
 
 
   def edit
+    @user = Current.user
   end
 
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "Account was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to user_path(@user), notice: "Account was successfully updated." }
+        format.json { render :show, status: :ok, location: user_path(@user) }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -36,6 +37,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.expect(user: [ :username, :email ])
+      params.expect(user: [ :username, :email, :password, :password_confirmation ])
     end
 end

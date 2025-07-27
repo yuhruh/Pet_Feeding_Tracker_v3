@@ -1,0 +1,47 @@
+<h1>Editing #{@pet.petname}'s Profile</h1>
+
+<%= form_with(model: @pet) do |form| %>
+    <div class="d-flex justify-content-center">
+       <%= render 'shared/errors', obj: @pet %>
+    </div>
+
+    <div class="mb-3 row justify-content-center">
+      <%= form.label 'Birthday', class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-3">
+        <%= form.date_field :birthday, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3 row justify-content-center">
+      <%= form.label 'Weight', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-3">
+        <%= form.number_field :weight, step: :any, class: "form-control", placeholder: "Enter your cat's weight", max: 100, min: 0.0, required: true %>
+      </div>
+    </div>
+
+    <div class="mb-3 row justify-content-center">
+      <%= form.label 'Gender', class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-3">
+        <%= form.select :gender, [["♂️ Male"], ["♀️ Female"], ["🙊 Rather Not to Answer"]], { prompt: "Please Choose Cat's Gender"}, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3 row justify-content-center">
+      <%= form.label 'Breed', class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-3">
+        <%= form.text_field :breed, class: "form-control", placeholder: "Enter your cat's breed, ex: Mixed, Ragdoll..." %>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <%= form.submit(@pet.new_record? ? "Add a Cat" : "Modify #{@pet.petname} Information", class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb") %>
+    </div>
+  <% end %>
+
+
+<br>
+
+<div class="d-flex justify-content-center mb-4">
+  <%= link_to "Show this pet", @pet %> |
+  <%= link_to "Back to pets", pets_path %>
+</div>

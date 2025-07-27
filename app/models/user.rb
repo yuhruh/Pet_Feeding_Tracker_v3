@@ -2,6 +2,8 @@ class User < ApplicationRecord
   before_save { self.password = password_confirmation }
   has_secure_password
   has_many :sessions, dependent: :destroy
+  has_many :pets, dependent: :destroy
+  validates_associated :pets
 
   validates :email_address, presence: true, 
                     uniqueness: { case_sensitive: false,

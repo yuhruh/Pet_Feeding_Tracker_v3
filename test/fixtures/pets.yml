@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  petname: MyString
+  birthday: 2025-07-26 12:01:39
+  weight: 9.99
+  gender: MyString
+  breed: MyString
+  user_id: 1
+
+two:
+  petname: MyString
+  birthday: 2025-07-26 12:01:39
+  weight: 9.99
+  gender: MyString
+  breed: MyString
+  user_id: 1

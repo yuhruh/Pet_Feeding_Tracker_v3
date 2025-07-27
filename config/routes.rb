@@ -8,13 +8,11 @@ Rails.application.routes.draw do
     get "/home", to: "pages#home"
     get "/about", to: "pages#about"
     get "/started", to: "pages#started"
+    get "/dashboard", to: "pages#dashboard"
     # User Profile
     resources :users, except: [:new]
-    # get "users/edit", to: "users#edit", as: :edit_user_profile
-    # patch "users/update_profile", to: "users#update_profile", as: :update_user_profile
-    # get "users/manage_password", to: "users#manage_password", as: :manage_password
-    # patch "users/update_password", to: "users#update_password", as: :update_password
-    # get "users/remove_avatar", to: "users#remove_avatar", as: :remove_user_avatar
+    resources :pets
+    
   end
   # since session controller only define new, create and destroy
   # resource :session, only: [:new, :create, :destroy] 

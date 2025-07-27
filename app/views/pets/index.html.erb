@@ -1,0 +1,20 @@
+<% content_for :title, "Pets" %>
+
+<h1 class='text-center' style="font-weight: bold;"><%= Current.user.username.capitalize %>'s Pets</h1>
+
+<div id="pets" class='d-flex justify-content-center'>
+  <% if @pets.find_by(user_id: Current.user.id).nil? %>
+    <h5 class="text-center">You do not have any pets yet. Why would you add it right now? Press above <%= image_tag('add_pet.png', width:'25px', height:'25px') %>button</h5>
+  <% else %>
+    <% @pets.each do |pet| %>
+      <div class="card mb-3" style="width: 40rem; background: #f2f4f6">
+        <%= render pet %>
+        <p class="text-center">
+          <%= link_to "Show this pet", pet %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New pet", new_pet_path %>

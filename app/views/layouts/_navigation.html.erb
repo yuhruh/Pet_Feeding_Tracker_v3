@@ -12,17 +12,7 @@
       </li>
 
       <% if authenticated? %>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= Current.user.email_address %>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              My Profile
-            </li>
-          </ul>
-        </li>
-        <%= link_to "Edit Profile", edit_user_path(Current.user), class: "nav-link"%>
+        <%= link_to "DashBoard", dashboard_path, class: "nav-link"%>
 
         <li class="nav-item">
           <%= button_to 'Log Out', session_path, class: "nav-link", method: :delete %>

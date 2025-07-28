@@ -1,6 +1,31 @@
-<h1 class="text-center mt-4" style="font-weight: bold;"><%= Current.user.username.capitalize%>'s Profile</h1>
+<turbo-frame id="main_content">
+  <div class="container mb-2 mt-2">
+    <div class="px-6 py-4 border border-dark-subtle rounded-3">
+      <h1 class="text-center mt-4" style="font-weight: bold;"><%= Current.user.username.capitalize%>'s Profile</h1>
 
-<div class="text-center m-4">
-  <%= link_to "Edit Profile", edit_user_path(Current.user), class: "btn btn-outline-success btn-sm mb-4" %>
-  <%= link_to "Delete Profile", user_path(Current.user), class: "btn btn-outline-danger btn-sm mb-4 text-danger", data: {"turbo-confirm":  "Are you sure to delete this user account? The user and associated trackers will all gone..", "turbo-method": :delete } %>
-</div>
+      <div class='text-center'>
+        <p>
+          <strong>User Name:</strong>
+          <%= Current.user.username %>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= Current.user.email_address %>
+        </p>
+
+        <p>
+          <strong>Time Zone:</strong>
+          <%= Current.user.timezone %>
+        </p>
+      </div>
+
+      <div class="text-center m-4">
+        <%= link_to "Edit Profile", edit_user_path(Current.user), class: "btn btn-outline-success btn-sm mb-4" %>
+        <%= link_to "Delete Profile", user_path(Current.user), class: "btn btn-outline-danger btn-sm mb-4 text-danger", data: {"turbo-confirm":  "Are you sure to delete this user account? The user and associated trackers will all gone..", "turbo-method": :delete } %>
+      </div>
+
+      <h2 class="text-center"><%= Current.user.username.capitalize%> has <%= Current.user.pets.count %> Cats</h2>
+    </div>
+  </div>
+</turbo_frame>

@@ -22,7 +22,7 @@
                                 <%= link_to " View Profile", user_path(Current.user), class: "nav-link px-0 bi-person-vcard", data: {turbo_frame: "main_content"} %>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0 bi-bookmark-heart"> <span class="d-none d-sm-inline">Pet Lists</span></a>
+                                <%= link_to " Pet Lists", pets_path, class: "nav-link px-0 bi-bookmark-heart", data: {turbo_frame: "main_content"} %>
                             </li>
                             <li>
                                 <%= link_to " Delete Profile", user_path(Current.user), class: "nav-link px-0 bi-trash3", style: "color: #F40B2E !important;", data: {"turbo-confirm":  "Are you sure to delete this user account? The user and associated trackers will all gone..", "turbo-method": :delete } %>

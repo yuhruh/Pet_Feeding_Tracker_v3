@@ -5,35 +5,36 @@
 
   <div class="mb-3 row justify-content-center">
     <%= form.label 'Pet Name', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
-    <div class="col-sm-3">
+    <div class="col-sm-5">
       <%= form.text_field :petname, required: true, autofocus: true, autocomplete: "petname", placeholder: "Enter your cat's name", value: params[:petname], class: "form-control" %>
     </div>
   </div>
 
   <div class="mb-3 row justify-content-center">
     <%= form.label 'Birthday', class: "col-sm-2 col-form-label text-start optional", style: "color: #515a5a; font-weight: bold" %>
-    <div class="col-sm-3">
+    <div class="col-sm-5">
       <%= form.date_field :birthday, class: "form-control", max: Date.today %>
     </div>
   </div>
 
   <div class="mb-3 row justify-content-center">
-    <%= form.label 'Weight', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
-    <div class="col-sm-3">
-      <%= form.number_field :weight, step: :any, class: "form-control", placeholder: "Enter your cat's weight", max: 100, min: 0.0, required: true %>
+    <%= form.label 'Weight (kg)', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+    <div class="col-sm-5">
+      <%= form.number_field :weight, step: :any, class: "form-control", placeholder: "Enter your cat's weight, the number should be ranged from 0 to 100.", max: 100, min: 0.0, required: true %>
+      <span id="wightHelpBlock" class="form-text">Just enter number without unit.</span>
     </div>
   </div>
 
   <div class="mb-3 row justify-content-center">
     <%= form.label 'Gender', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
-    <div class="col-sm-3">
+    <div class="col-sm-5">
       <%= form.select :gender, [["♂️ Male"], ["♀️ Female"], ["🙊 Rather Not to Answer"]], { prompt: "Please Choose Cat's Gender"}, class: "form-control" %>
     </div>
   </div>
 
   <div class="mb-3 row justify-content-center">
     <%= form.label 'Breed', class: "col-sm-2 col-form-label text-start optional", style: "color: #515a5a; font-weight: bold" %>
-    <div class="col-sm-3">
+    <div class="col-sm-5">
       <%= form.text_field :breed, class: "form-control", placeholder: "Enter your cat's breed, ex: Mixed, Ragdoll..." %>
     </div>
   </div>

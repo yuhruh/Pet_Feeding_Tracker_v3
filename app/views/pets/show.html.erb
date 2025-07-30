@@ -1,10 +1,13 @@
 <p style="color: green"><%= notice %></p>
+  <div class="container mb-2 mt-2">
+  <div class="px-6 py-4 border border-dark-subtle rounded-3">
 
-<%= render @pet %>
+    <%= render @pet %>
 
-<div>
-  <%= link_to "Edit this pet", edit_pet_path(@pet) %> |
-  <%= link_to "Back to pets", pets_path %>
-
-  <%= button_to "Destroy this pet", @pet, method: :delete %>
+    <div class="text-center">
+      <%= link_to "Edit this pet", edit_pet_path(@pet), class: "btn btn-outline-success" %>
+      <%= link_to "Back to #{Current.user.username.capitalize}'s Pets List", pets_path, class: "btn btn-outline-primary" %>
+      <%= link_to "Destroy this pet", @pet, class: "btn btn-outline-danger", data: {"turbo-confirm":  "Are you sure to delete this cat #{@pet.petname.capitalize}? This Cat and associated trackers will all gone..", "turbo-method": :delete } %>
+    </div>
+  </div>
 </div>

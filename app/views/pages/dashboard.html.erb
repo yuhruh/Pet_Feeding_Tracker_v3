@@ -16,29 +16,31 @@
                             <i class="fs-2 bi-person"></i> <span class="fs-5 ms-1 d-none d-sm-inline"><%= Current.user.username.capitalize%>'s Profile</span> </a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                              <%= link_to " Edit Profile", edit_user_path(Current.user), class: "nav-link px-0 bi-pencil", data: {turbo_frame: "main_content"} %>
+                              <%= link_to " Edit #{Current.user.username.capitalize}'s Profile", edit_user_path(Current.user), class: "nav-link px-0 bi-pencil", data: {turbo_frame: "main_content"} %>
                             </li>
                             <li>
-                                <%= link_to " View Profile", user_path(Current.user), class: "nav-link px-0 bi-person-vcard", data: {turbo_frame: "main_content"} %>
+                                <%= link_to " View #{Current.user.username.capitalize}'s Profile", user_path(Current.user), class: "nav-link px-0 bi-person-vcard", data: {turbo_frame: "main_content"} %>
                             </li>
                             <li>
-                                <%= link_to " Pet Lists", pets_path, class: "nav-link px-0 bi-bookmark-heart", data: {turbo_frame: "main_content"} %>
+                                <%= link_to " #{Current.user.username.capitalize}'s Pet Lists", pets_path, class: "nav-link px-0 bi-bookmark-heart", data: {turbo_frame: "main_content"} %>
                             </li>
                             <li>
-                                <%= link_to " Delete Profile", user_path(Current.user), class: "nav-link px-0 bi-trash3", style: "color: #F40B2E !important;", data: {"turbo-confirm":  "Are you sure to delete this user account? The user and associated trackers will all gone..", "turbo-method": :delete } %>
+                                <%= link_to " Delete #{Current.user.username.capitalize}'s Profile", user_path(Current.user), class: "nav-link px-0 bi-trash3", style: "color: #F40B2E !important;", data: {"turbo-confirm":  "Are you sure to delete this user #{Current.user.username.capitalize}'s account? The user and associated trackers will all gone..", "turbo-method": :delete } %>
                             </li>
                         </ul>
                     </li>
                     
                     <li>
                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-2 bi-person-hearts"></i> <span class="ms-1 d-none d-sm-inline">Cat's Dashboard</span></a>
+                            <i class="fs-2 bi-person-hearts"></i> <span class="ms-1 d-none d-sm-inline">Cats' Dashboard</span></a>
                         <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                             <li class="w-100">
                                 <%= link_to " Add A Cat", new_pet_path, class: "nav-link px-0 bi-plus-circle-dotted", data: {turbo_frame: "main_content"} %>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0 bi-eye"> <span class="d-none d-sm-inline">View XXX Profile</span></a>
+                                <% Current.user.pets.each do |pet| %>
+                                    <%= link_to " View #{pet.petname.capitalize}'s Profile", pet_path(pet), class: "nav-link px-0 bi-eye", data: {turbo_frame: "main_content"} %>
+                                <% end %>
                             </li>
                             <li>
                                 <a href="#" class="nav-link px-0 bi-emoji-heart-eyes"> <span class="d-none d-sm-inline">Favorite Food List</span></a>

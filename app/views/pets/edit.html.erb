@@ -1,8 +1,8 @@
-<h1>Editing #{@pet.petname}'s Profile</h1>
+<h1 class="text-center">Editing <%=@pet.petname%>'s Profile</h1>
 
 <%= form_with(model: @pet) do |form| %>
     <div class="d-flex justify-content-center">
-       <%= render 'shared/errors', obj: @pet %>
+      <%= render 'shared/errors', obj: @pet %>
     </div>
 
     <div class="mb-3 row justify-content-center">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="mb-3 row justify-content-center">
-      <%= form.label 'Weight', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+      <%= form.label 'Weight(kg)', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-3">
         <%= form.number_field :weight, step: :any, class: "form-control", placeholder: "Enter your cat's weight", max: 100, min: 0.0, required: true %>
       </div>
@@ -45,3 +45,4 @@
   <%= link_to "Show this pet", @pet %> |
   <%= link_to "Back to pets", pets_path %>
 </div>
+

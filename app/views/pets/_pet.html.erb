@@ -1,38 +1,36 @@
-<turbo-frame id="main_content">
-  <div id="<%= dom_id pet %>" class='text-center'>
-    <p>
-      <strong>Petname:</strong>
-      <%= pet.petname %>
-    </p>
+<div id="<%= dom_id pet %>" class='text-center'>
+  <p>
+    <strong>Pet Name:</strong>
+    <%= pet.petname %>
+  </p>
 
-    <p>
-      <strong>Birthday:</strong>
-      <% if pet.birthday.nil? %>
-        <%= "Not Registered Yet." %>
-      <% else %>
-        <%= pet.birthday.strftime("%Y-%m-%d") %>
-      <% end %>
-    </p>
+  <p>
+    <strong>Birthday:</strong>
+    <% if pet.birthday.nil? %>
+      <%= "Not Registered Yet." %>
+    <% else %>
+      <%= pet.birthday.strftime("%Y-%m-%d") %>
+    <% end %>
+  </p>
 
-    <p>
-      <strong>Weight:</strong>
-      <%= pet.weight %>
-    </p>
+  <p>
+    <strong>Weight(kg):</strong>
+    <%= pet.weight %>
+  </p>
 
-    <p>
-      <strong>Gender:</strong>
-      <%= pet.gender %>
-    </p>
+  <p>
+    <strong>Gender:</strong>
+    <%= pet.gender %>
+  </p>
 
-    <p>
-      <strong>Breed:</strong>
-      <%= pet.breed %>
-    </p>
+  <p>
+    <strong>Breed:</strong>
+    <%= pet.breed %>
+  </p>
 
-    <p>
-      <strong>User:</strong>
-      <%= Current.user.username.capitalize %>
-    </p>
+  <p>
+    <strong>Owner:</strong>
+    <%= Current.user.username.capitalize %>
+  </p>
 
-  </div>
-</turbo_frame>
+</div>

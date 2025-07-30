@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     get "/home", to: "pages#home"
     get "/about", to: "pages#about"
     get "/started", to: "pages#started"
-    get "/dashboard", to: "pages#dashboard"
     # User Profile
     resources :users, except: [:new]
     resources :pets

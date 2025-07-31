@@ -5,9 +5,9 @@
     <%= render @pet %>
 
     <div class="text-center">
-      <%= link_to "Edit this pet", edit_pet_path(@pet), class: "btn btn-outline-success" %>
+      <%= link_to "Edit #{@pet.petname.capitalize}'s Profile", edit_pet_path(@pet), class: "btn btn-outline-success" %>
       <%= link_to "Back to #{Current.user.username.capitalize}'s Pets List", pets_path, class: "btn btn-outline-primary" %>
-      <%= link_to "Destroy this pet", @pet, class: "btn btn-outline-danger", data: {"turbo-confirm":  "Are you sure to delete this cat #{@pet.petname.capitalize}? This Cat and associated trackers will all gone..", "turbo-method": :delete } %>
+      <%= link_to "Destroy #{@pet.petname.capitalize}'s Profile and the record", @pet, class: "btn btn-outline-danger", data: {"turbo-confirm":  "Are you sure to delete this cat #{@pet.petname.capitalize}? This Cat and associated trackers will all gone..", "turbo-method": :delete } %>
     </div>
   </div>
 </div>

@@ -15,7 +15,7 @@
         <h4 class="text-center mb-3"><i><u><%=pet.petname%>'s Profile: </u></i></h4>
         <%= render pet %>
         <div class="text-center mb-3">
-          <%= link_to "Edit this pet", edit_pet_path(pet), class: "btn btn-outline-success" %>
+          <%= link_to "Edit #{pet.petname.capitalize}'s Profile", edit_pet_path(pet), class: "btn btn-outline-success" %>
           <%= link_to "Show #{pet.petname.capitalize}'s Record"%>
         </div>
       </div>

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     get "/started", to: "pages#started"
     # User Profile
     resources :users, except: [:new]
-    resources :pets
+    resources :pets do
+      resources :trackers
+    end
     
   end
   # since session controller only define new, create and destroy

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @tracker %>
+
+<div>
+  <%= link_to "Edit this tracker", edit_tracker_path(@tracker) %> |
+  <%= link_to "Back to trackers", trackers_path %>
+
+  <%= button_to "Destroy this tracker", @tracker, method: :delete %>
+</div>

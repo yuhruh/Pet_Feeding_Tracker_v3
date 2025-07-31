@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2025-07-31
+  feed_time: 2025-07-31 11:25:22
+  come_back_to_eat_time: 2025-07-31 11:25:22
+  brand: MyString
+  description: MyString
+  hungry: MyString
+  amount: 9.99
+  left_amount: 9.99
+  result: MyString
+  note: MyString
+  pet_id: 1
+  weight: 9.99
+  total_ate_amount: 9.99
+  favorite_score: 1
+  frequency: 1
+  love: MyString
+  transformed_date: 2025-07-31
+  transformed_time: 2025-07-31 11:25:22
+
+two:
+  date: 2025-07-31
+  feed_time: 2025-07-31 11:25:22
+  come_back_to_eat_time: 2025-07-31 11:25:22
+  brand: MyString
+  description: MyString
+  hungry: MyString
+  amount: 9.99
+  left_amount: 9.99
+  result: MyString
+  note: MyString
+  pet_id: 1
+  weight: 9.99
+  total_ate_amount: 9.99
+  favorite_score: 1
+  frequency: 1
+  love: MyString
+  transformed_date: 2025-07-31
+  transformed_time: 2025-07-31 11:25:22

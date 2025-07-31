@@ -17,25 +17,20 @@
         <strong>Time Zone:</strong>
         <%= Current.user.timezone %>
       </p>
+
+      <p>
+        <strong>Pets:</strong>
+        <%= Current.user.pets.count %> pets - 
+        <%= Current.user.pets.map do |pet| %>
+          <% pet.petname.capitalize %>
+        <% end %>
+      </p>
+
     </div>
 
     <div class="text-center m-4">
       <%= link_to "Edit Profile", edit_user_path(Current.user), class: "btn btn-outline-success btn-sm mb-4" %>
       <%= link_to "Delete Profile", user_path(Current.user), class: "btn btn-outline-danger btn-sm mb-4 text-danger", data: {"turbo-confirm":  "Are you sure to delete this user account? The user and associated trackers will all gone..", "turbo-method": :delete } %>
     </div>
-
-    <h2 class="text-center"><%= Current.user.username.capitalize%> has <%= Current.user.pets.count %> Cats</h2>
-    <div class="d-flex justify-content-center">
-      <% Current.user.pets.each do |pet| %>
-        <div class="card mb-3" style="width: 40rem; background: #f2f4f6">
-          <h4 class="text-center mb-3"><i><u><%=pet.petname%>'s Profile: </u></i></h4>
-          <%= render pet %>
-          <div class="text-center mb-3">
-            <%= link_to "Edit this pet", edit_pet_path(pet), class: "btn btn-outline-success" %>
-            <%= link_to "Show #{pet.petname.capitalize}'s Record"%>
-          </div>
-        </div>
-      <% end %>
-    </div> 
   </div>
 </div>

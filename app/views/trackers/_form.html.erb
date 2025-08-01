@@ -14,41 +14,43 @@
     <div class="mb-3 row justify-content-center">
       <%= form.label "Feed Time", class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
-      <%= form.time_field :feed_time, required: true, value: set_current_time, class: "form-control" %>
+        <%= form.time_field :feed_time, required: true, value: set_current_time, class: "form-control" %>
+      </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
       <%= form.label "Food Type", class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
-      <%= form.time_field :food_type, [["🥡 Dry"], ["🥫 Wet"], ["🍗 Other"]], {:include_blank => "Select Food Type"}, class: "form-control", required: true %>
-    </div>
-
-    <div class="mb-3 row justify-content-center">
-      <%= form.label :brand, class: "col-sm-3 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-4">
-        <%= form.text_field :brand, class: "form-control", value: tracker.brand, requried: true  %>
+        <%= form.select :food_type, [["🥡 Dry", "Dry"], ["🥫 Wet", "Wet"], ["🍗 Other", "Other"]], {:include_blank => "Select Food Type"}, class: "form-control", required: true %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
-      <%= form.label :description, class: "col-sm-3 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-4">
-        <%= form.text_field :description, class: "form-control", value: tracker.description, requried: true  %>
+      <%= form.label :brand, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-5">
+        <%= form.text_field :brand, class: "form-control", value: tracker.brand, required: true  %>
+      </div>
+    </div>
+
+    <div class="mb-3 row justify-content-center">
+      <%= form.label :description, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-5">
+        <%= form.text_field :description, class: "form-control", value: tracker.description, required: true  %>
         <div id="descriptionHelpBlock" class="form-text">"Input food's flavor or serial number for easy to track"</div>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
-      <%= form.label "Hungry?", class: "col-sm-3 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-4">
-        <%= form.select :hungry, [["😻 Yes, eat right away"], ["😾 Ate A Little"], ["😴 No, not interested."]], { :include_blank => "Is he/she hungry? Please choose..." }, class: "form-control" %>
+      <%= form.label "Hungry?", class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-5">
+        <%= form.select :hungry, ["😻 Yes, eat right away", "😾 Ate A Little", "😴 No, not interested."], { :include_blank => "Is he/she hungry? Please choose..." }, class: "form-control", required: true %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
-      <%= form.label :amount, class: "col-sm-3 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-4">
-        <%= form.text_field :amount, class: "form-control floatingInput", placeholder: "Please enter a number of range 0~500", required: true, max: 500, min: 0 %>
+      <%= form.label :amount, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-5">
+        <%= form.number_field :amount, step: :any, class: "form-control floatingInput", placeholder: "Please enter a number of range 0~500", required: true, max: 500, min: 0 %>
         <div id="amountHelpBlock" class="form-text">"Input number/float number only without unit"</div>
       </div>
     </div>

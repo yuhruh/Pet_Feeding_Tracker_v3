@@ -34,6 +34,11 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-data-fill"></i> Tracker's Dashboard</a>
+          <ul class="dropdown-menu">
+              <% Current.user.pets.select(&:persisted?).each do |pet| %>
+                <%= link_to " #{pet.petname.capitalize}'s Trackers", pet_trackers_path(pet), class: "dropdown-item bi-bar-chart-line"%>
+              <% end %>
+          </ul>
         </li>
 
         <li class="nav-item">

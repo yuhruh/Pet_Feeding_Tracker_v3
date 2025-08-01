@@ -1,92 +1,48 @@
-<div id="<%= dom_id tracker %>">
-  <p>
-    <strong>Date:</strong>
-    <%= tracker.date %>
-  </p>
-
-  <p>
-    <strong>Feed time:</strong>
-    <%= tracker.feed_time %>
-  </p>
-
-  <p>
-    <strong>Come back to eat time:</strong>
-    <%= tracker.come_back_to_eat_time %>
-  </p>
-
-  <p>
-    <strong>Brand:</strong>
-    <%= tracker.brand %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= tracker.description %>
-  </p>
-
-  <p>
-    <strong>Hungry:</strong>
-    <%= tracker.hungry %>
-  </p>
-
-  <p>
-    <strong>Amount:</strong>
-    <%= tracker.amount %>
-  </p>
-
-  <p>
-    <strong>Left amount:</strong>
-    <%= tracker.left_amount %>
-  </p>
-
-  <p>
-    <strong>Result:</strong>
-    <%= tracker.result %>
-  </p>
-
-  <p>
-    <strong>Note:</strong>
-    <%= tracker.note %>
-  </p>
-
-  <p>
-    <strong>Pet:</strong>
-    <%= tracker.pet_id %>
-  </p>
-
-  <p>
-    <strong>Weight:</strong>
-    <%= tracker.weight %>
-  </p>
-
-  <p>
-    <strong>Total ate amount:</strong>
-    <%= tracker.total_ate_amount %>
-  </p>
-
-  <p>
-    <strong>Favorite score:</strong>
-    <%= tracker.favorite_score %>
-  </p>
-
-  <p>
-    <strong>Frequency:</strong>
-    <%= tracker.frequency %>
-  </p>
-
-  <p>
-    <strong>Love:</strong>
-    <%= tracker.love %>
-  </p>
-
-  <p>
-    <strong>Transformed date:</strong>
-    <%= tracker.transformed_date %>
-  </p>
-
-  <p>
-    <strong>Transformed time:</strong>
-    <%= tracker.transformed_time %>
-  </p>
-
-</div>
+<table class="table table-bordered" style="width:100%">
+  <thead class="table-dark">
+    <tr class='text-center justify-content-center'>
+      <th scope="col" style="width:1%">#</th>
+      <th scope="col" style="width:5%">Date</th>
+      <th scope="col" style="width:6%">Feed Time</th>
+      <th scope="col" style="width:8%">Hungry?(Does he/she eat right away?)</th>
+      <th scope='col' style="width:10%">Come Back to Eat Time</th>
+      <th scope='col' style="width:5%">Food Type</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Description/th>
+      <th scope="col" style="width:5%">Amount(g)</th>
+      <th scope="col" style="width:6%">Left Amount(g)</th>
+      <th scope="col" style="width:6%">Total Ate Amount(g)</th>
+      <th scope="col" style="width:5%">Result</th>
+      <th scope="col" style="width:6%">Favorite</th>
+      <th scope="col" style="width:6%">Weight (kg)</th>
+      <th scope="col">Note</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider" id="trackers">
+    <% @trackers.order(date: 'asc').each_with_index do |pet_tracker, idx| %>
+        <tr class="table<%= pet_tracker.total_ate_amount.nil? ? "-danger" : "" %>">
+          <th scope="row"><%= idx+1 %></th>
+          <td><%= pet_tracker.date.strftime("%Y-%m-%d") %></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.feed_time.strftime("%H:%M") %></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.hungry %></td>
+          <td><%= pet_tracker.come_back_to_eat_time %></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.food_type %></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.brand %></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.description %></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.amount %></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.left_amount %></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.total_ate_amount %></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.result%></td>
+          <td class="text-center justify-content-center"><%= pet_tracker.favorite_score %></td>
+          <td><%= pet_tracker.weight %></td>
+          <td><%= pet_tracker.note %></td>
+          <td class="text-center justify-content-center"><%= link_to " #{pet_tracker.total_ate_amount.nil? ? 'Update Left Amount' : ''}", edit_pet_tracker_path(@pet, pet_tracker), 
+          class:"link#{pet_tracker.total_ate_amount.nil? ? '-danger' : '-dark' } link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover bi-pencil" %></td>
+          <td class="text-center justify-content-center"><%= link_to image_tag("icon_delete.png", width:"30px"), pet_tracker_path(@pet, pet_tracker), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+<h5 class="text-center" style="color:#4c5ada;">Press <i class="bi bi-pencil"></i> to update left amount, the below chart will be updated accordingly</h5>

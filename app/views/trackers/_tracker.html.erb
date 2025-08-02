@@ -8,7 +8,7 @@
       <th scope='col' style="width:10%">Come Back to Eat Time</th>
       <th scope='col' style="width:5%">Food Type</th>
       <th scope="col">Brand</th>
-      <th scope="col">Description/th>
+      <th scope="col">Description</th>
       <th scope="col" style="width:5%">Amount(g)</th>
       <th scope="col" style="width:6%">Left Amount(g)</th>
       <th scope="col" style="width:6%">Total Ate Amount(g)</th>
@@ -22,7 +22,7 @@
   </thead>
   <tbody class="table-group-divider" id="trackers">
     <% @trackers.order(date: 'asc').each_with_index do |pet_tracker, idx| %>
-        <tr class="table<%= pet_tracker.total_ate_amount.nil? ? "-danger" : "" %>">
+        <tr class="table <%= pet_tracker.total_ate_amount.nil? ? 'table-danger' : '' %>">
           <th scope="row"><%= idx+1 %></th>
           <td><%= pet_tracker.date.strftime("%Y-%m-%d") %></td>
           <td class="text-center justify-content-center"><%= pet_tracker.feed_time.strftime("%H:%M") %></td>

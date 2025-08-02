@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_31_082359) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_02_134813) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_31_082359) do
   create_table "trackers", force: :cascade do |t|
     t.date "date"
     t.time "feed_time"
-    t.time "come_back_to_eat_time"
+    t.string "come_back_to_eat_time"
     t.string "brand"
     t.string "description"
     t.string "hungry"

@@ -16,7 +16,8 @@
         <%= render pet %>
         <div class="text-center mb-3">
           <%= link_to "Edit #{pet.petname.capitalize}'s Profile", edit_pet_path(pet), class: "btn btn-outline-success" %>
-          <%= link_to "Show #{pet.petname.capitalize}'s Record"%>
+          <%= link_to "Show #{pet.petname.capitalize}'s Record", pet_trackers_path(pet), class: "btn btn-outline-secondary" %>
+          <%= link_to "Add #{pet.petname.capitalize}'s Record", new_pet_tracker_path(pet), class: "btn btn-outline-primary" %>
         </div>
       </div>
     <% end %>

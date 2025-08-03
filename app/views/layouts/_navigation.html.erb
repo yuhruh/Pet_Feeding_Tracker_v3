@@ -33,6 +33,13 @@
         </li>
 
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-database"></i> Dry Food Storage</a>
+          <ul class="dropdown-menu">
+            <%= link_to "xxx", class: "dropdown-item" %>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-data-fill"></i> Tracker's Dashboard</a>
           <ul class="dropdown-menu">
               <% Current.user.pets.select(&:persisted?).each do |pet| %>
@@ -44,7 +51,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-search-heart"></i> Favorite Food List</a>
           <ul class="dropdown-menu">
-            <% Current.user.pets.each do |pet| %>
+            <% Current.user.pets.select(&:persisted?).each do |pet| %>
               <li>
                 <%= link_to "View #{pet.petname.capitalize}'s Favorite", "/pets/#{pet.id}/favorites", class: "dropdown-item bi-search" %>
               </li>

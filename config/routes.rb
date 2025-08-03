@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     # User Profile
     resources :users, except: [:new]
     resources :pets do
-      resources :trackers
+      resources :trackers, except: [:show]
     end
     
   end

@@ -44,6 +44,12 @@
       </div>
     </div>
 
+    <div class="mb-3 row justify-content-center">
+      <%= form.label "Hungry?", class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-5">
+        <%= form.select :hungry, ["💖 Yes, eat right away", "🔺 Ate A Little", "❌ No, not interested."], { :include_blank => "Is he/she hungry? Please choose..." }, class: "form-control", required: true %>
+      </div>
+    </div>
 
     <div class="mb-3 row justify-content-center">
       <%= form.label :left_amount, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
@@ -56,7 +62,7 @@
     <div class="mb-3 row justify-content-center">
       <%= form.label :love, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
-        <%= form.select :love, ["❤️‍🔥 Love it So Much", "🔺 So So", "❌ No!!!"], { :include_blank => "Does he/she love this food?" }, class: "form-control", required: true %>
+        <%= form.select :love, ["💕 Love it So Much", "🔺 So So", "❌ No!!!"], { :include_blank => "Does he/she love this food?" }, class: "form-control", required: true %>
       </div>
     </div>
 

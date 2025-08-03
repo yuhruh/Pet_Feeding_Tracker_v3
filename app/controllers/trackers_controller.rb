@@ -41,8 +41,11 @@ class TrackersController < ApplicationController
 
   # PATCH/PUT /trackers/1 or /trackers/1.json
   def update
-    @tracker.update!(params.expect(tracker: [:amount, :left_amount, :hungry, :come_back_to_eat_time, :love, :favorite_score]))
+    @tracker.update!(params.expect(tracker: [:amount, :left_amount, :hungry, :come_back_to_eat_time, :love]))
     @tracker.total_ate_amount = @tracker.amount - @tracker.left_amount
+    @tracker.frequency = calculate_frequency(@tracker.come_back_to_eat_time)
+    @tracker.result = [@tracker.hungry[0], @tracker.love[0]].join(" - ")
+    @tracker.favorite_score = calculate_favorite([@tracker.hungry[0], @tracker.love[0]])
 
     respond_to do |format|
       if @tracker.update(tracker_params)
@@ -82,13 +85,29 @@ class TrackersController < ApplicationController
       params.expect(tracker: [ :date, :feed_time, :come_back_to_eat_time, :brand, :description, :hungry, :amount, :left_amount, :result, :note, :pet_id, :weight, :total_ate_amount, :favorite_score, :frequency, :love, :transformed_date, :transformed_time, :food_type ])
     end
 
-  def set_current_time
-    Time.zone = Current.user.timezone
-    Time.current.strftime("%H:%M")
-  end
+    def set_current_time
+      Time.zone = Current.user.timezone
+      Time.current.strftime("%H:%M")
+    end
 
-  def set_current_date
-    Time.zone = Current.user.timezone
-    Date.current.strftime("%Y-%m-%d")
-  end
+    def set_current_date
+      Time.zone = Current.user.timezone
+      Date.current.strftime("%Y-%m-%d")
+    end
+
+    def calculate_frequency(time_string)
+      time_string == '-' ? 0 : time_string.split(', ').count
+    end
+
+    def calculate_favorite(arr)
+      hungry = {"💖": 10, "🔺": 5, "❌": 0 }
+      love = {"💕": 15,  "🔺": 5, "❌": 0}
+      
+      hungry_score = hungry[arr[0].to_sym]
+      love_score = love[arr[1].to_sym]
+      remaining_score = @tracker.left_amount < (@tracker.amount)/4 ? 15 : 8 
+      frequent_score = @tracker.frequency * 2
+
+      hungry_score.to_i + love_score.to_i + remaining_score + frequent_score
+    end
 end

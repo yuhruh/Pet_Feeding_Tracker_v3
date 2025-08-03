@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get "/started", to: "pages#started"
     # User Profile
     resources :users, except: [:new]
+    get "/pets/:pet_id/favorites", to: 'trackers#favorite_food'
     resources :pets do
       resources :trackers, except: [:show]
     end

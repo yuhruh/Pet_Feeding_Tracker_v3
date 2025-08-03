@@ -1,0 +1,27 @@
+<h1 class="text-center mt-4" style="font-weight: bold;"><%= @pet.petname.capitalize %>'s Favorite Food Ranking</h1>
+<% if @pet.trackers.empty? %>
+  <h3 class="text-center mt-4">You do not have any eating record for <%= @pet.petname.capitalize%> 😿 </h3>
+<% else %>    
+  <table class="table table-bordered" style="width:100%">
+    <thead class="table-dark">
+      <tr class='text-center justify-content-center'>
+        <th scope="col" style="width:1%">#</th>
+        <th scope="col" style="width:10%">Brand</th>
+        <th scope="col" style="width:10%">Description</th>
+        <th scope="col" style="width:10%">Result</th>
+        <th scope="col" style="width:8%">Favorite Score (ref)</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider" id="trackers">
+      <% @pet.trackers.order(favorite_score: 'desc').each_with_index do |pet_tracker, idx| %>
+          <tr class='text-center justify-content-center'>
+            <th scope="row"><%= idx+1 %></th>
+            <td><%= pet_tracker.brand %></td>
+            <td><%= pet_tracker.description %></td>
+            <td><%= pet_tracker.result %></td>
+            <td><%= pet_tracker.favorite_score %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

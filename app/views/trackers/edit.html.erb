@@ -40,7 +40,7 @@
       <%= form.label :description, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
         <%= form.text_field :description, class: "form-control", value: @tracker.description  %>
-        <div id="descriptionHelpBlock" class="form-text">"Input food's flavor or serial number for easy to track"</div>
+        <div id="descriptionHelpBlock" class="form-text">Input food's flavor or serial number for easy to track 🔎</div>
       </div>
     </div>
 
@@ -55,7 +55,7 @@
       <%= form.label :left_amount, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
         <%= form.number_field :left_amount, step: :any, class: "form-control floatingInput", required: true, max: @tracker.amount, min: 0 %>
-        <div id="amountHelpBlock" class="form-text">"Input number/float number only without unit"</div>
+        <div id="amountHelpBlock" class="form-text">Input number/float number only without unit | Amount: <%= @tracker.brand.capitalize %> <%= @tracker.description %> - <%= @tracker.amount %> </div>
       </div>
     </div>
 
@@ -70,7 +70,7 @@
       <%= form.label "Weight(Kg)", class: "col-sm-2 col-form-label optional", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
         <%= form.number_field :weight, step: :any, class: "form-control floatingInput", placeholder: "Please enter a number of range 0~100", max: 100, min: 0.0 %>
-        <div id="amountHelpBlock" class="form-text">"You can weigh Cat's Weight every 2~3 weeks, and record it."</div>
+        <div id="amountHelpBlock" class="form-text">You can weigh Cat's Weight every 2~3 weeks, and record it.</div>
       </div>
     </div>
 
@@ -78,7 +78,7 @@
         <%= form.label :note, class: "col-sm-2 col-form-label optional", style: "color: #515a5a; font-weight: bold" %>
         <div class="col-sm-5">
           <%= form.text_field :note, class: "form-control floatingInput" %>
-          <div id="noteHelpBlock" class="form-text">"You can add whatever you want to record, such as when the cat vomit 🤮"</div>
+          <div id="noteHelpBlock" class="form-text">You can add whatever you want to record, such as when the cat vomit 🤮</div>
         </div>
       </div>
 

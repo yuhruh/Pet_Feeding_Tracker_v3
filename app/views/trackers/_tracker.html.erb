@@ -21,8 +21,8 @@
     </tr>
   </thead>
   <tbody class="table-group-divider" id="trackers">
-    <% @trackers.order(date: 'asc').each_with_index do |pet_tracker, idx| %>
-        <tr class="table <%= pet_tracker.total_ate_amount.nil? ? 'table-danger' : '' %>">
+    <% @trackers.each_with_index do |pet_tracker, idx| %>
+        <tr class="table <%= pet_tracker.total_ate_amount.nil? ? 'table-danger' : (pet_tracker.come_back_to_eat_time.empty? ? 'table-warning' : '') %>">
           <th scope="row"><%= idx+1 %></th>
           <td><%= pet_tracker.date.strftime("%Y-%m-%d") %></td>
           <td class="text-center justify-content-center"><%= pet_tracker.feed_time.strftime("%H:%M") %></td>
@@ -38,11 +38,11 @@
           <td class="text-center justify-content-center"><%= pet_tracker.favorite_score %></td>
           <td><%= pet_tracker.weight %></td>
           <td><%= pet_tracker.note %></td>
-          <td class="text-center justify-content-center"><%= link_to " #{pet_tracker.total_ate_amount.nil? ? 'Update Left Amount' : ''}", edit_pet_tracker_path(@pet, pet_tracker), 
+          <td class="text-center justify-content-center"><%= link_to " #{pet_tracker.total_ate_amount.nil? ? 'Update Left Amount' : (pet_tracker.come_back_to_eat_time.empty? ? 'Update come back to eat time' : '')}", edit_pet_tracker_path(@pet, pet_tracker), 
           class:"link#{pet_tracker.total_ate_amount.nil? ? '-danger' : '-dark' } link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover bi-pencil" %></td>
           <td class="text-center justify-content-center"><%= link_to image_tag("icon_delete.png", width:"30px"), pet_tracker_path(@pet, pet_tracker), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
         </tr>
     <% end %>
   </tbody>
 </table>
-<h5 class="text-center" style="color:#4c5ada;">Press <i class="bi bi-pencil"></i> to update left amount, the below chart will be updated accordingly</h5>
+<h5 class="text-center mb-5" style="color:#4c5ada;">Press <i class="bi bi-pencil"></i> to update left amount, the below chart will be updated accordingly</h5>

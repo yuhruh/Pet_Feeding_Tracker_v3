@@ -32,3 +32,6 @@
 <div class="d-flex digg_pagination justify-content-center mb-5">
   <%= will_paginate @trackers, :container => false %>
 </div>
+
+<h2 class="text-center mt-4" style="font-weight: bold;">Pet <%= @pet.petname.capitalize %>'s Weight Chart</h2>
+<%= line_chart @pet.trackers.group(:date).sum(:weight) %>

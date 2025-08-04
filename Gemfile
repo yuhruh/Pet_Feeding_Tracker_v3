@@ -28,6 +28,8 @@ gem "bcrypt", "~> 3.1.7"
 gem 'rails-i18n', '~> 8.0.0'
 gem 'redis'
 gem 'hiredis'
+gem 'will_paginate', '~> 4.0'
+gem "chartkick"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]

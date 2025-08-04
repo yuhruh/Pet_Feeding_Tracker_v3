@@ -6,7 +6,7 @@ class TrackersController < ApplicationController
 
   # GET /trackers or /trackers.json
   def index
-    @trackers = @pet.trackers.order(date: :asc, feed_time: :asc)
+    @trackers = @pet.trackers.paginate(page: params[:page], per_page: 10).order(date: :asc, feed_time: :asc)
   end
 
   # GET /trackers/1 or /trackers/1.json

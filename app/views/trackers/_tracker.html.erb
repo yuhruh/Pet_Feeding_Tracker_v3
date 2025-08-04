@@ -21,7 +21,6 @@
         <th scope="col">Note</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
-        <th scope="col">Frequency</th>
       </tr>
     </thead>
     <tbody class="table-group-divider" id="trackers">
@@ -45,7 +44,6 @@
             <td class="text-center justify-content-center"><%= link_to " #{pet_tracker.total_ate_amount.nil? ? 'Update Left Amount' : (pet_tracker.come_back_to_eat_time.empty? ? 'Update come back to eat time' : '')}", edit_pet_tracker_path(@pet, pet_tracker), 
             class:"link#{pet_tracker.total_ate_amount.nil? ? '-danger' : (pet_tracker.come_back_to_eat_time.empty? ? '-primary' : '-dark') } link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover bi-pencil" %></td>
             <td class="text-center justify-content-center"><%= link_to image_tag("icon_delete.png", width:"30px"), pet_tracker_path(@pet, pet_tracker), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
-            <td><%= pet_tracker.frequency %></td>
           </tr>
       <% end %>
     </tbody>

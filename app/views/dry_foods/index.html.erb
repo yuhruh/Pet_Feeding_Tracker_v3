@@ -6,36 +6,35 @@
 
 # add pie chart
 <div class="container-xl mb-4">
-<%= @dry_foods.empty? %>
 
-<% if @dry_foods.empty? %>
-  <h3 class="text-center mt-4 mb-4">You do not have any dry food. How about recording right now? 😺</h3>
-<% else %>
-  <table class="table table-bordered rounded" style="width:100%; border: 2px solid #515a5a;">
-    <thead class="table-primary">
-      <tr class='text-center justify-content-center'>
-        <th scope="col" style="width:1%">#</th>
-        <th scope="col" style="width:5%">Brand</th>
-        <th scope="col">Description</th>
-        <th scope="col" style="width:15%">Food Amount(g)</th>
-        <th scope='col' style="width:20%">Total Ate Amount(g)</th>
-        <th scope='col' style="width:15%">Left Amount(g)</th>
-        <th scope="col">Expected Running Out</th>
-      </tr>
-    </thead>
-    <tbody class="table-group-divider" id="trackers">
-      <% @dry_foods.select(&:persisted?).each_with_index do |food, idx| %>
-          <tr class="table">
-            <th scope="row"><%= idx+1 %></th>
-            <td><%= food.brand %></td>
-            <td class="text-center justify-content-center"><%= food.description %></td>
-            <td class="text-center justify-content-center"><%= food.amount %></td>
-            <td><%= food.total_ate_amount %></td>
-            <td class="text-center justify-content-center"><%= food.left_amount %></td>
-            <td class="text-center justify-content-center"><%= food.average_used_amount %></td>
-          </tr>
-      <% end %>
-    </tbody>
-  </table>   
-<% end %>
+  <% if @dry_foods.empty? %>
+    <h3 class="text-center mt-4 mb-4">You do not have any dry food. How about recording right now? 😺</h3>
+  <% else %>
+    <table class="table table-bordered rounded" style="width:100%; border: 2px solid #515a5a;">
+      <thead class="table-primary">
+        <tr class='text-center justify-content-center'>
+          <th scope="col" style="width:1%">#</th>
+          <th scope="col" style="width:5%">Brand</th>
+          <th scope="col">Description</th>
+          <th scope="col" style="width:15%">Food Amount(g)</th>
+          <th scope='col' style="width:20%">Total Ate Amount(g)</th>
+          <th scope='col' style="width:15%">Left Amount(g)</th>
+          <th scope="col">Expected Running Out</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider" id="trackers">
+        <% @dry_foods.select(&:persisted?).each_with_index do |food, idx| %>
+            <tr class="table">
+              <th scope="row"><%= idx+1 %></th>
+              <td><%= food.brand %></td>
+              <td class="text-center justify-content-center"><%= food.description %></td>
+              <td class="text-center justify-content-center"><%= food.amount %></td>
+              <td><%= food.total_ate_amount %></td>
+              <td class="text-center justify-content-center"><%= food.left_amount %></td>
+              <td class="text-center justify-content-center"><%= food.average_used_amount %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>   
+  <% end %>
 </div>

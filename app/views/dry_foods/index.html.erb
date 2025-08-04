@@ -6,7 +6,7 @@
 
 # add pie chart
 <div class="container-xl mb-4">
-<%= @dry_foods.nil? %>
+<%= @dry_foods.empty? %>
 
 <% if @dry_foods.nil? %>
   <h3 class="text-center mt-4 mb-4">You do not have any dry food. How about recording right now? 😺</h3>

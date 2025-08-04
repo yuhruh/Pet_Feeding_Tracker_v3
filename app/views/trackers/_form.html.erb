@@ -36,7 +36,7 @@
       <%= form.label :description, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
         <%= form.text_field :description, class: "form-control", value: tracker.description, required: true  %>
-        <div id="descriptionHelpBlock" class="form-text">"Input food's flavor or serial number for easy to track"</div>
+        <div id="descriptionHelpBlock" class="form-text">Input food's flavor or serial number for easy to track</div>
       </div>
     </div>
 
@@ -51,7 +51,7 @@
       <%= form.label :amount, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
         <%= form.number_field :amount, step: :any, class: "form-control floatingInput", placeholder: "Please enter a number of range 0~500", required: true, max: 500, min: 0 %>
-        <div id="amountHelpBlock" class="form-text">"Input number/float number only without unit"</div>
+        <div id="amountHelpBlock" class="form-text">Input number/float number only without unit</div>
       </div>
     </div>
 

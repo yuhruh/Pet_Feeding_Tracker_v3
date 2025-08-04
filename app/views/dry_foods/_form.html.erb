@@ -1,0 +1,30 @@
+<%= form_with(model: @dry_food, local: true) do |form| %>
+    <div class="d-flex justify-content-center">
+       <%= render 'shared/errors', obj: @dry_food %>
+    </div>
+
+    <div class="mb-3 row justify-content-center">
+      <%= form.label 'Brand', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-5">
+        <%= form.text_field :brand, required: true, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3 row justify-content-center">
+      <%= form.label "Description", class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-5">
+        <%= form.text_field :description, required: true, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3 row justify-content-center">
+      <%= form.label "Amount (g)", class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+      <div class="col-sm-5">
+        <%= form.number_field :amount, step: :any, class: "form-control floatingInput", placeholder: "Please enter a number of range 0~9999", required: true, max: 9999.99, min: 0 %>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center mb-5">
+      <%= form.submit 'Save a new Dry Food', class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb" %>
+    </div>
+  <% end %>

@@ -1,5 +1,6 @@
 class Tracker < ApplicationRecord
   belongs_to :pet
+  belongs_to :dry_food, optional: true
   before_save { self.brand = brand.downcase }
   before_save { self.description = description.downcase }
   validates :food_type, presence: true

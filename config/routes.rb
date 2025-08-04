@@ -8,13 +8,16 @@ Rails.application.routes.draw do
     get "/home", to: "pages#home"
     get "/about", to: "pages#about"
     get "/started", to: "pages#started"
+    # get "dry_foods/index"
+    # get "dry_foods/show"
+    # get "dry_foods/add"
     # User Profile
     resources :users, except: [:new]
     get "/pets/:pet_id/favorites", to: 'trackers#favorite_food'
     resources :pets do
       resources :trackers, except: [:show]
     end
-    
+    resources :dry_foods, only: [ :new, :create, :index, :show ]
   end
   # since session controller only define new, create and destroy
   # resource :session, only: [:new, :create, :destroy] 

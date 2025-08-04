@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  Description: MyString
+  Amount: 9.99
+  Used_Amount: 9.99
+  Average_Used_Amount: 9.99
+  Total_Ate_Amount: 9.99
+  Left_Amount: 9.99
+  tracker_id: 1
+
+two:
+  brand: MyString
+  Description: MyString
+  Amount: 9.99
+  Used_Amount: 9.99
+  Average_Used_Amount: 9.99
+  Total_Ate_Amount: 9.99
+  Left_Amount: 9.99
+  tracker_id: 1

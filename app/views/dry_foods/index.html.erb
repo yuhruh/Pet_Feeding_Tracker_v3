@@ -4,7 +4,7 @@
   <%= link_to " Add Dry Food", new_dry_food_path, class:"bi bi-database-add" %>
 </div>
 
-<div class="container-xl mb-4">
+<div class="container-xxl mb-4">
 
   <% if @dry_foods.empty? %>
     <h3 class="text-center mt-4 mb-4">You do not have any dry food. How about recording right now? 😺</h3>
@@ -36,8 +36,8 @@
               <td class="text-center justify-content-center"><%= food.average_used_amount %></td>
               <td class="text-center justify-content-center"><%= food.days_remaining %></td>
               <td class="text-center justify-content-center" style="width: 200px;">
-                <% chart_data = [['Used', food.used_amount], ['Left Amount', food.left_amount]] %>
-                <%= pie_chart chart_data, height: "150px", width: "150px", legend: false, donut: true %>
+                <% chart_data = [['Ate Amount', food.used_amount], ['Left Amount', food.left_amount]] %>
+                <%= pie_chart chart_data, height: "200px", width: "200px", legend: true, donut: true %>
               </td>
               <td class="text-center justify-content-center"><%= link_to image_tag("icon_delete.png", width:"30px"), dry_food_path(food), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
             </tr>

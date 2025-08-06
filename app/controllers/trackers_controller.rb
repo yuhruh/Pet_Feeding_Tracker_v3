@@ -16,6 +16,7 @@ class TrackersController < ApplicationController
   # GET /trackers/new
   def new
     # @tracker = Tracker.new
+    # @dry_food = DryFood.find(params[:dry_food_id])
     @tracker = @pet.trackers.build
   end
 
@@ -26,6 +27,7 @@ class TrackersController < ApplicationController
   # POST /trackers or /trackers.json
   def create
     # @tracker = Tracker.new(tracker_params)
+    # @pet = Pet.find(params[:pet_id])
     @tracker = @pet.trackers.build(tracker_params)
 
     respond_to do |format|
@@ -82,7 +84,7 @@ class TrackersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tracker_params
-      params.expect(tracker: [ :date, :feed_time, :come_back_to_eat_time, :brand, :description, :hungry, :amount, :left_amount, :result, :note, :pet_id, :weight, :total_ate_amount, :favorite_score, :frequency, :love, :transformed_date, :transformed_time, :food_type ])
+      params.expect(tracker: [ :date, :feed_time, :come_back_to_eat_time, :brand, :description, :hungry, :amount, :left_amount, :result, :note, :pet_id, :weight, :total_ate_amount, :favorite_score, :frequency, :love, :transformed_date, :transformed_time, :food_type, :dry_food_id ])
     end
 
     def set_current_time

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="dry-food-form">
   <%= form_with(model: [@pet, tracker]) do |form| %>
     <div class="d-flex justify-content-center">
        <%= render 'shared/errors', obj: @tracker %>
@@ -21,24 +21,34 @@
     <div class="mb-3 row justify-content-center">
       <%= form.label "Food Type", class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
-        <%= form.select :food_type, [["🥡 Dry", "Dry"], ["🥫 Wet", "Wet"], ["🍗 Other", "Other"]], {:include_blank => "Select Food Type"}, class: "form-control", required: true %>
+        <%= form.select :food_type, [["🥡 Dry", "Dry"], ["🥫 Wet", "Wet"], ["🍗 Other", "Other"]], {:include_blank => "Select Food Type"}, class: "form-control", required: true, data: { dry_food_form_target: "foodType", action: "change->dry-food-form#toggleDryFoodField" } %>
+      </div>
+    </div>
+
+    <div data-dry-food-form-target="dryFoodIdField">
+      <div class="mb-3 row justify-content-center">
+        <%= form.label :dry_food_id, "Dry Food Brand & Description", class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
+        <div class="col-sm-5">
+          <%= form.collection_select :dry_food_id, DryFood.all, :id, ->(dry_food){ "#{dry_food.brand} - #{dry_food.description}" }, { prompt: "Select Dry Food" }, class: "form-control", required: true %>
+        </div>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
       <%= form.label :brand, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
-        <%= form.text_field :brand, class: "form-control", value: tracker.brand, required: true  %>
+        <%= form.text_field :brand, class: "form-control", value: tracker.brand, required: true, data: { dry_food_form_target: "brand", action: "change->dry-food-form#fillFields" } %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
       <%= form.label :description, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
-        <%= form.text_field :description, class: "form-control", value: tracker.description, required: true  %>
+        <%= form.text_field :description, class: "form-control", value: tracker.description, required: true, data: { dry_food_form_target: "description" }  %>
         <div id="descriptionHelpBlock" class="form-text">Input food's flavor or serial number for easy to track</div>
       </div>
     </div>
+  
 
     <div class="mb-3 row justify-content-center">
       <%= form.label "Hungry?", class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>

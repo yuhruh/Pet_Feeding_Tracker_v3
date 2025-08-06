@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :pets do
       resources :trackers, except: [:show]
     end
-    resources :dry_foods, only: [ :new, :create, :index, :show ]
+    resources :dry_foods
   end
   # since session controller only define new, create and destroy
   # resource :session, only: [:new, :create, :destroy] 

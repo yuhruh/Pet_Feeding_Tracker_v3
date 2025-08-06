@@ -4,7 +4,6 @@
   <%= link_to " Add Dry Food", new_dry_food_path, class:"bi bi-database-add" %>
 </div>
 
-# add pie chart
 <div class="container-xl mb-4">
 
   <% if @dry_foods.empty? %>
@@ -17,21 +16,30 @@
           <th scope="col" style="width:5%">Brand</th>
           <th scope="col">Description</th>
           <th scope="col" style="width:15%">Food Amount(g)</th>
-          <th scope='col' style="width:20%">Total Ate Amount(g)</th>
+          <th scope='col' style="width:20%">Total Used Amount(g)</th>
           <th scope='col' style="width:15%">Left Amount(g)</th>
+          <th scope="col">Averaged Used Amount(g)</th>
           <th scope="col">Expected Running Out</th>
+          <th scope="col">Usage Pie Chart</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody class="table-group-divider" id="trackers">
         <% @dry_foods.select(&:persisted?).each_with_index do |food, idx| %>
-            <tr class="table">
+            <tr class="table align-middle">
               <th scope="row"><%= idx+1 %></th>
               <td><%= food.brand %></td>
               <td class="text-center justify-content-center"><%= food.description %></td>
               <td class="text-center justify-content-center"><%= food.amount %></td>
-              <td><%= food.total_ate_amount %></td>
+              <td class="text-center justify-content-center"><%= food.used_amount %></td>
               <td class="text-center justify-content-center"><%= food.left_amount %></td>
               <td class="text-center justify-content-center"><%= food.average_used_amount %></td>
+              <td class="text-center justify-content-center"><%= food.days_remaining %></td>
+              <td class="text-center justify-content-center" style="width: 200px;">
+                <% chart_data = [['Used', food.used_amount], ['Left Amount', food.left_amount]] %>
+                <%= pie_chart chart_data, height: "150px", width: "150px", legend: false, donut: true %>
+              </td>
+              <td class="text-center justify-content-center"><%= link_to image_tag("icon_delete.png", width:"30px"), dry_food_path(food), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
             </tr>
         <% end %>
       </tbody>

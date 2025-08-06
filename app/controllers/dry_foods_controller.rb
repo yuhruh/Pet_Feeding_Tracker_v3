@@ -1,10 +1,12 @@
 class DryFoodsController < ApplicationController
-  before_action :set_dry_food, only: %i[ show ]
+  before_action :set_dry_food, only: %i[ show destroy ]
+
   def index
     @dry_foods = DryFood.all
   end
 
   def show
+    render json: @dry_food, only: [:brand, :description]
   end
 
   def new
@@ -26,17 +28,26 @@ class DryFoodsController < ApplicationController
     end
   end
 
+  def destroy
+    @dry_food.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to dry_foods_path, status: :see_other, notice: "#{@dry_food.brand} - #{@dry_food.description} was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
 
     def set_dry_food
-      @dry_food = DryFood.find(params.expect(:id))
+      @dry_food = DryFood.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "Dry Food not found."
       redirect_to dry_foods_path
     end
 
     def dryfood_params
-      params.require(:dry_food).permit(:brand, :description, :amount)
+      params.require(:dry_food).permit(:brand, :description, :amount, :used_amount)
     end
 end

@@ -1,4 +1,4 @@
-<div class="container" data-controller="dry-food-form">
+<div class="container" data-controller="dry-food-form" data-dry-food-form-dry-foods-count="<%= @dry_foods_count %>">
   <%= form_with(model: [@pet, tracker]) do |form| %>
     <div class="d-flex justify-content-center">
        <%= render 'shared/errors', obj: @tracker %>

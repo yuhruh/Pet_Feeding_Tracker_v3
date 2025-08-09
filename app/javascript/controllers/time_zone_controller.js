@@ -1,10 +1,9 @@
-import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
-  window.Stimulus = Application.start()
+import { Controller } from "@hotwired/stimulus";
 
-  Stimulus.register("time-zone", class extends Controller {
-    static targets = [ "tz" ];
-    
-    initialize() {
-      this.tzTarget.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    }
-  })
+export default class extends Controller {
+  static targets = ['tz'];
+
+  connect() {
+    this.tzTarget.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  }
+}

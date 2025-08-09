@@ -9,9 +9,16 @@ export default class extends Controller {
 
   toggleDryFoodField() {
     const selectedFoodType = this.foodTypeTarget.value
+    const dryFoodCount = parseInt(this.element.dataset.dryFoodFormDryFoodsCount)
+
     if (selectedFoodType === "Dry") {
-      this.dryFoodIdFieldTarget.style.display = 'block'
-      this.dryFoodIdFieldTarget.querySelector('select').required = true
+      if (dryFoodCount === 0) {
+        alert("You haven't added any dry food yet. Would you like to add one now?")
+        window.location.href = "/dry_foods/new"
+      } else {
+        this.dryFoodIdFieldTarget.style.display = 'block'
+        this.dryFoodIdFieldTarget.querySelector('select').required = true
+      }
     } else {
       this.dryFoodIdFieldTarget.style.display = 'none'
       this.dryFoodIdFieldTarget.querySelector('select').required = false

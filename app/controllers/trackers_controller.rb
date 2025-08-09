@@ -11,6 +11,7 @@ class TrackersController < ApplicationController
 
   # GET /trackers/1 or /trackers/1.json
   def show
+    
   end
 
   # GET /trackers/new
@@ -18,6 +19,7 @@ class TrackersController < ApplicationController
     # @tracker = Tracker.new
     # @dry_food = DryFood.find(params[:dry_food_id])
     @tracker = @pet.trackers.build
+    @dry_foods_count = DryFood.count
   end
 
   # GET /trackers/1/edit

@@ -1,4 +1,4 @@
-<div class="container" data-controller="dry-food-form" data-dry-food-form-dry-foods-count="<%= @dry_foods_count %>">
+<div class="container" data-controller="dry-food-form" data-dry-food-form-dry-foods-count="<%= @dry_foods_count %>" data-pet-id="<%= @pet.id %>">
   <%= form_with(model: [@pet, tracker]) do |form| %>
     <div class="d-flex justify-content-center">
        <%= render 'shared/errors', obj: @tracker %>
@@ -21,7 +21,7 @@
     <div class="mb-3 row justify-content-center">
       <%= form.label "Food Type", class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
-        <%= form.select :food_type, [["🥡 Dry", "Dry"], ["🥫 Wet", "Wet"], ["🍗 Other", "Other"]], {:include_blank => "Select Food Type"}, class: "form-control", required: true, data: { dry_food_form_target: "foodType", action: "change->dry-food-form#toggleDryFoodField" } %>
+        <%= form.select :food_type, [["🥡 Dry", "Dry"], ["🥫 Wet", "Wet"], ["🍗 Other", "Other"]], {:include_blank => "Select Food Type"}, class: "form-control", required: true, data: { dry_food_form_target: "foodType", action: "change->dry-food-form#toggleFoodFields" } %>
       </div>
     </div>
 
@@ -31,6 +31,20 @@
         <div class="col-sm-5">
           <%= form.collection_select :dry_food_id, DryFood.all, :id, ->(dry_food){ "#{dry_food.brand} - #{dry_food.description}" }, { prompt: "Select Dry Food" }, class: "form-control", required: true, data: { action: "change->dry-food-form#fillFields" } %>
         </div>
+      </div>
+    </div>
+
+    <div data-dry-food-form-target="wetFoodField" style="display:none">
+      <div class="mb-3 row justify-content-center">
+        <%= form.label :wet_food_selection, "Favorite Wet Foods", class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
+        <div class="col-sm-5">
+          <select name="wet_food_selection" class="form-control" data-action="change->dry-food-form#fillWetFoodFields" data-dry-food-form-target="wetFoodDropdown">
+            <option value="">Select a favorite wet food</option>
+          </select>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-2">
+        <span>OR</span>
       </div>
     </div>
 

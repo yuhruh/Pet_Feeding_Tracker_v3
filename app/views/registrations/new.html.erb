@@ -10,16 +10,28 @@
         <div class="mb-3 row justify-content-center">
           <%= form.label 'User Name', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
           <div class="col-sm-3">
-            <%= form.text_field :username, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your name", value: params[:username], class: "form-control" %>
+            <%= form.text_field :username, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your name", class: "form-control" %>
           </div>
         </div>
 
         <div class="mb-3 row justify-content-center">
           <%= form.label 'Email Address', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
           <div class="col-sm-3">
-            <%= form.email_field :email_address, required: true, autofocus: true, placeholder: "Enter your email address", value: params[:email_address], class: "form-control #{'is-invalid' if form.object.errors[:email_address].any?}" %>
+            <%= form.email_field :email_address, required: true, autofocus: true, placeholder: "Enter your email address", class: "form-control #{'is-invalid' if form.object.errors[:email_address].any?}" %>
             <%# Show the specific error message for the email field %>
             <% form.object.errors.full_messages_for(:email_address).each do |message| %>
+              <div class="invalid-feedback d-block text-start">
+                <%= message %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="mb-3 row justify-content-center">
+          <%= form.label 'Email Confirmation', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+          <div class="col-sm-3">
+            <%= form.email_field :email_address_confirmation, required: true, autocomplete: "email", placeholder: "Confirm your email address", class: "form-control #{'is-invalid' if form.object.errors[:email_address_confirmation].any?}" %>
+            <% form.object.errors.full_messages_for(:email_address_confirmation).each do |message| %>
               <div class="invalid-feedback d-block text-start">
                 <%= message %>
               </div>

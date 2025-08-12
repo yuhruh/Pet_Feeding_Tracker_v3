@@ -6,6 +6,10 @@
   <%= link_to "#{image_tag('icon_add.png', width:'18px', height: '18px')} Adding #{@pet.petname.capitalize}'s New Record".html_safe, new_pet_tracker_path %>
 </div>
 
+<fieldset>
+  <%= link_to "#{image_tag('download.png', width:'25px', height: '25px')} #{t(".export_csv")}".html_safe, pet_trackers_path(format: :csv), class:"d-flex justify-content-center mb-3", style: "color: #515a5a; font-weight: bold;", download: [@pet.petname.capitalize, "trackers", Date.today].join('_') %>
+</fieldset>
+
 <div class="d-flex digg_pagination justify-content-center">
   <div class="page_info">
     <%= page_entries_info @trackers %>

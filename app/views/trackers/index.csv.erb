@@ -1,0 +1,15 @@
+<%= fields = [:Date, :Time, :Food_Type, :Brand, :Description, :Amount, :Total_Ate_Amount, :Result, :Favorite_score, :Weight, :Note].join(';') %>
+<% @trackers.each do |tracker| %>
+<% date = tracker.date.strftime("%Y-%m-%d") %>
+<% time = tracker.feed_time.strftime("%I:%M%p") %>
+<% food_type = tracker.food_type %>
+<% brand = tracker.brand %>
+<% description = tracker.description %>
+<% amount = tracker.amount %>
+<% total_ate_amount = tracker.total_ate_amount %>
+<% result = tracker.result %>
+<% favorite_score = tracker.favorite_score %>
+<% weight = tracker.weight %>
+<% note = tracker.note %>
+<%= [date, time, food_type, brand, description, amount, total_ate_amount, result, favorite_score, weight, note].join(';') %>
+<% end %>

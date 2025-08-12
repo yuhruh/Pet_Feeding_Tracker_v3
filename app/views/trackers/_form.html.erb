@@ -74,7 +74,7 @@
     <div class="mb-3 row justify-content-center">
       <%= form.label :amount, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
-        <%= form.number_field :amount, step: :any, class: "form-control floatingInput", placeholder: "Please enter a number of range 0~500", required: true, max: 500, min: 0 %>
+        <%= form.number_field :amount, step: :any, class: "form-control floatingInput", placeholder: "Please enter a number of range 0~500", required: true, max: 500, min: 0, data: {dry_food_form_target: "amount" } %>
         <div id="amountHelpBlock" class="form-text">Input number/float number only without unit</div>
       </div>
     </div>

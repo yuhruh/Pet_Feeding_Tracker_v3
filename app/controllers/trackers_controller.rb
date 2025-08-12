@@ -81,12 +81,12 @@ class TrackersController < ApplicationController
                                     .where("favorite_score > ?", 30)
                                     .order(created_at: :desc).limit(50).sample(5)
     
-    render json: @random_wet_foods.to_json(only: [:brand, :description, :favorite_score])
+    render json: @random_wet_foods.to_json(only: [:brand, :description, :favorite_score, :amount])
   end
 
   def search_food
     @search_results = @pet.trackers.where('brand ILIKE ? OR description ILIKE ?', "%#{params[:query]}%", "%#{params[:query]}%").limit(10)
-    render json: @search_results.to_json(only: [:brand, :description, :favorite_score])
+    render json: @search_results.to_json(only: [:brand, :description, :favorite_score, :amount])
   end
 
   private

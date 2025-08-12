@@ -1,10 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "foodType", "dryFoodIdField", "wetFoodField", "brand", "description" ]
+  static targets = [ "foodType", "dryFoodIdField", "wetFoodField", "brand", "description", "amount" ]
 
   connect() {
     this.toggleFoodFields()
+    this.wetFoodsData = []
   }
 
   toggleFoodFields() {
@@ -34,16 +35,23 @@ export default class extends Controller {
 
   async fetchWetFoods() {
     const response = await fetch(`/pets/${this.element.dataset.petId}/trackers/random_wet_foods`)
-    const data = await response.json()
+    this.wetFoodsData = await response.json()
+    // const data = await response.json()
     const dropdown = this.wetFoodFieldTarget.querySelector('select')
     
     // Clear existing options
     dropdown.innerHTML = '<option value="">Select a favorite wet food</option>'
     
     // Add new options from the fetched data
-    data.forEach(food => {
+    // data.forEach(food => {
+    //   const option = document.createElement('option')
+    //   option.value = `${food.brand} - ${food.description} - ${food.favorite_score}`
+    //   option.textContent = `${food.brand} - ${food.description} - ${food.favorite_score}`
+    //   dropdown.appendChild(option)
+    // })
+    this.wetFoodsData.forEach((food, index) => {
       const option = document.createElement('option')
-      option.value = `${food.brand} - ${food.description} - ${food.favorite_score}`
+      option.value = index
       option.textContent = `${food.brand} - ${food.description} - ${food.favorite_score}`
       dropdown.appendChild(option)
     })
@@ -66,14 +74,19 @@ export default class extends Controller {
   }
 
   fillWetFoodFields() {
-    const selectedValue = this.wetFoodFieldTarget.querySelector('select').value
-    if (selectedValue) {
-      const [brand, description] = selectedValue.split(' - ')
-      this.brandTarget.value = brand.trim()
-      this.descriptionTarget.value = description.trim()
+    const selectedIndex = this.wetFoodFieldTarget.querySelector('select').value
+    if (selectedIndex) {
+      // const [brand, description] = selectedValue.split(' - ')
+      // this.brandTarget.value = brand.trim()
+      // this.descriptionTarget.value = description.trim()
+      const selectedFood = this.wetFoodsData[selectedIndex]
+      this.brandTarget.value = selectedFood.brand
+      this.descriptionTarget.value = selectedFood.description
+      this.amountTarget.value = selectedFood.amount 
     } else {
       this.brandTarget.value = ""
       this.descriptionTarget.value = ""
+      this.amountTarget.value = ""
     }
   }
 }

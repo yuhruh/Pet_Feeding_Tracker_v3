@@ -38,23 +38,36 @@ export default class extends Controller {
     this.wetFoodsData = await response.json()
     // const data = await response.json()
     const dropdown = this.wetFoodFieldTarget.querySelector('select')
+
+    if (this.wetFoodsData.length === 0) {
+      dropdown.style.display = 'none';
+      alert("You don't have any favorite wet food records yet. Please fill the fields manually.");
+      this.brandTarget.disabled = false;
+      this.descriptionTarget.disabled = false;
+      this.wetFoodFieldTarget.style.display = 'none'
+    } else {
+      dropdown.style.display = 'block';
+      dropdown.innerHTML = '<option value="">Select a favorite wet food</option>';
+
+      this.wetFoodsData.forEach((food, index) => {
+        const option = document.createElement('option')
+        option.value = index
+        option.textContent = `${food.brand} - ${food.description} - Score: ${food.favorite_score}`;
+        dropdown.appendChild(option)
+      })
+      // option.value = index;
+      // option.textContent = `${food.brand} - ${food.description} - Score: ${food.favorite_score}`;
+      // dropdown.appendChild(option);
+    }
     
     // Clear existing options
-    dropdown.innerHTML = '<option value="">Select a favorite wet food</option>'
     
-    // Add new options from the fetched data
-    // data.forEach(food => {
+    // this.wetFoodsData.forEach((food, index) => {
     //   const option = document.createElement('option')
-    //   option.value = `${food.brand} - ${food.description} - ${food.favorite_score}`
+    //   option.value = index
     //   option.textContent = `${food.brand} - ${food.description} - ${food.favorite_score}`
     //   dropdown.appendChild(option)
     // })
-    this.wetFoodsData.forEach((food, index) => {
-      const option = document.createElement('option')
-      option.value = index
-      option.textContent = `${food.brand} - ${food.description} - ${food.favorite_score}`
-      dropdown.appendChild(option)
-    })
   }
 
   async fillFields() {
@@ -63,7 +76,6 @@ export default class extends Controller {
     if (dryFoodId) {
       const response = await fetch(`/dry_foods/${dryFoodId}`)
       const data = await response.json()
-
 
       this.brandTarget.value = data.brand
       this.descriptionTarget.value = data.description

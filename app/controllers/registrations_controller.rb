@@ -11,6 +11,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       start_new_session_for @user
+      UserMailer.with(user: @user).welcome.deliver_later
       redirect_to new_pet_path, notice: "You've successfully signed up to Pet Feeding Tracker. Welcome #{@user.username.capitalize}!"
     else
       flash[:alert] = @user.errors.full_messages.join(", ")

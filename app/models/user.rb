@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :connected_services, dependent: :destroy
   has_many :sessions, dependent: :destroy
   has_many :pets, dependent: :destroy
   validates_associated :pets

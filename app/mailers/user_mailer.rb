@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
   # with the following lookup:
   #
   #   en.user_mailer.welcome.subject
-  #
+  
   default from: 'notifications@example.com'
 
   def welcome

@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     end
     resources :dry_foods
   end
+
+  get "auth/:provider/callback", to: "omni_auth/sessions#create"
+  post "auth/:provider/callback", to: "omni_auth/sessions#create"
+  get "auth/failure", to: "omni_auth/sessions#failure"
   # since session controller only define new, create and destroy
   # resource :session, only: [:new, :create, :destroy] 
   # do not need to access the index, show or distroy actions for the password route.

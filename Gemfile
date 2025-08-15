@@ -39,6 +39,10 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-google-oauth2"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 

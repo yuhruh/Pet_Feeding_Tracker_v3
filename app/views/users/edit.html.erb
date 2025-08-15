@@ -43,13 +43,11 @@
         <div class="row mb-3 justify-content-center" data-controller="time-zone">
           <%= form.label "Time Zone", class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
           <div class="col-sm-3">
-            <fieldset disabled>
-              <% if @user.timezone.nil? %>
-                <%= form.text_field :timezone, data: { "time_zone_target"=> "tz" }, class: "form-control" %>
-              <% else %>
-                <%= form.text_field :timezone, data: @user.timezone, id: "disabledTextInput", class: "form-control" %>
-              <% end %>
-            </fieldset>
+            <% if @user.timezone.nil? %>
+              <%= form.text_field :timezone, data: { "time_zone_target"=> "tz" }, class: "form-control" %>
+            <% else %>
+              <%= form.text_field :timezone, value: @user.timezone, data: { "time_zone_target"=> "tz" }, id: "disabledTextInput", class: "form-control", readonly: true %>
+            <% end %>
           </div>
         </div>
       </div>

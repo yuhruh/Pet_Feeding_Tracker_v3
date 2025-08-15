@@ -5,8 +5,8 @@ class OmniAuth::SessionsController < ApplicationController
   before_action :set_user, only: [:create]
 
   # def omniauth_request
-  #   session[:user_timezone] = params[:timezone] || "UTC"
-  #   redirect_to "/auth/google_oauth2"
+  #   session[:user_timezone] = params[:timezone]
+  #   redirect_to "/auth/#{params[:provider]}"
   # end
 
   def create
@@ -19,8 +19,8 @@ class OmniAuth::SessionsController < ApplicationController
       redirect_to account_path
     else
       start_new_session_for @user
-      flash[:notice] = "You have been signed in. Welcome to Pet Feeding Tracker App"
-      redirect_to root_path
+      flash[:notice] = "You have been signed in. Welcome to Cat Feeding Tracker App."
+      redirect_to new_pet_path
     end
   end
 
@@ -68,8 +68,7 @@ class OmniAuth::SessionsController < ApplicationController
     username = user_info.dig(:info, :name) || user_info.dig(:info, :email).split('@').first
     random_password = SecureRandom.hex(10)
 
-    user_timezone = session[:user_timezone]
-    session.delete(:user_timezone)
+    user_timezone = session.delete(:user_timezone)
 
     if user_timezone.nil?
       user_timezone = "UTC"

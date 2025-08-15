@@ -1,9 +1,9 @@
 class OmniAuth::SessionsController < ApplicationController
-  allow_unauthenticated_access only: [:omniauth_request, :create, :failure]
+  allow_unauthenticated_access only: [:create, :failure, :google_auth]
   before_action :set_service, only: [:create]
   before_action :set_user, only: [:create]
 
-  def omniauth_request
+  def google_auth
     session[:user_timezone] = params[:timezone]
     redirect_to "/auth/google_oauth2"
   end

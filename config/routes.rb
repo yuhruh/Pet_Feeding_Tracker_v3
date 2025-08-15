@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     resources :dry_foods
   end
 
+  post "auth/google_oauth2_pre_auth", to: "omni_auth/sessions#google_auth"
+
+  get "auth/:provider", to: redirect("/auth/%{provider}"), as: :omniauth_authorize
+
   get "auth/:provider/callback", to: "omni_auth/sessions#create"
   post "auth/:provider/callback", to: "omni_auth/sessions#create"
   get "auth/failure", to: "omni_auth/sessions#failure"

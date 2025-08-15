@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :dry_foods
   end
 
-  get "auth/:provider", to: redirect("/auth/%{provider}"), as: :omniauth_authorize
+  # get "/auth/:provider", to: "omni_auth/sessions#omniauth_request", as: :omniauth_request
 
   get "auth/:provider/callback", to: "omni_auth/sessions#create"
   post "auth/:provider/callback", to: "omni_auth/sessions#create"

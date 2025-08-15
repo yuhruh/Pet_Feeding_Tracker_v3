@@ -1,10 +1,11 @@
 class OmniAuth::SessionsController < ApplicationController
   allow_unauthenticated_access only: [:create, :failure]
+  before_action :set_timezone_from_params, only: [:create]
   before_action :set_service, only: [:create]
   before_action :set_user, only: [:create]
 
-  # def google_auth
-  #   session[:user_timezone] = params[:timezone]
+  # def omniauth_request
+  #   session[:user_timezone] = params[:timezone] || "UTC"
   #   redirect_to "/auth/google_oauth2"
   # end
 
@@ -36,6 +37,12 @@ class OmniAuth::SessionsController < ApplicationController
   end
 
   private
+
+  def set_timezone_from_params
+    if params[:timezone].present?
+      session[:user_timezone] = params[:timezone]
+    end
+  end
 
   def user_info
     @user_info ||= request.env['omniauth.auth']

@@ -10,8 +10,6 @@ class OmniAuth::SessionsController < ApplicationController
   # end
 
   def create
-    auth_info = request.env['omniauth.auth']
-
     if !@service.present?
       @service = @user.connected_services.create!(provider: user_info.provider, uid: user_info.uid)
     end
@@ -39,9 +37,7 @@ class OmniAuth::SessionsController < ApplicationController
   private
 
   def set_timezone_from_params
-    if params[:timezone].present?
-      session[:user_timezone] = params[:timezone]
-    end
+    request.env['omniauth.params']['timezone'] = params['timezone'] if params['timezone'].present?
   end
 
   def user_info
@@ -74,6 +70,10 @@ class OmniAuth::SessionsController < ApplicationController
 
     user_timezone = session[:user_timezone]
     session.delete(:user_timezone)
+
+    if user_timezone.nil?
+      user_timezone = "UTC"
+    end
 
     User.create!(
       email_address: email, 

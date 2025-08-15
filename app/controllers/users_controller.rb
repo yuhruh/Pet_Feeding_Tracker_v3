@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy!
-    name = @user.username.capitalize
+    name = @user.username.split(' ').map(&:capitalize).join(" ")
     session[:user_id] = nil if @user == Current.user
 
     respond_to do |format|

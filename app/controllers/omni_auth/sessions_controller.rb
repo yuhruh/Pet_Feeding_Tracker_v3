@@ -1,6 +1,5 @@
 class OmniAuth::SessionsController < ApplicationController
   allow_unauthenticated_access only: [:create, :failure]
-  before_action :set_timezone_from_params, only: [:create]
   before_action :set_service, only: [:create]
   before_action :set_user, only: [:create]
 
@@ -36,9 +35,7 @@ class OmniAuth::SessionsController < ApplicationController
 
   private
 
-  def set_timezone_from_params
-    request.env['omniauth.params']['timezone'] = params['timezone'] if params['timezone'].present?
-  end
+  
 
   def user_info
     @user_info ||= request.env['omniauth.auth']
@@ -67,18 +64,13 @@ class OmniAuth::SessionsController < ApplicationController
     email = user_info.dig(:info, :email)
     username = user_info.dig(:info, :name) || user_info.dig(:info, :email).split('@').first
     random_password = SecureRandom.hex(10)
-
-    user_timezone = session.delete(:user_timezone)
-
-    if user_timezone.nil?
-      user_timezone = "UTC"
-    end
+    user_timezone = request.env.dig('omniauth.params', 'timezone')
 
     User.create!(
-      email_address: email, 
-      username: username, 
+      email_address: email,
+      username: username,
       password: random_password,
-      password_confirmation: random_password, 
+      password_confirmation: random_password,
       timezone: user_timezone)
   end
 

@@ -2,7 +2,7 @@ class DryFoodsController < ApplicationController
   before_action :set_dry_food, only: %i[ show destroy ]
 
   def index
-    @dry_foods = DryFood.all
+    @dry_foods = Current.user.dry_foods
   end
 
   def show
@@ -10,12 +10,12 @@ class DryFoodsController < ApplicationController
   end
 
   def new
-    @dry_food = DryFood.build
+    @dry_food = Current.user.dry_foods.build
   end
 
 
   def create
-    @dry_food = DryFood.new(dryfood_params)
+    @dry_food = Current.user.dry_foods.build(dryfood_params)
 
     respond_to do |format|
       if @dry_food.save
@@ -41,7 +41,7 @@ class DryFoodsController < ApplicationController
   private
 
     def set_dry_food
-      @dry_food = DryFood.find(params[:id])
+      @dry_food = Current.user.dry_foods.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = "Dry Food not found."
       redirect_to dry_foods_path

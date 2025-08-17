@@ -29,7 +29,7 @@
       <div class="mb-3 row justify-content-center">
         <%= form.label :dry_food_id, "Dry Food Brand & Description", class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
         <div class="col-sm-5">
-          <%= form.collection_select :dry_food_id, DryFood.all, :id, ->(dry_food){ "#{dry_food.brand} - #{dry_food.description}" }, { prompt: "Select Dry Food" }, class: "form-control", required: true, data: { action: "change->dry-food-form#fillFields" } %>
+          <%= form.collection_select :dry_food_id, Current.user.dry_foods, :id, ->(dry_food){ "#{dry_food.brand} - #{dry_food.description}" }, { prompt: "Select Dry Food" }, class: "form-control", required: true, data: { action: "change->dry-food-form#fillFields" } %>
         </div>
       </div>
     </div>

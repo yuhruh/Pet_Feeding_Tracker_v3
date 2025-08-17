@@ -24,7 +24,7 @@ class TrackersController < ApplicationController
     # @tracker = Tracker.new
     # @dry_food = DryFood.find(params[:dry_food_id])
     @tracker = @pet.trackers.build
-    @dry_foods_count = DryFood.count
+    @dry_foods_count = Current.user.dry_foods.count
   end
 
   # GET /trackers/1/edit

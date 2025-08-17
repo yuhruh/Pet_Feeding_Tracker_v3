@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :connected_services, dependent: :destroy
   has_many :sessions, dependent: :destroy
   has_many :pets, dependent: :destroy
+  has_many :dry_foods, dependent: :destroy
   validates_associated :pets
 
   attr_accessor :email_address_confirmation

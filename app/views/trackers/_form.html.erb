@@ -6,21 +6,21 @@
 
     <div class="mb-3 row justify-content-center">
       <%= form.label 'Date', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <%= form.date_field :date, required: true, value: set_current_date, class: "form-control", max: set_current_date %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
       <%= form.label "Feed Time", class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <%= form.time_field :feed_time, required: true, value: set_current_time, class: "form-control" %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
       <%= form.label "Food Type", class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <%= form.select :food_type, [["🥡 Dry", "Dry"], ["🥫 Wet", "Wet"], ["🍗 Other", "Other"]], {:include_blank => "Select Food Type"}, class: "form-control", required: true, data: { dry_food_form_target: "foodType", action: "change->dry-food-form#toggleFoodFields" } %>
       </div>
     </div>
@@ -28,12 +28,12 @@
     <div data-dry-food-form-target="dryFoodIdField">
       <div class="mb-3 row justify-content-center">
         <%= form.label :dry_food_id, "Dry Food Brand & Description", class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <%= form.select :dry_food_id, 
               options_for_select(
                 Current.user.dry_foods.map do |dry_food|
                   [
-                    "#{dry_food.left_amount < (dry_food.amount * 0.15) ? '⚠️ Low Storage Level' : ''} #{dry_food.brand} - #{dry_food.description}",
+                    "#{dry_food.left_amount < (dry_food.amount * 0.15) ? "⚠️ Low Storage Level (Left: #{dry_food.left_amount})" : ''} #{dry_food.brand} - #{dry_food.description}",
                     dry_food.id,
                     { 'data-left-amount' => dry_food.left_amount }
                   ]
@@ -55,7 +55,7 @@
     <div data-dry-food-form-target="wetFoodField" style="display:none">
       <div class="mb-3 row justify-content-center">
         <%= form.label :wet_food_selection, "Favorite Wet Foods", class: "col-sm-2 col-form-label", style: "color: #515a5a; font-weight: bold" %>
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <select name="wet_food_selection" class="form-control" data-action="change->dry-food-form#fillWetFoodFields" data-dry-food-form-target="wetFoodDropdown">
             <option value="">Select a favorite wet food</option>
           </select>
@@ -68,14 +68,14 @@
 
     <div class="mb-3 row justify-content-center">
       <%= form.label :brand, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <%= form.text_field :brand, class: "form-control", value: tracker.brand, required: true, data: { dry_food_form_target: "brand" } %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
       <%= form.label :description, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <%= form.text_field :description, class: "form-control", value: tracker.description, required: true, data: { dry_food_form_target: "description" }  %>
         <div id="descriptionHelpBlock" class="form-text">Input food's flavor or serial number for easy to track</div>
       </div>
@@ -84,14 +84,14 @@
 
     <div class="mb-3 row justify-content-center">
       <%= form.label "Hungry?", class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <%= form.select :hungry, ["💖 Yes, eat right away", "🔺 Ate A Little", "❌ No, not interested."], { :include_blank => "Is he/she hungry? Please choose..." }, class: "form-control", required: true %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
       <%= form.label :amount, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <%= form.number_field :amount, step: :any, class: "form-control floatingInput", placeholder: "Please enter a number", required: true, min: 0, data: { dry_food_form_target: "amountInput", action: "input->dry-food-form#validateAmount" } %>
         <div data-dry-food-form-target="amountValidationMessage" class="form-text"></div>
         <div id="amountHelpBlock" class="form-text">Input number/float number only without unit</div>

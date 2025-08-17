@@ -7,11 +7,22 @@ class Tracker < ApplicationRecord
   validates :brand, presence: true, length: {minimum: 1, maximum: 50}
   validates :description, presence: true, length: {minimum: 2, maximum: 100}
   validates :amount, numericality: true, comparison: { greater_than: 0 }
+  validate :amount_less_than_dry_food_left_amount, if: :dry_food?
 
   # add callback to synchronization automatically
   after_commit :update_dry_food_used_amount, on: [:create, :update, :destroy]
 
   private
+
+  def dry_food?
+    food_type == 'Dry' && dry_food.present?
+  end
+
+  def amount_less_than_dry_food_left_amount
+    if amount.present? && dry_food.left_amount < amount
+      errors.add(:amount, "can't be greater than the remaining amount of dry food (#{dry_food.left_amount})")
+    end
+  end
 
   def update_dry_food_used_amount
     if dry_food

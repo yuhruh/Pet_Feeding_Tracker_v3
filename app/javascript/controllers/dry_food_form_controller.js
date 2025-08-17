@@ -1,11 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "foodType", "dryFoodIdField", "wetFoodField", "brand", "description", "amount" ]
+  static targets = [ "foodType", "dryFoodIdField", "wetFoodField", "brand", "description", "amountInput", "dryFoodSelect", "amountValidationMessage", "wetFoodDropdown" ]
 
   connect() {
     this.toggleFoodFields()
     this.wetFoodsData = []
+    this.amountInputTarget.addEventListener('input', () => this.validateAmount())
   }
 
   toggleFoodFields() {
@@ -15,6 +16,7 @@ export default class extends Controller {
     this.dryFoodIdFieldTarget.style.display = 'none'
     this.wetFoodFieldTarget.style.display = 'none'
     this.dryFoodIdFieldTarget.querySelector('select').required = false
+    this.clearValidation()
 
     if (selectedFoodType === "Dry") {
       if (dryFoodCount === 0) {
@@ -36,8 +38,7 @@ export default class extends Controller {
   async fetchWetFoods() {
     const response = await fetch(`/pets/${this.element.dataset.petId}/trackers/random_wet_foods`)
     this.wetFoodsData = await response.json()
-    // const data = await response.json()
-    const dropdown = this.wetFoodFieldTarget.querySelector('select')
+    const dropdown = this.wetFoodDropdownTarget
 
     if (this.wetFoodsData.length === 0) {
       dropdown.style.display = 'none';
@@ -55,23 +56,11 @@ export default class extends Controller {
         option.textContent = `${food.brand} - ${food.description} - Score: ${food.favorite_score}`;
         dropdown.appendChild(option)
       })
-      // option.value = index;
-      // option.textContent = `${food.brand} - ${food.description} - Score: ${food.favorite_score}`;
-      // dropdown.appendChild(option);
     }
-    
-    // Clear existing options
-    
-    // this.wetFoodsData.forEach((food, index) => {
-    //   const option = document.createElement('option')
-    //   option.value = index
-    //   option.textContent = `${food.brand} - ${food.description} - ${food.favorite_score}`
-    //   dropdown.appendChild(option)
-    // })
   }
 
   async fillFields() {
-    const dryFoodId = this.dryFoodIdFieldTarget.querySelector('select').value
+    const dryFoodId = this.dryFoodSelectTarget.value
 
     if (dryFoodId) {
       const response = await fetch(`/dry_foods/${dryFoodId}`)
@@ -83,22 +72,63 @@ export default class extends Controller {
       this.brandTarget.value = ""
       this.descriptionTarget.value = ""
     }
+    this.validateAmount()
   }
 
   fillWetFoodFields() {
-    const selectedIndex = this.wetFoodFieldTarget.querySelector('select').value
+    const selectedIndex = this.wetFoodDropdownTarget.value
     if (selectedIndex) {
-      // const [brand, description] = selectedValue.split(' - ')
-      // this.brandTarget.value = brand.trim()
-      // this.descriptionTarget.value = description.trim()
       const selectedFood = this.wetFoodsData[selectedIndex]
       this.brandTarget.value = selectedFood.brand
       this.descriptionTarget.value = selectedFood.description
-      this.amountTarget.value = selectedFood.amount 
+      this.amountInputTarget.value = selectedFood.amount
     } else {
       this.brandTarget.value = ""
       this.descriptionTarget.value = ""
-      this.amountTarget.value = ""
+      this.amountInputTarget.value = ""
+    }
+  }
+
+  validateAmount() {
+    if (this.foodTypeTarget.value !== 'Dry' || !this.hasDryFoodSelectTarget) {
+      this.clearValidation()
+      return
+    }
+
+    const selectedOption = this.dryFoodSelectTarget.selectedOptions[0]
+    if (!selectedOption || !selectedOption.dataset.leftAmount) {
+      this.clearValidation()
+      return
+    }
+
+    const leftAmount = parseFloat(selectedOption.dataset.leftAmount)
+    const currentAmount = parseFloat(this.amountInputTarget.value)
+
+    this.amountInputTarget.max = leftAmount
+
+    if (this.amountInputTarget.value === '') {
+      this.clearValidation();
+      return;
+    }
+
+    if (isNaN(currentAmount) || currentAmount <= 0) {
+      this.amountValidationMessageTarget.textContent = "Please enter a valid amount."
+      this.amountValidationMessageTarget.style.color = "red"
+    } else if (currentAmount > leftAmount) {
+      this.amountValidationMessageTarget.textContent = `Amount exceeds the ${leftAmount} left in stock.`
+      this.amountValidationMessageTarget.style.color = "red"
+    } else {
+      this.amountValidationMessageTarget.textContent = "Amount is valid."
+      this.amountValidationMessageTarget.style.color = "green"
+    }
+  }
+
+  clearValidation() {
+    if (this.hasAmountValidationMessageTarget) {
+      this.amountValidationMessageTarget.textContent = ""
+    }
+    if (this.hasAmountInputTarget) {
+      this.amountInputTarget.removeAttribute('max')
     }
   }
 }

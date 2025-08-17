@@ -29,7 +29,25 @@
       <div class="mb-3 row justify-content-center">
         <%= form.label :dry_food_id, "Dry Food Brand & Description", class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
         <div class="col-sm-5">
-          <%= form.collection_select :dry_food_id, Current.user.dry_foods, :id, ->(dry_food){ "#{dry_food.brand} - #{dry_food.description}" }, { prompt: "Select Dry Food" }, class: "form-control", required: true, data: { action: "change->dry-food-form#fillFields" } %>
+          <%= form.select :dry_food_id, 
+              options_for_select(
+                Current.user.dry_foods.map do |dry_food|
+                  [
+                    "#{dry_food.left_amount < (dry_food.amount * 0.15) ? '⚠️ Low Storage Level' : ''} #{dry_food.brand} - #{dry_food.description}",
+                    dry_food.id,
+                    { 'data-left-amount' => dry_food.left_amount }
+                  ]
+                end,
+                selected: tracker.dry_food_id
+              ),
+              { prompt: "Select Dry Food" }, 
+              class: "form-control", 
+              required: true, 
+              data: { 
+                action: "change->dry-food-form#fillFields change->dry-food-form#validateAmount", 
+                dry_food_form_target: "dryFoodSelect" 
+              } 
+          %>
         </div>
       </div>
     </div>
@@ -74,7 +92,8 @@
     <div class="mb-3 row justify-content-center">
       <%= form.label :amount, class: "col-sm-2 col-form-label required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-5">
-        <%= form.number_field :amount, step: :any, class: "form-control floatingInput", placeholder: "Please enter a number of range 0~500", required: true, max: 500, min: 0, data: {dry_food_form_target: "amount" } %>
+        <%= form.number_field :amount, step: :any, class: "form-control floatingInput", placeholder: "Please enter a number", required: true, min: 0, data: { dry_food_form_target: "amountInput", action: "input->dry-food-form#validateAmount" } %>
+        <div data-dry-food-form-target="amountValidationMessage" class="form-text"></div>
         <div id="amountHelpBlock" class="form-text">Input number/float number only without unit</div>
       </div>
     </div>

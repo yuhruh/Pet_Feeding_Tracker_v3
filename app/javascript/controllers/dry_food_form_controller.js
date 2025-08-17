@@ -42,7 +42,7 @@ export default class extends Controller {
 
     if (this.wetFoodsData.length === 0) {
       dropdown.style.display = 'none';
-      alert("You don't have any favorite wet food records yet. Please fill the fields manually.");
+      alert("You don't have any favorite wet food records (favorite score > 30) yet. Please fill the fields manually.");
       this.brandTarget.disabled = false;
       this.descriptionTarget.disabled = false;
       this.wetFoodFieldTarget.style.display = 'none'
@@ -53,7 +53,7 @@ export default class extends Controller {
       this.wetFoodsData.forEach((food, index) => {
         const option = document.createElement('option')
         option.value = index
-        option.textContent = `${food.brand} - ${food.description} - Score: ${food.favorite_score}`;
+        option.textContent = `${food.brand} - ${food.description} - Favorite Score: ${food.favorite_score}`;
         dropdown.appendChild(option)
       })
     }

@@ -13,12 +13,12 @@
 
       <% if authenticated? %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i> <%= Current.user.username.capitalize%>'s Profile</a>
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i> <%= Current.user.username.split(' ').map(&:capitalize).join(" ") %>'s Profile</a>
           <ul class="dropdown-menu">
-            <%= link_to " Edit #{Current.user.username.capitalize}'s Profile", edit_user_path(Current.user), class: "dropdown-item bi-pencil" %>
-            <%= link_to " View #{Current.user.username.capitalize}'s Profile", user_path(Current.user), class: "dropdown-item bi-person-vcard" %>
-            <%= link_to " #{Current.user.username.capitalize}'s Pet Lists", pets_path, class: "dropdown-item bi-bookmark-heart" %>
-            <%= link_to " Delete #{Current.user.username.capitalize}'s Profile", user_path(Current.user), class: "dropdown-item bi-trash3", style: "color: #F40B2E !important;", data: {"turbo-confirm":  "Are you sure to delete this user #{Current.user.username.capitalize}'s account? The user and associated trackers will all gone..", "turbo-method": :delete } %>
+            <%= link_to " Edit #{Current.user.username.split(' ').map(&:capitalize).join(' ')}'s Profile", edit_user_path(Current.user), class: "dropdown-item bi-pencil" %>
+            <%= link_to " View #{Current.user.username.split(' ').map(&:capitalize).join(' ')}'s Profile", user_path(Current.user), class: "dropdown-item bi-person-vcard" %>
+            <%= link_to " #{Current.user.username.split(' ').map(&:capitalize).join(' ')}'s Pet Lists", pets_path, class: "dropdown-item bi-bookmark-heart" %>
+            <%= link_to " Delete #{Current.user.username.split(' ').map(&:capitalize).join(' ')}'s Profile", user_path(Current.user), class: "dropdown-item bi-trash3", style: "color: #F40B2E !important;", data: {"turbo-confirm":  "Are you sure to delete this user #{Current.user.username.capitalize}'s account? The user and associated trackers will all gone..", "turbo-method": :delete } %>
           </ul>
         </li>
 

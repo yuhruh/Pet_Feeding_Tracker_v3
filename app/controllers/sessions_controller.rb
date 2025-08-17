@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to after_authentication_url
     else
       local_user = User.find_by(email_address: params[:email_address])
-      if local_user.connected_service.any?
+      if local_user.connected_services.any?
         flash[:alert] = "You've previously signed in using your #{connected_services_string(local_user)} account. Please use that to sign in."
       else
         flash[:alert] = "Try another email address or password."

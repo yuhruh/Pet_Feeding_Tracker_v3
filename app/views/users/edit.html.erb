@@ -1,7 +1,7 @@
 <div class="container mb-2 mt-2">
   <div class="px-6 py-4 border border-dark-subtle rounded-3">
     <h1 class="text-center mt-4">
-      Edit <%= Current.user.username.capitalize %>'s Profile
+      Edit <%= Current.user.username.split(' ').map(&:capitalize).join(' ') %>'s Profile
     </h1>
 
     <%= form_with(model: @user) do |form| %>

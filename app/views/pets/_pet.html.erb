@@ -30,7 +30,7 @@
 
   <p>
     <strong>Owner:</strong>
-    <%= Current.user.username.capitalize %>
+    <%= Current.user.username.split(' ').map(&:capitalize).join(' ') %>
   </p>
 
 </div>

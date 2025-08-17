@@ -1,4 +1,4 @@
-<h1 class='text-center mt-5' style="font-weight: bold;"><%= Current.user.username.capitalize %>'s Pets (<%= Current.user.pets.count %> pets)</h1>
+<h1 class='text-center mt-5' style="font-weight: bold;"><%= Current.user.username.split(' ').map(&:capitalize).join(' ') %>'s Pets (<%= Current.user.pets.count %> pets)</h1>
 
 <div class="d-flex justify-content-center mb-5">
   <%= link_to "#{image_tag('add_pet.png', width:'25px', height:'25px')} Add A Cat".html_safe, new_pet_path %>

@@ -40,25 +40,27 @@
           </ul>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-data-fill"></i> Tracker's Dashboard</a>
-          <ul class="dropdown-menu">
-              <% Current.user.pets.select(&:persisted?).each do |pet| %>
-                <%= link_to " #{pet.petname.capitalize}'s Trackers", pet_trackers_path(pet), class: "dropdown-item bi-bar-chart-line"%>
-              <% end %>
-          </ul>
-        </li>
+        <% if Current.user.pets.count != 0 %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-data-fill"></i> Tracker's Dashboard</a>
+            <ul class="dropdown-menu">
+                <% Current.user.pets.select(&:persisted?).each do |pet| %>
+                  <%= link_to " #{pet.petname.capitalize}'s Trackers", pet_trackers_path(pet), class: "dropdown-item bi-bar-chart-line"%>
+                <% end %>
+            </ul>
+          </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-search-heart"></i> Favorite Food List</a>
-          <ul class="dropdown-menu">
-            <% Current.user.pets.select(&:persisted?).each do |pet| %>
-              <li>
-                <%= link_to "View #{pet.petname.capitalize}'s Favorite", "/pets/#{pet.id}/favorites", class: "dropdown-item bi-search" %>
-              </li>
-            <% end %>
-          </ul>
-        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-heart"></i> Favorite Food List</a>
+            <ul class="dropdown-menu">
+              <% Current.user.pets.select(&:persisted?).each do |pet| %>
+                <li>
+                  <%= link_to "View #{pet.petname.capitalize}'s Favorite", "/pets/#{pet.id}/favorites", class: "dropdown-item bi-search" %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
 
         <li class="nav-item">
           <%= button_to 'Log Out', session_path, class: "nav-link bi bi-person-walking", method: :delete %>

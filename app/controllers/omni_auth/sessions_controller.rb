@@ -15,7 +15,7 @@ class OmniAuth::SessionsController < ApplicationController
 
     if Current.user.present?
       flash[:notice] = "#{@service.provider.to_s.humanize} connected"
-      redirect_to account_path
+      redirect_to new_pet_path
     else
       start_new_session_for @user
       flash[:notice] = "You have been signed in. Welcome to Cat Feeding Tracker App."
@@ -56,7 +56,16 @@ class OmniAuth::SessionsController < ApplicationController
       flash[:notice] = "There's already an account with this email address. Please sign in with it using your #{service_methods} account to associate it with this service."
       redirect_to new_session_path
     else
-      @user = create_user
+      if user_info.dig(:info, :email).blank? && user_info.provider == "line"
+        session["omniauth.auth"] = user_info.to_hash
+        flash[:notice] = "Please enter an email address to complete your LINE registration."
+        redirect_to new_registrations_path and return
+      elsif user_info.dig(:info, :email).blank?
+        flash[:alert] = "Please enter an email address to complete your registration."
+        redirect_to new_registrations_path and return
+      else
+        @user = create_user
+      end
     end
   end
 

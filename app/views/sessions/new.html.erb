@@ -45,6 +45,13 @@
           </button>
         <% end %>
 
+        <%= form_with url: "/auth/line", method: :post, data: { controller: "time-zone", action: "submit->time-zone#setLineAuthUrl", turbo: false } do |form| %>
+          <button type="submit" class="btn btn-light d-flex align-items-center justify-content-center w-100 py-2 rounded-3 text-sm cursor-pointer">
+            <%= image_tag "icons8-line-48.png", style: "width: 20px; height: 20px;" %>
+            <span class="ms-2 text-dark">Line</span>
+          </button>
+        <% end %>
+
         <% if Rails.env.development? %>
           <%= button_to "/auth/developer", method: :post, data: {turbo: false}, class: "btn btn-light d-flex align-items-center justify-content-center w-100 py-2 rounded-3 text-sm cursor-pointer" do %>
             <span class="ms-2 text-dark">Developer</span>

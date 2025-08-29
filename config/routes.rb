@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   get "auth/:provider/callback", to: "omni_auth/sessions#create"
   post "auth/:provider/callback", to: "omni_auth/sessions#create"
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
   get "auth/failure", to: "omni_auth/sessions#failure"
   # since session controller only define new, create and destroy
   # resource :session, only: [:new, :create, :destroy] 

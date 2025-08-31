@@ -78,3 +78,49 @@ en:
       add_more_pets: "You can add more pets if you have them."
       manage_info: "Manage your feeding records, pet profiles, or user information via 'Edit' and 'Delete' options."
       closing: "Enjoy tracking your cat's journey to better health and diet management! 🐾🐾"
+    home:
+      title: "Cat Feeding Tracker App"
+      subtitle: "Track your cat's eating"
+      description: "The Cat Feeding Tracker V2 is a web-based application designed to help cat owners meticulously monitor cats' feeding habits and amounts. The app offers a clear, visualized approach to tracking dietary intake, catering to multiple indoor cats."
+  layouts:
+    navigation:
+      home: "Home"
+      about: "About"
+      get_started: "Get Started"
+      profile: "'s Profile"
+      edit_profile: "Edit %{username}'s Profile"
+      view_profile: "View %{username}'s Profile"
+      pet_lists: "%{username}'s Pet Lists"
+      delete_profile: "Delete %{username}'s Profile"
+      delete_confirmation: "Are you sure to delete this user %{username}'s account? The user and associated trackers will all gone.."
+      cats_dashboard: "Cats' Dashboard"
+      add_a_cat: "Add A Cat"
+      view_pet_profile: "View %{petname}'s Profile"
+      dry_food_storage: "Dry Food Storage"
+      add_dry_food: "Add Dry Food"
+      dry_food_storage_list: "Dry Food Storage List"
+      trackers_dashboard: "Tracker's Dashboard"
+      pet_trackers: "%{petname}'s Trackers"
+      favorite_food_list: "Favorite Food List"
+      view_favorite: "View %{petname}'s Favorite"
+      log_out: "Log Out"
+      log_in: "Log In"
+      sign_up: "Sign Up"
+  shared:
+    errors:
+      prohibited: "prohibited this"
+      from_being_saved: "from being saved:"
+    time_zone_select:
+      time_zone: "Time Zone"
+  passwords:
+    edit:
+      title: "Reset your password"
+      password: "Password"
+      password_confirmation: "Password Confirmation"
+      submit: "Reset Password"
+      password_placeholder: "Enter new password"
+      password_confirmation_placeholder: "Repeat new password"
+    new:
+      title: "Forgot your password?"
+      submit: "Email reset instructions"
+      email_placeholder: "Enter your email address"

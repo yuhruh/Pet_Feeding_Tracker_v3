@@ -2,60 +2,60 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <%= link_to " Home", root_path, class: "nav-link active bi bi-house" %>
+        <%= link_to " #{t('.home')}", root_path, class: "nav-link active bi bi-house" %>
       </li>
       <li class="nav-item">
-        <%= link_to " About", about_path, class: "nav-link active bi bi-feather" %>
+        <%= link_to " #{t('.about')}", about_path, class: "nav-link active bi bi-feather" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/started"><i class="bi bi-book"></i> Get Started</a>
+        <a class="nav-link active" aria-current="page" href="/started"><i class="bi bi-book"></i> <%= t('.get_started') %></a>
       </li>
 
       <% if authenticated? %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i> <%= Current.user.username.split(' ').map(&:capitalize).join(" ") %>'s Profile</a>
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person"></i> <%= Current.user.username.split(' ').map(&:capitalize).join(" ") %><%= t('.profile') %></a>
           <ul class="dropdown-menu">
-            <%= link_to " Edit #{Current.user.username.split(' ').map(&:capitalize).join(' ')}'s Profile", edit_user_path(Current.user), class: "dropdown-item bi-pencil" %>
-            <%= link_to " View #{Current.user.username.split(' ').map(&:capitalize).join(' ')}'s Profile", user_path(Current.user), class: "dropdown-item bi-person-vcard" %>
-            <%= link_to " #{Current.user.username.split(' ').map(&:capitalize).join(' ')}'s Pet Lists", pets_path, class: "dropdown-item bi-bookmark-heart" %>
-            <%= link_to " Delete #{Current.user.username.split(' ').map(&:capitalize).join(' ')}'s Profile", user_path(Current.user), class: "dropdown-item bi-trash3", style: "color: #F40B2E !important;", data: {"turbo-confirm":  "Are you sure to delete this user #{Current.user.username.capitalize}'s account? The user and associated trackers will all gone..", "turbo-method": :delete } %>
+            <%= link_to " #{t('.edit_profile', username: Current.user.username.split(' ').map(&:capitalize).join(' '))}", edit_user_path(Current.user), class: "dropdown-item bi-pencil" %>
+            <%= link_to " #{t('.view_profile', username: Current.user.username.split(' ').map(&:capitalize).join(' '))}", user_path(Current.user), class: "dropdown-item bi-person-vcard" %>
+            <%= link_to " #{t('.pet_lists', username: Current.user.username.split(' ').map(&:capitalize).join(' '))}", pets_path, class: "dropdown-item bi-bookmark-heart" %>
+            <%= link_to " #{t('.delete_profile', username: Current.user.username.split(' ').map(&:capitalize).join(' '))}", user_path(Current.user), class: "dropdown-item bi-trash3", style: "color: #F40B2E !important;", data: {"turbo-confirm":  t('.delete_confirmation', username: Current.user.username.capitalize), "turbo-method": :delete } %>
           </ul>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 😸 Cats' Dashboard</a>
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 😸 <%= t('.cats_dashboard') %></a>
           <ul class="dropdown-menu">
-            <%= link_to " Add A Cat", new_pet_path, class: "dropdown-item bi-plus-circle-dotted" %>
+            <%= link_to " #{t('.add_a_cat')}", new_pet_path, class: "dropdown-item bi-plus-circle-dotted" %>
             <% Current.user.pets.select(&:persisted?).each do |pet| %>
-                <%= link_to " View #{pet.petname.capitalize}'s Profile", pet_path(pet), class: "dropdown-item bi-eye" %>
+                <%= link_to " #{t('.view_pet_profile', petname: pet.petname.capitalize)}", pet_path(pet), class: "dropdown-item bi-eye" %>
             <% end %>
           </ul>
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-database"></i> Dry Food Storage</a>
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-database"></i> <%= t('.dry_food_storage') %></a>
           <ul class="dropdown-menu">
-            <%= link_to " Add Dry Food", new_dry_food_path, class: "dropdown-item bi-database-fill-add" %>
-            <%= link_to " Dry Food Storage List", dry_foods_path, class: "dropdown-item bi-fork-knife" %>
+            <%= link_to " #{t('.add_dry_food')}", new_dry_food_path, class: "dropdown-item bi-database-fill-add" %>
+            <%= link_to " #{t('.dry_food_storage_list')}", dry_foods_path, class: "dropdown-item bi-fork-knife" %>
           </ul>
         </li>
 
         <% if Current.user.pets.count != 0 %>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-data-fill"></i> Tracker's Dashboard</a>
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-data-fill"></i> <%= t('.trackers_dashboard') %></a>
             <ul class="dropdown-menu">
                 <% Current.user.pets.select(&:persisted?).each do |pet| %>
-                  <%= link_to " #{pet.petname.capitalize}'s Trackers", pet_trackers_path(pet), class: "dropdown-item bi-bar-chart-line"%>
+                  <%= link_to " #{t('.pet_trackers', petname: pet.petname.capitalize)}", pet_trackers_path(pet), class: "dropdown-item bi-bar-chart-line"%>
                 <% end %>
             </ul>
           </li>
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-heart"></i> Favorite Food List</a>
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-clipboard-heart"></i> <%= t('.favorite_food_list') %></a>
             <ul class="dropdown-menu">
               <% Current.user.pets.select(&:persisted?).each do |pet| %>
                 <li>
-                  <%= link_to "View #{pet.petname.capitalize}'s Favorite", "/pets/#{pet.id}/favorites", class: "dropdown-item bi-search" %>
+                  <%= link_to "#{t('.view_favorite', petname: pet.petname.capitalize)}", "/pets/#{pet.id}/favorites", class: "dropdown-item bi-search" %>
                 </li>
               <% end %>
             </ul>
@@ -63,14 +63,14 @@
         <% end %>
 
         <li class="nav-item">
-          <%= button_to 'Log Out', session_path, class: "nav-link bi bi-person-walking", method: :delete %>
+          <%= button_to t('.log_out'), session_path, class: "nav-link bi bi-person-walking", method: :delete %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to 'Log In', new_session_path, class:"nav-link" %>
+          <%= link_to t('.log_in'), new_session_path, class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Sign Up', new_registrations_path, class:"nav-link" %>
+          <%= link_to t('.sign_up'), new_registrations_path, class:"nav-link" %>
         </li>
       <% end %>
     </ul>

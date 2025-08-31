@@ -23,7 +23,7 @@ zh-TW:
       step3_title: "步驟三：新增第一隻寵物"
       step3_description: "登入後，您可以建立貓咪的個人資料，也可以稍後再新增。本應用程式支援多貓咪追蹤。以下是新增寵物資料的畫面："
       step3_dropdown_instruction: "在首頁導覽列上，尋找下拉選單「個人檔案 [您的註冊用戶名]」，第一個項目「新增寵物」。點選後輸入貓咪的必要資料（例如：姓名、生日、性別、品種、體重等），並儲存貓咪的個人檔案。"
-      step3_after_add: "新增第一隻寵物後，導覽列會顯示相關項目。"
+      step3_after_add: "新增第一隻寵-物後，導覽列會顯示相關項目。"
       step3_before_add: "新增寵物前，導覽列會像這樣："
       step4_title: "步驟四：記錄第一次餵食"
       step4_intro: "當貓咪資料建立完成後，您就可以開始記錄第一次的餵食紀錄。"
@@ -40,3 +40,49 @@ zh-TW:
       add_more_pets: "若您有多隻貓咪，可繼續新增。"
       manage_info: "透過「編輯」與「刪除」功能管理您的餵食紀錄、寵物資料與帳戶資訊。"
       closing: "祝您順利追蹤貓咪的健康與飲食之旅 🐾🐾"
+    home:
+      title: "貓咪餵食飲食記錄"
+      subtitle: "記錄你家貓主子的飲食"
+      description: "貓咪餵食飲食記錄第二版是一個網路應用程式，旨在幫助貓飼主仔細監控貓的餵食習慣和食量。該應用程式提供清晰、可視化的方法來追蹤飲食攝入量，適用於多隻室內貓。"
+  layouts:
+    navigation:
+      home: "首頁"
+      about: "關於"
+      get_started: "如何開始"
+      profile: "的個人檔案"
+      edit_profile: "編輯 %{username} 的個人檔案"
+      view_profile: "查看 %{username} 的個人檔案"
+      pet_lists: "%{username} 的寵物列表"
+      delete_profile: "刪除 %{username} 的個人檔案"
+      delete_confirmation: "您確定要刪除此使用者 %{username} 的帳戶嗎？該使用者和相關的追蹤器將全部消失。"
+      cats_dashboard: "貓咪儀表板"
+      add_a_cat: "新增貓咪"
+      view_pet_profile: "查看 %{petname} 的個人檔案"
+      dry_food_storage: "乾糧庫存"
+      add_dry_food: "新增乾糧"
+      dry_food_storage_list: "乾糧庫存列表"
+      trackers_dashboard: "飲食記錄儀表板"
+      pet_trackers: "%{petname} 的飲食記錄"
+      favorite_food_list: "最愛的食物列表"
+      view_favorite: "查看 %{petname} 的最愛"
+      log_out: "登出"
+      log_in: "登入"
+      sign_up: "註冊"
+  shared:
+    errors:
+      prohibited: "禁止此"
+      from_being_saved: "被儲存:"
+    time_zone_select:
+      time_zone: "時區"
+  passwords:
+    edit:
+      title: "重設密碼"
+      password: "密碼"
+      password_confirmation: "確認密碼"
+      submit: "重設密碼"
+      password_placeholder: "輸入新密碼"
+      password_confirmation_placeholder: "重複新密碼"
+    new:
+      title: "忘記密碼？"
+      submit: "發送重設密碼說明"
+      email_placeholder: "輸入您的電子郵件"

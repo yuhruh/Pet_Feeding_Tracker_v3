@@ -1,6 +1,6 @@
 <div class="<%= class_names %>">
   <div class="mb-3 row justify-content-center visually-hidden" data-controller="time-zone">
-    <%= form.label "Time Zone", class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
+    <%= form.label :timezone, t(".time_zone"), class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
     <div class="col-sm-3">
       <%= form.text_field :timezone, data: { "time_zone_target"=> "tz" }, class: "form-control" %>
     </div>

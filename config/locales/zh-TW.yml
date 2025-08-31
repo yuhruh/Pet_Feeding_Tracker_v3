@@ -54,14 +54,14 @@ zh-TW:
       view_profile: "查看 %{username} 的個人檔案"
       pet_lists: "%{username} 的寵物列表"
       delete_profile: "刪除 %{username} 的個人檔案"
-      delete_confirmation: "您確定要刪除此使用者 %{username} 的帳戶嗎？該使用者和相關的追蹤器將全部消失。"
-      cats_dashboard: "貓咪儀表板"
+      delete_confirmation: "您確定要刪除此使用者 %{username} 的帳戶嗎？該使用者和相關的飲食記錄將全部消失。"
+      cats_dashboard: "貓咪一覽表"
       add_a_cat: "新增貓咪"
-      view_pet_profile: "查看 %{petname} 的個人檔案"
+      view_pet_profile: "查看 %{petname} 的喵喵檔案"
       dry_food_storage: "乾糧庫存"
       add_dry_food: "新增乾糧"
       dry_food_storage_list: "乾糧庫存列表"
-      trackers_dashboard: "飲食記錄儀表板"
+      trackers_dashboard: "飲食記錄表"
       pet_trackers: "%{petname} 的飲食記錄"
       favorite_food_list: "最愛的食物列表"
       view_favorite: "查看 %{petname} 的最愛"
@@ -70,7 +70,7 @@ zh-TW:
       sign_up: "註冊"
   shared:
     errors:
-      prohibited: "禁止此"
+      prohibited: "禁止以下"
       from_being_saved: "被儲存:"
     time_zone_select:
       time_zone: "時區"
@@ -81,7 +81,7 @@ zh-TW:
       password_confirmation: "確認密碼"
       submit: "重設密碼"
       password_placeholder: "輸入新密碼"
-      password_confirmation_placeholder: "重複新密碼"
+      password_confirmation_placeholder: "重複輸入新密碼"
     new:
       title: "忘記密碼？"
       submit: "發送重設密碼說明"

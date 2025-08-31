@@ -1,31 +1,31 @@
 <div class="container text-center mt-2 mb-2">
   <div class="px-6 py-4 border border-dark-subtle rounded-3">
 
-    <h1 class="text-center mt-4" style="font-weight: bold;"><%= @pet.petname.capitalize %>'s Favorite Food Ranking</h1>
+    <h1 class="text-center mt-4" style="font-weight: bold;"><%= t('trackers.favorite_food.title', petname: @pet.petname.capitalize) %></h1>
 
     <div class="d-flex justify-content-center mb-4">
       <div class="form-group d-flex align-items-center">
-        <label for="food-type-filter" class="me-2">Filter by food type:</label>
+        <label for="food-type-filter" class="me-2"><%= t('trackers.favorite_food.filter') %></label>
         <select class="form-select" id="food-type-filter" style="width: auto;">
-          <option value="all">All</option>
-          <option value="Dry">Dry Food</option>
-          <option value="Wet">Wet Food</option>
+          <option value="all"><%= t('trackers.favorite_food.all') %></option>
+          <option value="Dry"><%= t('trackers.favorite_food.dry_food') %></option>
+          <option value="Wet"><%= t('trackers.favorite_food.wet_food') %></option>
         </select>
       </div>
     </div>
 
     <% if @pet.trackers.empty? %>
-      <h3 class="text-center mt-4">You do not have any eating record for <%= @pet.petname.capitalize%> 😿 </h3>
+      <h3 class="text-center mt-4"><%= t('trackers.favorite_food.no_record', petname: @pet.petname.capitalize) %></h3>
     <% else %>    
       <table class="table table-bordered mx-3" style="width:98%">
         <thead class="table-dark">
           <tr class='text-center justify-content-center'>
-            <th scope="col">#</th>
-            <th scope="col">Food Type</th>
-            <th scope="col">Brand</th>
-            <th scope="col">Description</th>
-            <th scope="col">Result</th>
-            <th scope="col">Favorite Score (ref)</th>
+            <th scope="col"><%= t('trackers.favorite_food.number') %></th>
+            <th scope="col"><%= t('trackers.favorite_food.food_type') %></th>
+            <th scope="col"><%= t('trackers.favorite_food.brand') %></th>
+            <th scope="col"><%= t('trackers.favorite_food.description') %></th>
+            <th scope="col"><%= t('trackers.favorite_food.result') %></th>
+            <th scope="col"><%= t('trackers.favorite_food.favorite_score') %></th>
           </tr>
         </thead>
         <tbody class="table-group-divider" id="trackers-body">

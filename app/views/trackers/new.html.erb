@@ -1,9 +1,9 @@
-<h1 class="text-center mt-4 mb-4">Adding a New Record for <%= @pet.petname.capitalize %></h1>
+<h1 class="text-center mt-4 mb-4"><%= t('trackers.new.title', petname: @pet.petname.capitalize) %></h1>
 
 <%= render "form", tracker: @tracker %>
 
 <br>
 
 <div class="d-flex justify-content-center mb-3">
-  <%= link_to "Back to trackers", pet_trackers_path(@pet) %>
+  <%= link_to t('trackers.new.back'), pet_trackers_path(@pet) %>
 </div>

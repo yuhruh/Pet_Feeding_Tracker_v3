@@ -1,13 +1,13 @@
 <div class="container text-center mb-2 mt-2">
   <div class="px-6 py-4 border border-dark-subtle rounded-3">
-    <h1>Welcome to Cat Tracker App, <%= @user.username %>!</h1>
+    <h1><%= t('user_mailer.welcome.title', username: @user.username) %></h1>
 
     <p>
-      Thanks for joining us. Let's explore what our cat love 😽 and track his/her feeding trend 📊
+      <%= t('user_mailer.welcome.description') %>
     </p>
 
     <p>
-      To start tracking your cat's feeding, log in here: <%= link_to 'Log In', new_session_url %>
+      <%= t('user_mailer.welcome.login_prompt') %> <%= link_to t('user_mailer.welcome.login'), new_session_url %>
     </p>
   </div>
 </div>

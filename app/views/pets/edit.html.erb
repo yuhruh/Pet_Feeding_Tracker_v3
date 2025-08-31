@@ -1,4 +1,4 @@
-<h1 class="text-center">Editing <%=@pet.petname%>'s Profile</h1>
+<h1 class="text-center"><%= t('pets.edit.title', petname: @pet.petname) %></h1>
 
 <%= form_with(model: @pet) do |form| %>
     <div class="d-flex justify-content-center">
@@ -6,35 +6,35 @@
     </div>
 
     <div class="mb-3 row justify-content-center">
-      <%= form.label 'Birthday', class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
+      <%= form.label :birthday, t('pets.form.birthday'), class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-3">
         <%= form.date_field :birthday, class: "form-control" %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
-      <%= form.label 'Weight(kg)', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+      <%= form.label :weight, t('pets.form.weight'), class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-3">
-        <%= form.number_field :weight, step: :any, class: "form-control", placeholder: "Enter your cat's weight", max: 100, min: 0.0, required: true %>
+        <%= form.number_field :weight, step: :any, class: "form-control", placeholder: t('pets.form.weight_placeholder'), max: 100, min: 0.0, required: true %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
-      <%= form.label 'Gender', class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
+      <%= form.label :gender, t('pets.form.gender'), class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-3">
-        <%= form.select :gender, [["♂️ Male"], ["♀️ Female"], ["🙊 Rather Not to Answer"]], { prompt: "Please Choose Cat's Gender"}, class: "form-control" %>
+        <%= form.select :gender, [[t('pets.form.male')], [t('pets.form.female')], [t('pets.form.rather_not_to_answer')]], { prompt: t('pets.form.gender_prompt')}, class: "form-control" %>
       </div>
     </div>
 
     <div class="mb-3 row justify-content-center">
-      <%= form.label 'Breed', class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
+      <%= form.label :breed, t('pets.form.breed'), class: "col-sm-2 col-form-label text-start", style: "color: #515a5a; font-weight: bold" %>
       <div class="col-sm-3">
-        <%= form.text_field :breed, class: "form-control", placeholder: "Enter your cat's breed, ex: Mixed, Ragdoll..." %>
+        <%= form.text_field :breed, class: "form-control", placeholder: t('pets.form.breed_placeholder') %>
       </div>
     </div>
 
     <div class="d-flex justify-content-center">
-      <%= form.submit(@pet.new_record? ? "Add a Cat" : "Modify #{@pet.petname} Information", class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb") %>
+      <%= form.submit(@pet.new_record? ? t('pets.form.add') : t('pets.edit.modify', petname: @pet.petname), class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb") %>
     </div>
   <% end %>
 
@@ -42,7 +42,7 @@
 <br>
 
 <div class="d-flex justify-content-center mb-4">
-  <%= link_to "Show this pet", @pet %> |
-  <%= link_to "Back to pets", pets_path %>
+  <%= link_to t('pets.edit.show'), @pet %> |
+  <%= link_to t('pets.edit.back'), pets_path %>
 </div>
 

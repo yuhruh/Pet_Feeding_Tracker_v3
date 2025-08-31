@@ -1,41 +1,41 @@
 <div class="container text-center mb-2 mt-2">
   <div class="px-6 py-4 border border-dark-subtle rounded-3">
 
-    <h1 class="text-center mt-4 mb-5">🐾 Sign in Cat Trackers App 🐾</h1>
+    <h1 class="text-center mt-4 mb-5">🐾 <%= t('sessions.new.title') %> 🐾</h1>
 
     <%= form_with url: session_path do |form| %>
       <div class="row mb-3 justify-content-center">
-        <label for="exampleInputEmail1" class="col-sm-2 col-form-label text-start required" style="color: #515a5a; font-weight: bold">Email address</label>
+        <label for="exampleInputEmail1" class="col-sm-2 col-form-label text-start required" style="color: #515a5a; font-weight: bold"><%= t('sessions.new.email') %></label>
         <div class="col-sm-3">
-          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "col form-control mb-3" %>
+          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: t('sessions.new.email_placeholder'), value: params[:email_address], class: "col form-control mb-3" %>
         </div>
       </div>
       
       <div class="row mb-3 justify-content-center">
-        <label for="exampleInputPassword1" class="col-sm-2 col-form-label text-start required" style="color: #515a5a; font-weight: bold">Password</label>
+        <label for="exampleInputPassword1" class="col-sm-2 col-form-label text-start required" style="color: #515a5a; font-weight: bold"><%= t('sessions.new.password') %></label>
         <div class="col-sm-3">
-          <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", class: "col form-control mb-3" %>
+          <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: t('sessions.new.password_placeholder'), class: "col form-control mb-3" %>
         </div>
       </div>
 
       <div class="d-flex justify-content-center mt-4 mb-3">
-        <%= form.submit "Sign in", class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb" %>
+        <%= form.submit t('sessions.new.submit'), class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb" %>
       </div>
     <% end %>
 
     <div class="col-sm-10 d-flex justify-content-end">
       <div class="pe-3">
-        <p>New user?</p><br>
+        <p><%= t('sessions.new.new_user') %></p><br>
       </div>
-      <%= link_to "Sign Up", new_registrations_path, class:"link-primary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover", style: "color: #515a5a; font-weight: bold;" %>
+      <%= link_to t('sessions.new.sign_up_now'), new_registrations_path, class:"link-primary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover", style: "color: #515a5a; font-weight: bold;" %>
       <div class="col-sm-5">
-        <%= link_to "Forget Password?", new_password_path, class:"link-primary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover", style: "color: #515a5a; font-weight: bold;" %>
+        <%= link_to t('sessions.new.forgot_password'), new_password_path, class:"link-primary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover", style: "color: #515a5a; font-weight: bold;" %>
       </div>
     </div>
 
     <div class="w-100 d-flex flex-column align-items-center justify-content-center my-4">
       <div class="w-100 position-relative border-bottom border-secondary my-4">
-        <span class="text-muted bg-white px-4 fs-6 position-absolute top-50 start-50 translate-middle">Or sign in using</span>
+        <span class="text-muted bg-white px-4 fs-6 position-absolute top-50 start-50 translate-middle"><%= t('sessions.new.alternative') %></span>
       </div>
       <div class="mt-3 d-flex justify-content-center align-items-center gap-4">
         <%= form_with url: "/auth/google_oauth2", method: :post, data: { controller: "time-zone", action: "submit->time-zone#setGoogleAuthUrl", turbo: false } do |form| %>

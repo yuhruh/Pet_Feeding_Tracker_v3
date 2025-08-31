@@ -1,26 +1,26 @@
 <div class="container mb-2 mt-2" data-controller="timezone">
   <div class="px-6 py-4 border border-dark-subtle rounded-3">
-    <h1 class="text-center mt-4" style="font-weight: bold;"><%= Current.user.username.split(' ').map(&:capitalize).join(' ') %>'s Profile</h1>
+    <h1 class="text-center mt-4" style="font-weight: bold;"><%= t('users.show.title', username: Current.user.username.split(' ').map(&:capitalize).join(' ')) %></h1>
 
     <div class='text-center'>
       <p>
-        <strong>User Name:</strong>
+        <strong><%= t('users.show.username') %></strong>
         <%= Current.user.username.split(' ').map(&:capitalize).join(' ') %>
       </p>
 
       <p>
-        <strong>Email:</strong>
+        <strong><%= t('users.show.email') %></strong>
         <%= Current.user.email_address %>
       </p>
 
       <p>
-        <strong>Time Zone:</strong>
+        <strong><%= t('users.show.time_zone') %></strong>
         <%= Current.user.timezone %>
       </p>
 
       <p>
-        <strong>Pets:</strong>
-        <%= Current.user.pets.count %> pets - 
+        <strong><%= t('users.show.pets') %></strong>
+        <%= t('users.show.pets_count', count: Current.user.pets.count) %> - 
         <%= Current.user.pets.map do |pet| %>
           <% pet.petname.capitalize %>
         <% end %>
@@ -29,8 +29,8 @@
     </div>
 
     <div class="text-center m-4">
-      <%= link_to "Edit Profile", edit_user_path(Current.user), class: "btn btn-outline-success btn-sm mb-4" %>
-      <%= link_to "Delete Profile", user_path(Current.user), class: "btn btn-outline-danger btn-sm mb-4 text-danger", data: {"turbo-confirm":  "Are you sure to delete this user account? The user and associated trackers will all gone..", "turbo-method": :delete } %>
+      <%= link_to t('users.show.edit'), edit_user_path(Current.user), class: "btn btn-outline-success btn-sm mb-4" %>
+      <%= link_to t('users.show.delete'), user_path(Current.user), class: "btn btn-outline-danger btn-sm mb-4 text-danger", data: {"turbo-confirm":  t('users.show.confirm'), "turbo-method": :delete } %>
     </div>
   </div>
 </div>

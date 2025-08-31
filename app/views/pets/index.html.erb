@@ -1,7 +1,7 @@
-<h1 class='text-center mt-5' style="font-weight: bold;"><%= Current.user.username.split(' ').map(&:capitalize).join(' ') %>'s Pets (<%= Current.user.pets.count %> pets)</h1>
+<h1 class='text-center mt-5' style="font-weight: bold;"><%= t('pets.index.title', username: Current.user.username.split(' ').map(&:capitalize).join(' '), count: Current.user.pets.count) %></h1>
 
 <div class="d-flex justify-content-center mb-5">
-  <%= link_to "#{image_tag('add_pet.png', width:'25px', height:'25px')} Add A Cat".html_safe, new_pet_path %>
+  <%= link_to "#{image_tag('add_pet.png', width:'25px', height:'25px')} #{t('pets.index.add')}".html_safe, new_pet_path %>
 </div>
 
 <div class="d-flex digg_pagination justify-content-center">
@@ -16,16 +16,16 @@
 
 <div id="pets" class='d-flex justify-content-center'>
   <% if @pets.find_by(user_id: Current.user.id).nil? %>
-    <h5 class="text-center">You do not have any pets yet. Why would you add it right now? Press above <%= image_tag('add_pet.png', width:'25px', height:'25px') %>button</h5>
+    <h5 class="text-center"><%= t('pets.index.no_pets') %> <%= image_tag('add_pet.png', width:'25px', height:'25px') %></h5>
   <% else %>
     <% @pets.each do |pet| %>
       <div class="card mb-3" style="width: 40rem; background: #f2f4f6">
-        <h4 class="text-center mb-3"><i><u><%=pet.petname%>'s Profile: </u></i></h4>
+        <h4 class="text-center mb-3"><i><u><%= t('pets.index.profile', petname: pet.petname) %></u></i></h4>
         <%= render pet %>
         <div class="text-center mb-3">
-          <%= link_to "Edit #{pet.petname.capitalize}'s Profile", edit_pet_path(pet), class: "btn btn-outline-success" %>
-          <%= link_to "Show #{pet.petname.capitalize}'s Record", pet_trackers_path(pet), class: "btn btn-outline-secondary" %>
-          <%= link_to "Add #{pet.petname.capitalize}'s Record", new_pet_tracker_path(pet), class: "btn btn-outline-primary" %>
+          <%= link_to t('pets.index.edit', petname: pet.petname.capitalize), edit_pet_path(pet), class: "btn btn-outline-success" %>
+          <%= link_to t('pets.index.show_record', petname: pet.petname.capitalize), pet_trackers_path(pet), class: "btn btn-outline-secondary" %>
+          <%= link_to t('pets.index.add_record', petname: pet.petname.capitalize), new_pet_tracker_path(pet), class: "btn btn-outline-primary" %>
         </div>
       </div>
     <% end %>

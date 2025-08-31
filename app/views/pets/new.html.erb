@@ -1,13 +1,13 @@
 <div class="container mb-2 mt-2">
   <div class="px-6 py-4 border border-dark-subtle rounded-3">
-    <h1 class="text-center mt-4">🐾 Add for a Cat🐾</h1>
+    <h1 class="text-center mt-4">🐾 <%= t('pets.new.title') %> 🐾</h1>
 
     <%= render "form", pet: @pet %>
 
     <br>
 
     <div class="d-flex justify-content-center">
-      <%= link_to "Back to #{Current.user.username.capitalize}'s Pets List", pets_path, class: "link-opacity-75-hover" %>
+      <%= link_to t('pets.new.back', username: Current.user.username.capitalize), pets_path, class: "link-opacity-75-hover" %>
     </div>
   </div>
 </div>

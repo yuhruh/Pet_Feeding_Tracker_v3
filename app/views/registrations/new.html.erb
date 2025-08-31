@@ -1,23 +1,23 @@
 <div class="container text-center mb-2 mt-2">
   <div class="px-6 py-4 border border-dark-subtle rounded-3">
-    <h1>Sing Up for Cat Trackers App 🐾🐾</h1>
+    <h1><%= t('registrations.new.title') %></h1>
     <p class="mb-5">
-      Sign up to create your account and start cat feeding tracker 😸.
+      <%= t('registrations.new.caption') %>
     </p>
 
       <%= form_with url: registrations_url, model: @user, method: :post, class: "contents" do |form| %>
 
         <div class="mb-3 row justify-content-center">
-          <%= form.label 'User Name', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+          <%= form.label :username, t('registrations.new.username'), class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
           <div class="col-sm-3">
-            <%= form.text_field :username, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your name", class: "form-control" %>
+            <%= form.text_field :username, required: true, autofocus: true, autocomplete: "username", placeholder: t('registrations.new.username_placeholder'), class: "form-control" %>
           </div>
         </div>
 
         <div class="mb-3 row justify-content-center">
-          <%= form.label 'Email Address', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+          <%= form.label :email_address, t('registrations.new.email'), class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
           <div class="col-sm-3">
-            <%= form.email_field :email_address, required: true, autofocus: true, placeholder: "Enter your email address", class: "form-control #{'is-invalid' if form.object.errors[:email_address].any?}" %>
+            <%= form.email_field :email_address, required: true, autofocus: true, placeholder: t('registrations.new.email_placeholder'), class: "form-control #{'is-invalid' if form.object.errors[:email_address].any?}" %>
             <%# Show the specific error message for the email field %>
             <% form.object.errors.full_messages_for(:email_address).each do |message| %>
               <div class="invalid-feedback d-block text-start">
@@ -28,9 +28,9 @@
         </div>
 
         <div class="mb-3 row justify-content-center">
-          <%= form.label 'Email Confirmation', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+          <%= form.label :email_address_confirmation, t('registrations.new.email_confirmation'), class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
           <div class="col-sm-3">
-            <%= form.email_field :email_address_confirmation, required: true, autocomplete: "email", placeholder: "Confirm your email address", class: "form-control #{'is-invalid' if form.object.errors[:email_address_confirmation].any?}" %>
+            <%= form.email_field :email_address_confirmation, required: true, autocomplete: "email", placeholder: t('registrations.new.email_confirmation_placeholder'), class: "form-control #{'is-invalid' if form.object.errors[:email_address_confirmation].any?}" %>
             <% form.object.errors.full_messages_for(:email_address_confirmation).each do |message| %>
               <div class="invalid-feedback d-block text-start">
                 <%= message %>
@@ -40,10 +40,10 @@
         </div>
         
         <div class="mb-3 row justify-content-center">
-          <%= form.label 'Password', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+          <%= form.label :password, t('registrations.new.password'), class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
           <div class="col-sm-3 text-start"> 
-            <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", class: "form-control #{'is-invalid' if form.object.errors[:password].any?}" %>
-            <span id="passwordHelpBlock" class="form-text">Must contain at least 5 characters long.</span>
+            <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: t('registrations.new.password_placeholder'), class: "form-control #{'is-invalid' if form.object.errors[:password].any?}" %>
+            <span id="passwordHelpBlock" class="form-text"><%= t('registrations.new.hint') %></span>
             <% form.object.errors.full_messages_for(:password).each do |message| %>
               <div class="invalid-feedback d-block text-start">
                 <%= message %>
@@ -53,9 +53,9 @@
         </div>
 
         <div class="mb-3 row justify-content-center">
-          <%= form.label 'Password Confirmation', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+          <%= form.label :password_confirmation, t('registrations.new.password_confirmation'), class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
           <div class="col-sm-3">
-            <%= form.password_field :password_confirmation, required: true, autocomplete: "current-password", placeholder: "Password confirmation", class: "form-control #{'is-invalid' if form.object.errors[:password_confirmation].any?}" %>
+            <%= form.password_field :password_confirmation, required: true, autocomplete: "current-password", placeholder: t('registrations.new.password_confirmation_placeholder'), class: "form-control #{'is-invalid' if form.object.errors[:password_confirmation].any?}" %>
             <% form.object.errors.full_messages_for(:password_confirmation).each do |message| %>
               <div class="invalid-feedback d-block text-start">
                 <%= message %>
@@ -67,13 +67,13 @@
         <%= render "shared/time_zone_select", {form: form} %>
 
         <div class="d-flex justify-content-center">
-          <%= form.submit "Create New User", class: "btn mb-3", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb" %>
+          <%= form.submit t('registrations.new.submit'), class: "btn mb-3", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb" %>
         </div>
         <div class="d-flex justify-content-center">
           <div class="pe-3">
-            <p>Have an account?</p><br>
+            <p><%= t('registrations.new.account') %></p><br>
           </div>
-          <%= link_to "Sign In", new_session_path, class:"link-primary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover", style: "color: #515a5a; font-weight: bold;" %>
+          <%= link_to t('registrations.new.signin'), new_session_path, class:"link-primary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover", style: "color: #515a5a; font-weight: bold;" %>
         </div>
       <% end %>
     </div>

@@ -4,46 +4,46 @@
   </div>
 
   <div class="mb-3 row justify-content-center">
-    <%= form.label 'Pet Name', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+    <%= form.label :petname, t('pets.form.petname'), class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
     <div class="col-sm-5">
-      <%= form.text_field :petname, required: true, autofocus: true, autocomplete: "petname", placeholder: "Enter your cat's name", value: params[:petname], class: "form-control" %>
+      <%= form.text_field :petname, required: true, autofocus: true, autocomplete: "petname", placeholder: t('pets.form.petname_placeholder'), value: params[:petname], class: "form-control" %>
     </div>
   </div>
 
   <div class="mb-3 row justify-content-center">
-    <%= form.label 'Birthday', class: "col-sm-2 col-form-label text-start optional", style: "color: #515a5a; font-weight: bold" %>
+    <%= form.label :birthday, t('pets.form.birthday'), class: "col-sm-2 col-form-label text-start optional", style: "color: #515a5a; font-weight: bold" %>
     <div class="col-sm-5">
       <%= form.date_field :birthday, class: "form-control", max: Date.today %>
     </div>
   </div>
 
   <div class="mb-3 row justify-content-center">
-    <%= form.label 'Weight (kg)', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+    <%= form.label :weight, t('pets.form.weight'), class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
     <div class="col-sm-5">
-      <%= form.number_field :weight, step: :any, class: "form-control", placeholder: "Enter your cat's weight, the number should be ranged from 0 to 100.", max: 100, min: 0.0, required: true %>
-      <span id="wightHelpBlock" class="form-text">Just enter number without unit.</span>
+      <%= form.number_field :weight, step: :any, class: "form-control", placeholder: t('pets.form.weight_placeholder'), max: 100, min: 0.0, required: true %>
+      <span id="wightHelpBlock" class="form-text"><%= t('pets.form.weight_help') %></span>
     </div>
   </div>
 
   <div class="mb-3 row justify-content-center">
-    <%= form.label 'Gender', class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
+    <%= form.label :gender, t('pets.form.gender'), class: "col-sm-2 col-form-label text-start required", style: "color: #515a5a; font-weight: bold" %>
     <div class="col-sm-5">
-      <%= form.select :gender, [["♂️ Male"], ["♀️ Female"], ["🙊 Rather Not to Answer"]], { prompt: "Please Choose Cat's Gender"}, class: "form-control" %>
+      <%= form.select :gender, [[t('pets.form.male')], [t('pets.form.female')], [t('pets.form.rather_not_to_answer')]], { prompt: t('pets.form.gender_prompt')}, class: "form-control" %>
     </div>
   </div>
 
   <div class="mb-3 row justify-content-center">
-    <%= form.label 'Breed', class: "col-sm-2 col-form-label text-start optional", style: "color: #515a5a; font-weight: bold" %>
+    <%= form.label :breed, t('pets.form.breed'), class: "col-sm-2 col-form-label text-start optional", style: "color: #515a5a; font-weight: bold" %>
     <div class="col-sm-5">
-      <%= form.text_field :breed, class: "form-control", placeholder: "Enter your cat's breed, ex: Mixed, Ragdoll..." %>
+      <%= form.text_field :breed, class: "form-control", placeholder: t('pets.form.breed_placeholder') %>
     </div>
   </div>
 
   
   <div class="col-8">
     <div class="d-grid gap-3 d-md-flex justify-content-end">
-      <%= form.submit(@pet.new_record? ? "Add a Cat" : "Modify Cat's Information", class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb") %>
-      <%= link_to "Add cat later....", pets_path, class: "btn btn-secondary", style: "font-weight: bold" %>
+      <%= form.submit(@pet.new_record? ? t('pets.form.add') : t('pets.form.modify'), class: "btn", style: "color: #515a5a; font-weight: bold; background-color: #d5dbdb") %>
+      <%= link_to t('pets.form.add_later'), pets_path, class: "btn btn-secondary", style: "font-weight: bold" %>
     </div>
   </div>
 <% end %>

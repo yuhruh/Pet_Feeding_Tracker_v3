@@ -9,17 +9,26 @@ export default class extends Controller {
     }
   }
 
-  setGoogleAuthUrl(event) {
-    event.preventDefault();
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const url = new URL(this.element.action);
-    url.searchParams.append('timezone', timeZone);
-    this.element.action = url.toString();
-    this.element.submit();
-  }
+  // setGoogleAuthUrl(event) {
+  //   event.preventDefault();
+  //   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  //   const url = new URL(this.element.action);
+  //   url.searchParams.append('timezone', timeZone);
+  //   this.element.action = url.toString();
+  //   this.element.submit();
+  // }
+
+  // setLineAuthUrl(event) {
+  //   event.preventDefault();
+  //   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  //   const url = new URL(this.element.action);
+  //   url.searchParams.append('timezone', timeZone);
+  //   this.element.action = url.toString();
+  //   this.element.submit();
+  // }
 
 
-  setLineAuthUrl(event) {
+  setAuthUrl(event) {
     event.preventDefault();
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const url = new URL(this.element.action);

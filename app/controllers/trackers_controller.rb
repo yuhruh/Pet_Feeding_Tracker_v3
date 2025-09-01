@@ -39,7 +39,7 @@ class TrackersController < ApplicationController
 
     respond_to do |format|
       if @tracker.save
-        format.html { redirect_to pet_trackers_path, notice: "Tracker was successfully created." }
+        format.html { redirect_to pet_trackers_path, notice: t(".successfully_created") }
         format.json { render :show, status: :created, location: pet_trackers_path }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,7 +58,7 @@ class TrackersController < ApplicationController
 
     respond_to do |format|
       if @tracker.update(tracker_params)
-        format.html { redirect_to [@pet, :trackers], notice: "Tracker was successfully updated." }
+        format.html { redirect_to [@pet, :trackers], notice: t(".successfully_updated") }
         format.json { render :show, status: :ok, location: [@pet, :trackers] }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -72,7 +72,7 @@ class TrackersController < ApplicationController
     @tracker.destroy!
 
     respond_to do |format|
-      format.html { redirect_to [@pet, :trackers], status: :see_other, notice: "Tracker was successfully destroyed." }
+      format.html { redirect_to [@pet, :trackers], status: :see_other, notice: t(".successfully_destroyed") }
       format.json { head :no_content }
     end
   end
@@ -102,7 +102,7 @@ class TrackersController < ApplicationController
     def set_tracker
       @tracker = @pet.trackers.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      flash[:alert] = "Tracker not found"
+      flash[:alert] = t(".tracker_not_found")
       redirect_to pet_tracker_path
     end
 

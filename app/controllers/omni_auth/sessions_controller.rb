@@ -14,20 +14,20 @@ class OmniAuth::SessionsController < ApplicationController
     end
 
     if Current.user.present?
-      flash[:notice] = "#{@service.provider.to_s.humanize} connected"
+      flash[:notice] = t(".connected", provider: @service.provider.to_s.humanize)
       redirect_to new_pet_path
     else
       start_new_session_for @user
-      flash[:notice] = "You have been signed in. Welcome to Cat Feeding Tracker App."
+      flash[:notice] = t(".signed_in")
       redirect_to new_pet_path
     end
   end
 
   def failure
     if params[:message] == "access_denied"
-      flash[:alert] = "You cancelled the sign in process. Please try again."
+      flash[:alert] = t(".access_denied")
     else
-      flash[:alert] = "There was an issue with the sign in process. Please try again."
+      flash[:alert] = t(".issue_with_sign_in")
     end
 
     redirect_to new_session_path
@@ -53,15 +53,15 @@ class OmniAuth::SessionsController < ApplicationController
       @user = @service.user
     elsif User.find_by(email_address: user_info.dig(:info, :email)).present?
       service_methods = ConnectedService.where(user_id: User.find_by(email_address: user_info.dig(:info, :email))).pluck(:provider).map(&:to_s).join(", ")
-      flash[:notice] = "There's already an account with this email address. Please sign in with it using your #{service_methods} account to associate it with this service."
+      flash[:notice] = t(".account_exists", service_methods: service_methods)
       redirect_to new_session_path
     else
       if user_info.dig(:info, :email).blank? && user_info.provider == "line"
         session["omniauth.auth"] = user_info.to_hash
-        flash[:notice] = "Please enter an email address to complete your LINE registration."
+        flash[:notice] = t(".enter_email_for_line")
         redirect_to new_registrations_path and return
       elsif user_info.dig(:info, :email).blank?
-        flash[:alert] = "Please enter an email address to complete your registration."
+        flash[:alert] = t(".enter_email_for_registration")
         redirect_to new_registrations_path and return
       else
         @user = create_user

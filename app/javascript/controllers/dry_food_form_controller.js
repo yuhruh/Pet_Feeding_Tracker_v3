@@ -2,6 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = [ "foodType", "dryFoodIdField", "wetFoodField", "brand", "description", "amountInput", "dryFoodSelect", "amountValidationMessage", "wetFoodDropdown" ]
+  static values = {
+    addDryFoodAlert: String,
+    noFavoriteWetFoodAlert: String,
+    selectFavoriteWetFood: String,
+    enterValidAmount: String,
+    amountExceedsStock: String,
+    amountIsValid: String
+  }
 
   connect() {
     this.toggleFoodFields()
@@ -20,7 +28,7 @@ export default class extends Controller {
 
     if (selectedFoodType === "Dry") {
       if (dryFoodCount === 0) {
-        alert("You haven't added any dry food yet. Would you like to add one now?")
+        alert(this.addDryFoodAlertValue)
         window.location.href = "/dry_foods/new"
       } else {
         this.dryFoodIdFieldTarget.style.display = 'block'
@@ -42,13 +50,13 @@ export default class extends Controller {
 
     if (this.wetFoodsData.length === 0) {
       dropdown.style.display = 'none';
-      alert("You don't have any favorite wet food records (favorite score > 30) yet. Please fill the fields manually.");
+      alert(this.noFavoriteWetFoodAlertValue);
       this.brandTarget.disabled = false;
       this.descriptionTarget.disabled = false;
       this.wetFoodFieldTarget.style.display = 'none'
     } else {
       dropdown.style.display = 'block';
-      dropdown.innerHTML = `<option value="">Select a favorite wet food</option>`;
+      dropdown.innerHTML = `<option value="">${this.selectFavoriteWetFoodValue}</option>`;
 
       this.wetFoodsData.forEach((food, index) => {
         const option = document.createElement('option')
@@ -112,13 +120,13 @@ export default class extends Controller {
     }
 
     if (isNaN(currentAmount) || currentAmount <= 0) {
-      this.amountValidationMessageTarget.textContent = "Please enter a valid amount."
+      this.amountValidationMessageTarget.textContent = this.enterValidAmountValue
       this.amountValidationMessageTarget.style.color = "red"
     } else if (currentAmount > leftAmount) {
-      this.amountValidationMessageTarget.textContent = `Amount exceeds the ${leftAmount} left in stock.`
+      this.amountValidationMessageTarget.textContent = this.amountExceedsStockValue.replace('%{leftAmount}', leftAmount)
       this.amountValidationMessageTarget.style.color = "red"
     } else {
-      this.amountValidationMessageTarget.textContent = "Amount is valid."
+      this.amountValidationMessageTarget.textContent = this.amountIsValidValue
       this.amountValidationMessageTarget.style.color = "green"
     }
   }

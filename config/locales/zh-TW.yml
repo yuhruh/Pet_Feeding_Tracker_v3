@@ -198,6 +198,13 @@ zh-TW:
       new_user: "新使用者？"
       sign_up_now: "立即註冊！"
       alternative: "或用以下方式登入"
+  dry_food_form:
+    add_dry_food_alert: "您尚未新增任何乾糧。要現在新增嗎？"
+    no_favorite_wet_food_alert: "您還沒有任何喜愛的罐罐記錄（喜愛分數 > 30）。請手動填寫欄位。"
+    select_favorite_wet_food: "選擇喜愛的罐罐"
+    enter_valid_amount: "請輸入有效數量。"
+    amount_exceeds_stock: "數量超過庫存剩餘的 %{leftAmount}克。"
+    amount_is_valid: "數量有效。"
 
   trackers:
     form:

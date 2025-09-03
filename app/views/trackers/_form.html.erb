@@ -1,4 +1,13 @@
-<div class="container" data-controller="dry-food-form" data-dry-food-form-dry-foods-count="<%= @dry_foods_count %>" data-pet-id="<%= @pet.id %>">
+<div class="container" 
+     data-controller="dry-food-form" 
+     data-dry-food-form-dry-foods-count="<%= @dry_foods_count %>" 
+     data-pet-id="<%= @pet.id %>"
+     data-dry-food-form-add-dry-food-alert-value="<%= t('dry_food_form.add_dry_food_alert') %>"
+     data-dry-food-form-no-favorite-wet-food-alert-value="<%= t('dry_food_form.no_favorite_wet_food_alert') %>"
+     data-dry-food-form-select-favorite-wet-food-value="<%= t('dry_food_form.select_favorite_wet_food') %>"
+     data-dry-food-form-enter-valid-amount-value="<%= t('dry_food_form.enter_valid_amount') %>"
+     data-dry-food-form-amount-exceeds-stock-value="<%= t('dry_food_form.amount_exceeds_stock') %>"
+     data-dry-food-form-amount-is-valid-value="<%= t('dry_food_form.amount_is_valid') %>">
   <%= form_with(model: [@pet, tracker]) do |form| %>
     <div class="d-flex justify-content-center">
        <%= render 'shared/errors', obj: @tracker %>

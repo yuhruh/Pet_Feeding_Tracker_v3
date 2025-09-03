@@ -236,6 +236,13 @@ en:
       new_user: "New user?"
       sign_up_now: "Sign up now!"
       alternative: "Or sign in using"
+  dry_food_form:
+    add_dry_food_alert: "You haven't added any dry food yet. Would you like to add one now?"
+    no_favorite_wet_food_alert: "You don't have any favorite wet food records (favorite score > 30) yet. Please fill the fields manually."
+    select_favorite_wet_food: "Select a favorite wet food"
+    enter_valid_amount: "Please enter a valid amount."
+    amount_exceeds_stock: "Amount exceeds the %{leftAmount} (g) left in stock."
+    amount_is_valid: "Amount is valid."
 
   trackers:
     form:

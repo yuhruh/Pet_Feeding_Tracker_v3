@@ -8,14 +8,14 @@ class SessionsController < ApplicationController
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
       start_new_session_for user
-      flash[:notice] = t(".welcome")
+      flash[:notice] = "Welcome to Cat Feeding Tracker."
       redirect_to after_authentication_url
     else
       local_user = User.find_by(email_address: params[:email_address])
       if local_user.connected_services.any?
-        flash[:alert] = t(".previously_signed_in", providers: connected_services_string(local_user))
+        flash[:alert] = "You've previously signed in using your #{connected_services_string(local_user)} account. Please use that to sign in."
       else
-        flash[:alert] = t(".invalid_credentials")
+        flash[:alert] = "Try another email address or password."
       end
       redirect_to new_session_path
     end
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     terminate_session
-    flash[:alert] = t(".signed_out")
+    flash[:alert] = "You have been signed out."
     redirect_to new_session_path
   end
 

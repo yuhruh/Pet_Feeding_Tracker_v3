@@ -82,17 +82,6 @@ en:
       title: "Cat Feeding Tracker App"
       subtitle: "Track your cat's eating"
       description: "The Cat Feeding Tracker V2 is a web-based application designed to help cat owners meticulously monitor cats' feeding habits and amounts. The app offers a clear, visualized approach to tracking dietary intake, catering to multiple indoor cats."
-  authentication:
-    login_required: "You must be logged in to access the page"
-  omni_auth:
-    sessions:
-      connected: "%{provider} connected"
-      signed_in: "You have been signed in. Welcome to Cat Feeding Tracker App."
-      access_denied: "You cancelled the sign in process. Please try again."
-      issue_with_sign_in: "There was an issue with the sign in process. Please try again."
-      account_exists: "There's already an account with this email address. Please sign in with it using your %{service_methods} account to associate it with this service."
-      enter_email_for_line: "Please enter an email address to complete your LINE registration."
-      enter_email_for_registration: "Please enter an email address to complete your registration."
   layouts:
     navigation:
       home: "Home"
@@ -137,9 +126,6 @@ en:
       email_placeholder: "Enter your email address"
 
   dry_foods:
-    successfully_created: "Dry Food was successfully created."
-    successfully_destroyed: "%{brand} - %{description} was successfully destroyed."
-    dry_food_not_found: "Dry Food not found."
     form:
       brand: "Brand"
       description: "Description"
@@ -172,9 +158,6 @@ en:
       reset_password_page: "You can reset your password within the next 15 minutes on this password reset page:"
 
   pets:
-    successfully_created: "Pet was successfully created."
-    successfully_updated: "Pet was successfully updated."
-    successfully_destroyed: "Pet was successfully destroyed."
     form:
       petname: "Pet Name"
       petname_placeholder: "Enter your cat's name"
@@ -223,7 +206,6 @@ en:
       confirm: "Are you sure to delete this pet %{petname}? This pet and associated trackers will all gone.."
 
   registrations:
-    successfully_signed_up: "You've successfully signed up to Pet Feeding Tracker. Welcome %{username}!"
     new:
       title: "Sign up for Cat Trackers App 🐾🐾"
       caption: "Sign Up to create your account and start cat feeding tracker 😸."
@@ -242,10 +224,6 @@ en:
       account: "Have an account?" 
       signin: "Sign In"
   sessions:
-    welcome: "Welcome to Pet Feeding Tracker."
-    previously_signed_in: "You've previously signed in using your %{providers} account. Please use that to sign in."
-    invalid_credentials: "Try another email address or password."
-    signed_out: "You have been signed out."
     new:
       title: "Log In Cat Trackers App"
       email: "Email"
@@ -260,10 +238,6 @@ en:
       alternative: "Or sign in using"
 
   trackers:
-    successfully_created: "Tracker was successfully created."
-    successfully_updated: "Tracker was successfully updated."
-    successfully_destroyed: "Tracker was successfully destroyed."
-    tracker_not_found: "Tracker not found"
     form:
       date: "Date"
       feed_time: "Feed Time"
@@ -365,8 +339,6 @@ en:
       greeting: "Hi"
 
   users:
-    successfully_updated: "Account was successfully updated."
-    successfully_destroyed: "%{name} and all associated records were successfully deleted."
     edit:
       title: "Edit %{username}'s Profile"
       username: "User Name"

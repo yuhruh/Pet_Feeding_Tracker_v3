@@ -44,17 +44,6 @@ zh-TW:
       title: "貓咪餵食飲食記錄"
       subtitle: "記錄你家貓主子的飲食"
       description: "貓咪餵食飲食記錄第三版是一個網路應用程式，旨在幫助貓飼主仔細監控貓的餵食習慣和食量。該應用程式提供清晰、可視化的方法來追蹤飲食攝入量，適用於多隻室內貓。"
-  authentication:
-    login_required: "您必須登入才能存取此頁面"
-  omni_auth:
-    sessions:
-      connected: "%{provider} 已連接"
-      signed_in: "您已成功登入。歡迎使用貓咪餵食記錄 App。"
-      access_denied: "您已取消登入程序。請再試一次。"
-      issue_with_sign_in: "登入程序發生問題。請再試一次。"
-      account_exists: "此電子郵件地址已有帳戶。請使用您的 %{service_methods} 帳戶登入使用此服務。"
-      enter_email_for_line: "請輸入電子郵件地址以完成您的 LINE 註冊。"
-      enter_email_for_registration: "請輸入電子郵件地址以完成您的註冊。"
   layouts:
     navigation:
       home: "首頁"
@@ -99,9 +88,6 @@ zh-TW:
       email_placeholder: "輸入您的電子郵件"
 
   dry_foods:
-    successfully_created: "成功建立乾糧"
-    successfully_destroyed: "%{brand} - %{description} 已成功刪除"
-    dry_food_not_found: "找不到乾糧"
     form:
       brand: "品牌"
       description: "描述"
@@ -134,9 +120,6 @@ zh-TW:
       reset_password_page: "您可以在接下來的15分鐘內重設您的密碼："
 
   pets:
-    successfully_created: "成功建立寵物資訊"
-    successfully_updated: "成功更新寵物資訊"
-    successfully_destroyed: "成功刪除寵物資訊"
     form:
       petname: "寵物名字"
       petname_placeholder: "輸入貓咪的名字"
@@ -185,7 +168,6 @@ zh-TW:
       confirm: "您確定要刪除這隻寵物 %{petname} 嗎？此寵物及其相關的飲食記錄將全部消失。"
 
   registrations:
-    successfully_signed_up: "您已成功註冊寵物餵食記錄。歡迎您，%{username}！"
     new:
       title: "註冊貓貓飲食 App 🐾🐾"
       caption: "註冊帳號並開始使用飲食記錄 😸."
@@ -204,10 +186,6 @@ zh-TW:
       account: "已經有帳號？"
       signin: "登入"
   sessions:
-    welcome: "歡迎來到寵物餵食記錄"
-    previously_signed_in: "您之前曾使用您的 %{providers} 帳戶登入。請使用該帳戶登入。"
-    invalid_credentials: "請嘗試其他電子郵件地址或密碼。"
-    signed_out: "您已登出。"
     new:
       title: "登入貓貓飲食 App"
       email: "電子郵件"
@@ -222,10 +200,6 @@ zh-TW:
       alternative: "或用以下方式登入"
 
   trackers:
-    successfully_created: "成功建立飲食紀錄"
-    successfully_updated: "成功更新飲食紀錄"
-    successfully_destroyed: "成功刪除飲食紀錄"
-    tracker_not_found: "找不到飲食紀錄"
     form:
       date: "日期"
       feed_time: "餵食時間"
@@ -327,8 +301,6 @@ zh-TW:
       greeting: "嗨"
 
   users:
-    successfully_updated: "帳戶已成功更新。"
-    successfully_destroyed: "%{name} 及所有相關記錄已成功刪除。"
     edit:
       title: "編輯%{username}的個人檔案"
       username: "使用者名稱"

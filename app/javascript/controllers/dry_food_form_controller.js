@@ -48,12 +48,12 @@ export default class extends Controller {
       this.wetFoodFieldTarget.style.display = 'none'
     } else {
       dropdown.style.display = 'block';
-      dropdown.innerHTML = '<option value="">Select a favorite wet food</option>';
+      dropdown.innerHTML = `<option value="">Select a favorite wet food</option>`;
 
       this.wetFoodsData.forEach((food, index) => {
         const option = document.createElement('option')
         option.value = index
-        option.textContent = `${food.brand} - ${food.description} - Favorite Score: ${food.favorite_score}`;
+        option.textContent = `${food.brand} - ${food.description} - "Favorite Score": ${food.favorite_score}`;
         dropdown.appendChild(option)
       })
     }

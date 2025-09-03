@@ -46,7 +46,7 @@ class RegistrationsController < ApplicationController
 
       start_new_session_for @user
       UserMailer.with(user: @user).welcome.deliver_later
-      redirect_to new_pet_path, notice: t(".successfully_signed_up", username: @user.username.capitalize)
+      redirect_to new_pet_path, notice: "You've successfully signed up to Pet Feeding Tracker. Welcome #{@user.username.capitalize}!"
     else
       flash[:alert] = @user.errors.full_messages.join(", ")
       render :new, status: :unprocessable_entity

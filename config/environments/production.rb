@@ -62,7 +62,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_options = { from: "yuhruhgrape@gmail.com" }
+  config.action_mailer.default_options = { from: "ajicaretracker@gmail.com" }
   config.action_mailer.default_url_options = { host: "pet-feeding-tracker-v3-bv01.onrender.com" }
   # config.active_job.queue_adapter = :async
 
@@ -71,7 +71,7 @@ Rails.application.configure do
     address:         "smtp.gmail.com",
     port:            587,
     # domain:          "example.com",
-    user_name:       "yuhruhgrape@gmail.com",
+    user_name:       "ajicaretracker@gmail.com",
     password:        Rails.application.credentials.dig(:smtp, :password),
     authentication:  "plain",
     enable_starttls: true,

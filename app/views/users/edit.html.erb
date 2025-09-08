@@ -46,7 +46,8 @@
             <% if @user.timezone.nil? %>
               <%= form.text_field :timezone, data: { "time_zone_target"=> "tz" }, class: "form-control" %>
             <% else %>
-              <%= form.text_field :timezone, value: @user.timezone, data: { "time_zone_target"=> "tz" }, id: "disabledTextInput", class: "form-control", readonly: true %>
+              <%= form.text_field :timezone, value: @user.timezone, data: { "time_zone_target"=> "tz" }, id: "disabledTextInput", class: "form-control", readonly: true, style: "background-color: #d5dbdb" %>
+              <span id="passwordHelpBlock" class="form-text"><%= t('users.edit.timezone_help') %></span>
             <% end %>
           </div>
         </div>

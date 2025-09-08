@@ -106,6 +106,7 @@ en:
       log_out: "Log Out"
       log_in: "Log In"
       sign_up: "Sign Up"
+      lang: " Language "
   shared:
     errors:
       prohibited: "prohibited this"
@@ -238,7 +239,7 @@ en:
       alternative: "Or sign in using"
   dry_food_form:
     add_dry_food_alert: "You haven't added any dry food yet. Would you like to add one now?"
-    no_favorite_wet_food_alert: "You don't have any favorite wet food records (favorite score > 30) yet. Please fill the fields manually."
+    no_favorite_wet_food_alert: "You don't have any favorite wet food records (favorite score > 20) yet. Please fill the fields manually."
     select_favorite_wet_food: "Select a favorite wet food"
     enter_valid_amount: "Please enter a valid amount."
     amount_exceeds_stock: "Amount exceeds the %{leftAmount} (g) left in stock."
@@ -356,6 +357,7 @@ en:
       password_confirmation: "Password Confirmation"
       password_confirmation_placeholder: "Password confirmation"
       time_zone: "Time Zone"
+      timezone_help: "Timezone is readonly, can not edit"
       submit: "Update Profile"
     show:
       title: "%{username}'s Profile"

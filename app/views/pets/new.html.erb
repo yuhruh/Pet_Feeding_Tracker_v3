@@ -7,7 +7,7 @@
     <br>
 
     <div class="d-flex justify-content-center">
-      <%= link_to t('pets.new.back', username: Current.user.username.capitalize), pets_path, class: "link-opacity-75-hover" %>
+      <%= link_to t('pets.new.back', username: Current.user.username.split(' ').map(&:capitalize).join(' ')), pets_path, class: "link-opacity-75-hover" %>
     </div>
   </div>
 </div>

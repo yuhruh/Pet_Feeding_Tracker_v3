@@ -4,7 +4,7 @@
     <%= render @pet %>
 
     <div class="text-center">
-      <%= link_to t('pets.show.back', username: Current.user.username.capitalize), pets_path, class: "btn btn-outline-primary" %>
+      <%= link_to t('pets.show.back', username: Current.user.username.split(" ").map(&:capitalize).join(" ")), pets_path, class: "btn btn-outline-primary" %>
       <%= link_to t('pets.show.edit', petname: @pet.petname.capitalize), edit_pet_path(@pet), class: "btn btn-outline-success" %>
       <%= link_to t('pets.show.destroy', petname: @pet.petname.capitalize), @pet, class: "btn btn-outline-danger", data: {"turbo-confirm":  t('pets.show.confirm', petname: @pet.petname.capitalize), "turbo-method": :delete } %>
     </div>

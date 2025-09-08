@@ -75,12 +75,13 @@
       <% end %>
     </ul>
 
-    <div class="d-flex justify-content-end pe-3">
-      <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-globe"></i><%= t('.lang') %></a>
+      <ul class="dropdown-menu">
         <% I18n.available_locales.each do |locale| %>
-          <li><%= link_to locale_to_word_flag(locale), url_for(locale: locale), class: "nav-link active #{(locale == I18n.locale ? 'border-bottom' : '')}" %></li>
+          <li><%= link_to locale_to_word_flag(locale), url_for(locale: locale), class: "dropdown-item #{(locale == I18n.locale ? 'active' : '')}" %></li>
         <% end %>
       </ul>
-    </div>
+    </li>
   </div>
 </nav>

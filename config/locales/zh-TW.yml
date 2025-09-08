@@ -159,6 +159,8 @@ zh-TW:
       edit: "編輯 %{petname} 的寵物檔案"
       show_record: "查看 %{petname} 的紀錄"
       add_record: "新增 %{petname} 的紀錄"
+      destroy: "刪除 %{petname} 的此寵物檔案和紀錄"
+      confirm: "您確定要刪除這隻寵物 %{petname} 嗎？此寵物及其相關的飲食記錄將全部消失。"
     new:
       title: "新增寵物"
       back: "回到 %{username} 的寵物列表"
@@ -332,7 +334,25 @@ zh-TW:
       delete: "刪除個人檔案"
       confirm: "您確定要刪除此使用者帳戶嗎？該使用者和相關的飲食記錄將全部消失。"
 
+  will_paginate:
+    previous_label: "上一頁"
+    next_label: "下一頁"
+    page_gap: "..."
+    page_entries_info:
+      single_page:
+        zero: "沒有%{model}"
+        one: "顯示 1 筆%{model}"
+        other: "顯示所有 %{count} 筆%{model}"
+      single_page_html:
+        zero: "沒有%{model}"
+        one: "顯示<b>1</b> 筆%{model}"
+        other: "顯示&nbsp;<b>所有%{count}</b> 筆%{model}"
+      multi_page: "顯示%{model} %{from} - %{to} / 共 %{count} 筆"
+      multi_page_html: "顯示%{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> / 共 <b>%{count}</b> 筆"
   activerecord:
+    models:
+      pet: "寵物"
+      tracker: "飲食記錄"
     attributes:
       user:
         username: "使用者名稱"

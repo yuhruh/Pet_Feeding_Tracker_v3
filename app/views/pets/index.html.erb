@@ -19,13 +19,14 @@
     <h5 class="text-center"><%= t('pets.index.no_pets') %> <%= image_tag('add_pet.png', width:'25px', height:'25px') %></h5>
   <% else %>
     <% @pets.each do |pet| %>
-      <div class="card mb-3" style="width: 40rem; background: #f2f4f6">
+      <div class="card mb-3" style="width: 45rem; background: #f2f4f6">
         <h4 class="text-center mb-3"><i><u><%= t('pets.index.profile', petname: pet.petname) %></u></i></h4>
         <%= render pet %>
         <div class="text-center mb-3">
           <%= link_to t('pets.index.edit', petname: pet.petname.capitalize), edit_pet_path(pet), class: "btn btn-outline-success" %>
           <%= link_to t('pets.index.show_record', petname: pet.petname.capitalize), pet_trackers_path(pet), class: "btn btn-outline-secondary" %>
           <%= link_to t('pets.index.add_record', petname: pet.petname.capitalize), new_pet_tracker_path(pet), class: "btn btn-outline-primary" %>
+          <%= link_to t('pets.index.destroy', petname: pet.petname.capitalize), @pet, class: "btn btn-outline-danger", data: {"turbo-confirm":  t('pets.index.confirm', petname: pet.petname.capitalize), "turbo-method": :delete } %>
         </div>
       </div>
     <% end %>

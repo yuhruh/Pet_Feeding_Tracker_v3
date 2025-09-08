@@ -197,6 +197,8 @@ en:
       edit: "Edit %{petname}'s Profile"
       show_record: "Show %{petname}'s Record"
       add_record: "Add %{petname}'s Record"
+      destroy: "Destroy %{petname}'s Profile and the record"
+      confirm: "Are you sure to delete this pet %{petname}? This pet and associated trackers will all gone."
     new:
       title: "Add for a Pet"
       back: "Back to %{username}'s Pets List"
@@ -204,7 +206,7 @@ en:
       back: "Back to %{username}'s Pets List"
       edit: "Edit %{petname}'s Profile"
       destroy: "Destroy %{petname}'s Profile and the record"
-      confirm: "Are you sure to delete this pet %{petname}? This pet and associated trackers will all gone.."
+      confirm: "Are you sure to delete this pet %{petname}? This pet and associated trackers will all gone."
 
   registrations:
     new:

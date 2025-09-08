@@ -340,11 +340,11 @@ zh-TW:
     page_gap: "..."
     page_entries_info:
       single_page:
-        zero: "沒有%{model}"
+        zero: "沒有記錄"
         one: "顯示 1 筆%{model}"
         other: "顯示所有 %{count} 筆%{model}"
       single_page_html:
-        zero: "沒有%{model}"
+        zero: "沒有記錄"
         one: "顯示<b>1</b> 筆%{model}"
         other: "顯示&nbsp;<b>所有%{count}</b> 筆%{model}"
       multi_page: "顯示%{model} %{from} - %{to} / 共 %{count} 筆"

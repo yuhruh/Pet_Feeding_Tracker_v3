@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     # get "dry_foods/add"
     # User Profile
     resources :users, except: [:new]
-    get "/pets/:pet_id/favorites", to: 'trackers#favorite_food'
     resources :pets do
       resources :trackers, except: [:show] do
         get 'random_wet_foods', on: :collection
+        get 'favorite_food', on: :collection
       end
     end
     resources :dry_foods

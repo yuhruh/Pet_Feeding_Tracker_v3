@@ -55,7 +55,7 @@
             <ul class="dropdown-menu">
               <% Current.user.pets.select(&:persisted?).each do |pet| %>
                 <li>
-                  <%= link_to "#{t('.view_favorite', petname: pet.petname.capitalize)}", "/pets/#{pet.id}/favorites", class: "dropdown-item bi-search" %>
+                  <%= link_to "#{t('.view_favorite', petname: pet.petname.capitalize)}", favorite_food_pet_trackers_path(pet), class: "dropdown-item bi-search" %>
                 </li>
               <% end %>
             </ul>

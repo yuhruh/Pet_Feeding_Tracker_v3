@@ -25,21 +25,21 @@
             <th scope="col"><%= t('trackers.favorite_food.brand') %></th>
             <th scope="col"><%= t('trackers.favorite_food.description') %></th>
             <th scope="col"><%= t('trackers.favorite_food.result') %></th>
-            <th scope="col"><%= t('trackers.favorite_food.favorite_score') %></th>
           </tr>
         </thead>
         <tbody class="table-group-divider" id="trackers-body">
-          <% @pet.trackers.order(favorite_score: 'desc').each_with_index do |pet_tracker, idx| %>
-            <% if pet_tracker.result.present? %>
-              <tr class='text-center justify-content-center' data-food-type="<%= pet_tracker.food_type %>">
-                <th scope="row"><%= idx+1 %></th>
-                <td><%= pet_tracker.food_type.capitalize %></td>
-                <td><%= pet_tracker.brand %></td>
-                <td><%= pet_tracker.description %></td>
-                <td><%= pet_tracker.result %></td>
-                <td><%= pet_tracker.favorite_score %></td>
-              </tr>
-            <% end %>
+          <% @favorite_foods.each_with_index do |food, idx| %>
+            <tr class='text-center justify-content-center' data-food-type="<%= food[:food_type] %>">
+              <th scope="row"><%= idx + 1 %></th>
+              <td><%= food[:food_type].capitalize %></td>
+              <td><%= food[:brand] %></td>
+              <td><%= food[:description] %></td>
+              <td>
+                <% food[:results].each do |result| %>
+                  <%= result[:date] %> _ <%= result[:result] %> : <%= result[:favorite_score] %><br>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
         </tbody>
       </table>

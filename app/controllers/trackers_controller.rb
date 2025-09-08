@@ -94,6 +94,20 @@ class TrackersController < ApplicationController
     render json: @search_results.to_json(only: [:brand, :description, :favorite_score, :amount])
   end
 
+  def favorite_food
+    @favorite_foods = @pet.trackers.where.not(result: [nil, ""])
+                                    .order(date: :asc)
+                                    .group_by { |t| [t.food_type, t.brand, t.description] }
+                                    .map do |(food_type, brand, description), trackers|
+      {
+        food_type: food_type,
+        brand: brand,
+        description: description,
+        results: trackers.last(5).map { |t| { date: t.date, result: t.result, favorite_score: t.favorite_score } }
+      }
+    end
+  end
+
   private
     def set_pet
       @pet = Pet.find(params[:pet_id])

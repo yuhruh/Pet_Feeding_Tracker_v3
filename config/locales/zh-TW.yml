@@ -286,7 +286,7 @@ zh-TW:
       food_type: "食物類型"
       brand: "品牌"
       description: "描述"
-      result: "結果"
+      result: "結果 & 喜愛程度(參考)"
       favorite_score: "喜愛分數（參考）"
     index:
       title: "%{petname}的飲食記錄"

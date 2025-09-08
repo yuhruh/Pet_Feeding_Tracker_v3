@@ -286,7 +286,7 @@ en:
       amount: "Amount(g)"
       left_amount: "Left Amount(g)"
       total_ate_amount: "Total Ate Amount(g)"
-      result: "Result"
+      result: "Result & Favorite Extend (ref)"
       favorite_score: "Favorite Score (ref)"
       weight: "Weight (kg)"
       note: "Note"
@@ -324,7 +324,7 @@ en:
       food_type: "Food Type"
       brand: "Brand"
       description: "Description"
-      result: "Result"
+      result: "Result & Favorite Extend (ref)"
       favorite_score: "Favorite Score (ref)"
     index:
       title: "%{petname}'s Trackers"

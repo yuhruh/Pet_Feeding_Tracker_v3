@@ -188,6 +188,8 @@ zh-TW:
       submit: "註冊"
       account: "已經有帳號？"
       signin: "登入"
+      alternative: "或用以下方式註冊"
+      google_signup_hint_html: '如果您使用 <i class="bi bi-google"></i> (Google) 註冊，請使用 <i class="bi bi-browser-chrome"></i> Chrome / <i class="bi bi-browser-edge"></i> Edge / <i class="bi bi-browser-firefox"></i> FireFox 開啟連結'
   sessions:
     new:
       title: "登入貓貓飲食 App"

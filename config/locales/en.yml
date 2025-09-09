@@ -226,6 +226,8 @@ en:
       submit: "Sign Up"
       account: "Have an account?" 
       signin: "Sign In"
+      alternative: "Or sign up using"
+      google_signup_hint_html: 'If you are using <i class="bi bi-google"></i> (Google) to sign up, please use <i class="bi bi-browser-chrome"></i> Chrome / <i class="bi bi-browser-edge"></i> Edge / <i class="bi bi-browser-firefox"></i> FireFox to open the link'
   sessions:
     new:
       title: "Log In Cat Trackers App"

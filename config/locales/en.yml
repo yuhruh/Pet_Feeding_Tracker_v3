@@ -114,6 +114,10 @@ en:
     time_zone_select:
       time_zone: "Time Zone"
   passwords:
+    create_success: "Password reset instructions sent (if user with that email address exists)."
+    update_success: "Password has been reset."
+    update_failed: "Update failed: %{error_messages}."
+    invalid_or_expired_link: "Password reset link is invalid or has expired."
     edit:
       title: "Reset your password"
       password: "Password"
@@ -127,6 +131,9 @@ en:
       email_placeholder: "Enter your email address"
 
   dry_foods:
+    create_success: "Dry Food was successfully created."
+    destroy_success: "%{brand} - %{description} was successfully destroyed."
+    not_found: "Dry Food not found."
     form:
       brand: "Brand"
       description: "Description"
@@ -159,6 +166,9 @@ en:
       reset_password_page: "You can reset your password within the next 15 minutes on this password reset page:"
 
   pets:
+    create_success: "Pet was successfully created."
+    update_success: "Pet %{petname} was successfully updated."
+    destroy_success: "Pet %{petname} was successfully destroyed."
     form:
       petname: "Pet Name"
       petname_placeholder: "Enter your cat's name"
@@ -209,6 +219,8 @@ en:
       confirm: "Are you sure to delete this pet %{petname}? This pet and associated trackers will all gone."
 
   registrations:
+    create:
+      success: "You've successfully signed up to Pet Feeding Tracker. Welcome %{username}!"
     new:
       title: "Sign up for Cat Trackers App 🐾🐾"
       caption: "Sign Up to create your account and start cat feeding tracker 😸."
@@ -229,6 +241,13 @@ en:
       alternative: "Or sign up using"
       google_signup_hint_html: 'If you are using <i class="bi bi-google"></i> (Google) to sign up, please use <i class="bi bi-browser-chrome"></i> Chrome / <i class="bi bi-browser-edge"></i> Edge / <i class="bi bi-browser-firefox"></i> FireFox to open the link'
   sessions:
+    create:
+      welcome: "Welcome to Cat Feeding Tracker."
+      existing_connection: "You've previously signed in using your %{service} account. Please use that to sign in."
+      invalid_credentials: "Try another email address or password."
+      try_again_later: "Try again later."
+    destroy:
+      signed_out: "You have been signed out."
     new:
       title: "Log In Cat Trackers App"
       email: "Email"
@@ -250,6 +269,10 @@ en:
     amount_is_valid: "Amount is valid."
 
   trackers:
+    create_success: "Tracker was successfully created."
+    update_success: "Tracker was successfully updated."
+    destroy_success: "Tracker was successfully destroyed."
+    not_found: "Tracker not found."
     form:
       date: "Date"
       feed_time: "Feed Time"
@@ -351,6 +374,8 @@ en:
       greeting: "Hi"
 
   users:
+    update_success: "Account was successfully updated."
+    destroy_success: "%{name} and all associated records were successfully deleted."
     edit:
       title: "Edit %{username}'s Profile"
       username: "User Name"
@@ -373,6 +398,18 @@ en:
       edit: "Edit Profile"
       delete: "Delete Profile"
       confirm: "Are you sure to delete this user account? The user and associated trackers will all gone.."
+  
+  flash:
+    notice:
+      connected: "%{provider} connected"
+      signed_in: "You have been signed in. Welcome to Cat Feeding Tracker App."
+      existing_account: "There's already an account with this email address. Please sign in with it using your %{service_methods} account to associate it with this service."
+      enter_email_for_line: "Please enter an email address to complete your LINE registration."
+    alert:
+      must_be_logged_in: "You must be logged in to access the page"
+      cancelled_signin: "You cancelled the sign in process. Please try again."
+      issue_with_signin: "There was an issue with the sign in process. Please try again."
+      enter_email_to_register: "Please enter an email address to complete your registration."
   
   activerecord:
     attributes:

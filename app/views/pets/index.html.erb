@@ -26,7 +26,7 @@
           <%= link_to t('pets.index.edit', petname: pet.petname.capitalize), edit_pet_path(pet), class: "btn btn-outline-success" %>
           <%= link_to t('pets.index.show_record', petname: pet.petname.capitalize), pet_trackers_path(pet), class: "btn btn-outline-secondary" %>
           <%= link_to t('pets.index.add_record', petname: pet.petname.capitalize), new_pet_tracker_path(pet), class: "btn btn-outline-primary" %>
-          <%= link_to t('pets.index.destroy', petname: pet.petname.capitalize), @pet, class: "btn btn-outline-danger", data: {"turbo-confirm":  t('pets.index.confirm', petname: pet.petname.capitalize), "turbo-method": :delete } %>
+          <%= link_to t('pets.index.destroy', petname: pet.petname.capitalize), pet_path(pet), class: "btn btn-outline-danger", data: {"turbo-confirm":  t('pets.index.confirm', petname: pet.petname.capitalize), "turbo-method": :delete } %>
         </div>
       </div>
     <% end %>

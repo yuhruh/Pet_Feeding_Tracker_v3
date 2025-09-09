@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
-  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
+  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: t(".try_again_later") }
 
   def new
   end
@@ -8,14 +8,14 @@ class SessionsController < ApplicationController
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
       start_new_session_for user
-      flash[:notice] = "Welcome to Cat Feeding Tracker."
+      flash[:notice] = t(".welcome")
       redirect_to after_authentication_url
     else
       local_user = User.find_by(email_address: params[:email_address])
       if local_user.connected_services.any?
-        flash[:alert] = "You've previously signed in using your #{connected_services_string(local_user)} account. Please use that to sign in."
+        flash[:alert] = t(".existing_connection", service: connected_services_string(local_user))
       else
-        flash[:alert] = "Try another email address or password."
+        flash[:alert] = t(".invalid_credentials")
       end
       redirect_to new_session_path
     end
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     terminate_session
-    flash[:alert] = "You have been signed out."
+    flash[:alert] = t(".signed_out")
     redirect_to new_session_path
   end
 

@@ -29,7 +29,7 @@ class PetsController < ApplicationController
 
     respond_to do |format|
       if @pet.save
-        format.html { redirect_to @pet, notice: "Pet was successfully created." }
+        format.html { redirect_to @pet, notice: t('.create_success') }
         format.json { render :show, status: :created, location: @pet }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class PetsController < ApplicationController
   def update
     respond_to do |format|
       if @pet.update(pet_params)
-        format.html { redirect_to @pet, notice: "Pet was successfully updated." }
+        format.html { redirect_to @pet, notice: t('.update_success', petname: @pet.petname) }
         format.json { render :show, status: :ok, location: @pet }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,10 +53,11 @@ class PetsController < ApplicationController
 
   # DELETE /pets/1 or /pets/1.json
   def destroy
+    name = @pet.petname
     @pet.destroy!
 
     respond_to do |format|
-      format.html { redirect_to pets_path, status: :see_other, notice: "Pet was successfully destroyed." }
+      format.html { redirect_to pets_path, status: :see_other, notice: t('.destroy_success', petname: name) }
       format.json { head :no_content }
     end
   end

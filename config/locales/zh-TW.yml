@@ -76,6 +76,10 @@ zh-TW:
     time_zone_select:
       time_zone: "時區"
   passwords:
+    create_success: "密碼重設操作說明已寄出（如果該電子郵件地址存在）。"
+    update_success: "密碼已重設。"
+    update_failed: "更新失敗：%{error_messages}。"
+    invalid_or_expired_link: "密碼重設連結無效或已過期。"
     edit:
       title: "重設密碼"
       password: "密碼"
@@ -89,6 +93,9 @@ zh-TW:
       email_placeholder: "輸入您的電子郵件"
 
   dry_foods:
+    create_success: "乾糧已成功新增"
+    destroy_success: "%{brand} - %{description} 已成功刪除"
+    not_found: "找不到乾糧"
     form:
       brand: "品牌"
       description: "描述"
@@ -121,6 +128,9 @@ zh-TW:
       reset_password_page: "您可以在接下來的15分鐘內重設您的密碼："
 
   pets:
+    create_success: "寵物已成功新增。"
+    update_success: "寵物%{petname}已成功更新。"
+    destroy_success: "寵物%{petname}已成功刪除。"
     form:
       petname: "寵物名字"
       petname_placeholder: "輸入貓咪的名字"
@@ -171,6 +181,8 @@ zh-TW:
       confirm: "您確定要刪除這隻寵物 %{petname} 嗎？此寵物及其相關的飲食記錄將全部消失。"
 
   registrations:
+    create:
+      success: "您已成功註冊寵物餵食追蹤器。歡迎您 %{username}！"
     new:
       title: "註冊貓貓飲食 App 🐾🐾"
       caption: "註冊帳號並開始使用飲食記錄 😸."
@@ -191,6 +203,13 @@ zh-TW:
       alternative: "或用以下方式註冊"
       google_signup_hint_html: '如果您使用 <i class="bi bi-google"></i> (Google) 註冊，請使用 <i class="bi bi-browser-chrome"></i> Chrome / <i class="bi bi-browser-edge"></i> Edge / <i class="bi bi-browser-firefox"></i> FireFox 開啟連結'
   sessions:
+    create:
+      welcome: "歡迎使用貓咪餵食記錄 App"
+      existing_connection: "您之前已使用您的 %{service} 帳戶登入。請用它登入。"
+      invalid_credentials: "請試著輸入其他的電子郵件或密碼"
+      try_again_later: "請稍後再試"
+    destroy:
+      signed_out: "您已成功登出"
     new:
       title: "登入貓貓飲食 App"
       email: "電子郵件"
@@ -212,6 +231,10 @@ zh-TW:
     amount_is_valid: "數量有效。"
 
   trackers:
+    create_success: "飲食記錄已成功新增"
+    update_success: "飲食記錄已成功更新"
+    destroy_success: "飲食記錄已成功刪除"
+    not_found: "找不到此筆飲食記錄"
     form:
       date: "日期"
       feed_time: "餵食時間"
@@ -313,6 +336,8 @@ zh-TW:
       greeting: "嗨"
 
   users:
+    update_success: "帳戶已成功更新"
+    destroy_success: "%{name} 和所有相關記錄已成功刪除"
     edit:
       title: "編輯%{username}的個人檔案"
       username: "使用者名稱"
@@ -335,6 +360,18 @@ zh-TW:
       edit: "編輯個人檔案"
       delete: "刪除個人檔案"
       confirm: "您確定要刪除此使用者帳戶嗎？該使用者和相關的飲食記錄將全部消失。"
+
+  flash:
+    notice:
+      connected: "%{provider} 已連結"
+      signed_in: "您已成功登入，歡迎使用貓咪餵食記錄 App。"
+      existing_account: "此電子郵件已有帳戶，請使用您的 %{service_methods} 帳戶登入以進行關聯。"
+      enter_email_for_line: "請輸入電子郵件以完成 LINE 註冊。"
+    alert:
+      must_be_logged_in: "您必須登入才能訪問此頁面"
+      cancelled_signin: "您已取消登入流程，請再試一次。"
+      issue_with_signin: "登入時發生問題，請再試一次。"
+      enter_email_to_register: "請輸入電子郵件以完成註冊。"
 
   will_paginate:
     previous_label: "上一頁"

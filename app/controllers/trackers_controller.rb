@@ -80,11 +80,13 @@ class TrackersController < ApplicationController
   # app/controllers/trackers_controller.rb
 
   def random_wet_foods
-    # This finds the last 50 wet food entries and picks 5 random ones
-    # We limit to 50 to keep the query efficient on a large database
-    @random_wet_foods = @pet.trackers.where(food_type: 'Wet')
-                                    .where("favorite_score > ?", 20)
-                                    .order(created_at: :desc).limit(50).sample(5)
+    # This finds unique wet food entries and picks 5 random ones
+    wet_foods = @pet.trackers
+                            .where(food_type: 'Wet')
+                            .where("favorite_score > ?", 20)
+                            .order(created_at: :asc)
+    unique_wet_foods = wet_foods.uniq { |food| [food.brand, food.description] }
+    @random_wet_foods = unique_wet_foods.sample(5)
     
     render json: @random_wet_foods.to_json(only: [:brand, :description, :favorite_score, :amount])
   end

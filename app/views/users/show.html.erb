@@ -1,8 +1,8 @@
 <div class="container mb-2 mt-2" data-controller="timezone">
   <div class="px-6 py-4 border border-dark-subtle rounded-3">
-    <h1 class="text-center mt-4" style="font-weight: bold;"><%= t('users.show.title', username: Current.user.username.split(' ').map(&:capitalize).join(' ')) %></h1>
+    <h1 class="text-center text-decoration-underline mt-4 mb-3" style="font-weight: bold;"><%= t('users.show.title', username: Current.user.username.split(' ').map(&:capitalize).join(' ')) %></h1>
 
-    <div class='text-center'>
+    <div class='text-center fs-5 mb-3'>
       <p>
         <strong><%= t('users.show.username') %></strong>
         <%= Current.user.username.split(' ').map(&:capitalize).join(' ') %>
@@ -28,7 +28,7 @@
 
     </div>
 
-    <div class="text-center m-4">
+    <div class="text-center mt-3">
       <%= link_to t('users.show.edit'), edit_user_path(Current.user), class: "btn btn-outline-success btn-sm mb-4" %>
       <%= link_to t('users.show.delete'), user_path(Current.user), class: "btn btn-outline-danger btn-sm mb-4 text-danger", data: {"turbo-confirm":  t('users.show.confirm'), "turbo-method": :delete } %>
     </div>

@@ -63,14 +63,14 @@
         <% end %>
 
         <li class="nav-item">
-          <%= button_to t('.log_out'), session_path, class: "nav-link bi bi-person-walking", method: :delete %>
+          <%= button_to t('.log_out'), session_path, class: "nav-link bi bi-box-arrow-right", method: :delete %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to t('.log_in'), new_session_path, class:"nav-link" %>
+          <%= link_to t('.log_in'), new_session_path, class:"nav-link bi bi-box-arrow-in-right" %>
         </li>
         <li class="nav-item">
-          <%= link_to t('.sign_up'), new_registrations_path, class:"nav-link" %>
+          <%= link_to t('.sign_up'), new_registrations_path, class:"nav-link bi bi-person-add" %>
         </li>
       <% end %>
     </ul>

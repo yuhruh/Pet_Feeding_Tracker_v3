@@ -65,9 +65,9 @@ zh-TW:
       pet_trackers: "%{petname} 的飲食記錄"
       favorite_food_list: "最愛的食物列表"
       view_favorite: "查看 %{petname} 的最愛"
-      log_out: "登出"
-      log_in: "登入"
-      sign_up: "註冊"
+      log_out: " 登出"
+      log_in: " 登入"
+      sign_up: " 註冊"
       lang: " 語言切換 "
   shared:
     errors:
@@ -235,6 +235,7 @@ zh-TW:
     update_success: "飲食記錄已成功更新"
     destroy_success: "飲食記錄已成功刪除"
     not_found: "找不到此筆飲食記錄"
+    suggestion: "⚠️ 此款可能吃膩了！"
     form:
       date: "日期"
       feed_time: "餵食時間"
@@ -245,7 +246,7 @@ zh-TW:
       other: "🍗 其他"
       dry_food_id: "乾糧品牌和描述"
       dry_food_id_prompt: "選擇乾糧"
-      low_storage: "⚠️庫存量低（剩餘：%{left_amount}）"
+      low_storage: "⚠️ 庫存量低（剩餘：%{left_amount}）"
       wet_food_selection: "喜愛的罐罐"
       wet_food_selection_prompt: "選擇喜愛的罐罐"
       or: "或"
@@ -325,7 +326,7 @@ zh-TW:
       weight_chart_title: "寵物%{petname}的體重圖表"
     new:
       title: "新增%{petname}的飲食紀錄"
-      back: "返回飲食記錄表"
+      back: "返回%{petname}的飲食記錄表"
 
   user_mailer:
     welcome:

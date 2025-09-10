@@ -103,9 +103,9 @@ en:
       pet_trackers: "%{petname}'s Trackers"
       favorite_food_list: "Favorite Food List"
       view_favorite: "View %{petname}'s Favorite"
-      log_out: "Log Out"
-      log_in: "Log In"
-      sign_up: "Sign Up"
+      log_out: " Log Out"
+      log_in: " Log In"
+      sign_up: " Sign Up"
       lang: " Language "
   shared:
     errors:
@@ -273,12 +273,13 @@ en:
     update_success: "Tracker was successfully updated."
     destroy_success: "Tracker was successfully destroyed."
     not_found: "Tracker not found."
+    suggestion: "⚠️ Might be getting tired of this food!"
     form:
       date: "Date"
       feed_time: "Feed Time"
       food_type: "Food Type"
       food_type_prompt: "Select Food Type"
-      dry: "🥡 Dry"
+      dry: "🧆 Dry"
       wet: "🥫 Wet"
       other: "🍗 Other"
       dry_food_id: "Dry Food Brand & Description"
@@ -363,7 +364,7 @@ en:
       weight_chart_title: "Pet %{petname}'s Weight Chart"
     new:
       title: "Adding a New Record for %{petname}"
-      back: "Back to trackers"
+      back: "Back to %{petname}'s trackers"
 
   user_mailer:
     welcome:

@@ -61,7 +61,11 @@ export default class extends Controller {
       this.wetFoodsData.forEach((food, index) => {
         const option = document.createElement('option')
         option.value = index
-        option.textContent = `${food.brand} - ${food.description} - "Favorite Score": ${food.favorite_score}`;
+        let text = `${food.brand} - ${food.description} - "Favorite Score": ${food.favorite_score}`;
+        if (food.suggestion) {
+          text += ` (${food.suggestion})`
+        }
+        option.textContent = text
         dropdown.appendChild(option)
       })
     }

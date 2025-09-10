@@ -84,11 +84,26 @@ class TrackersController < ApplicationController
     wet_foods = @pet.trackers
                             .where(food_type: 'Wet')
                             .where("favorite_score > ?", 20)
-                            .order(created_at: :asc)
+                            .order(date: :desc)
     unique_wet_foods = wet_foods.uniq { |food| [food.brand, food.description] }
     @random_wet_foods = unique_wet_foods.sample(5)
     
-    render json: @random_wet_foods.to_json(only: [:brand, :description, :favorite_score, :amount])
+    foods_with_suggestions = @random_wet_foods.map do |food|
+      previous_consumptions = @pet.trackers.where(brand: food.brand, description: food.description).order(date: :desc).limit(2)
+      suggestion = nil
+      if previous_consumptions.size == 2
+        last_amount = previous_consumptions[0].total_ate_amount
+        previous_amount = previous_consumptions[1].total_ate_amount
+        if previous_amount > 0 && last_amount <= previous_amount * 0.9
+          suggestion = t(".suggestion")
+        end
+      end
+      food.as_json(only: [:brand, :description, :favorite_score, :amount]).merge(suggestion: suggestion)
+    end
+    
+    sorted_foods = foods_with_suggestions.sort_by { |food| food["favorite_score"] }.reverse
+    
+    render json: sorted_foods
   end
 
   def search_food

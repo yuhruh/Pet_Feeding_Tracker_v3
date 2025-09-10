@@ -1,9 +1,9 @@
-<h1 class="text-center mt-4 mb-4"><%= t('trackers.new.title', petname: @pet.petname.capitalize) %></h1>
+<h1 class='text-center mt-4 mb-5 fst-italic' style="font-weight: bold;"><%= t('trackers.new.title', petname: @pet.petname.capitalize) %></h1>
 
 <%= render "form", tracker: @tracker %>
 
 <br>
 
 <div class="d-flex justify-content-center mb-3">
-  <%= link_to t('trackers.new.back'), pet_trackers_path(@pet) %>
+  <%= link_to t('trackers.new.back', petname: @pet.petname.capitalize), pet_trackers_path(@pet) %>
 </div>

@@ -242,7 +242,8 @@ en:
       google_signup_hint_html: 'If you are using <i class="bi bi-google"></i> (Google) to sign up, please use <i class="bi bi-browser-chrome"></i> Chrome / <i class="bi bi-browser-edge"></i> Edge / <i class="bi bi-browser-firefox"></i> FireFox to open the link'
   sessions:
     create:
-      welcome: "Welcome to Cat Feeding Tracker."
+      welcome: "Welcome back to Cat Feeding Tracker, %{username}"
+      new_user_welcome: "This is your first time to sign in, please add a new cat first for further tracker."
       existing_connection: "You've previously signed in using your %{service} account. Please use that to sign in."
       invalid_credentials: "Try another email address or password."
       try_again_later: "Try again later."
@@ -403,9 +404,10 @@ en:
   flash:
     notice:
       connected: "%{provider} connected"
-      signed_in: "You have been signed in. Welcome to Cat Feeding Tracker App."
+      signed_in: "You have been signed in. Welcome back to Cat Feeding Tracker App. %{username}"
       existing_account: "There's already an account with this email address. Please sign in with it using your %{service_methods} account to associate it with this service."
       enter_email_for_line: "Please enter an email address to complete your LINE registration."
+      new_user_welcome: "This is your first time to sign in, please add a new cat first for further tracker."
     alert:
       must_be_logged_in: "You must be logged in to access the page"
       cancelled_signin: "You cancelled the sign in process. Please try again."
@@ -413,6 +415,10 @@ en:
       enter_email_to_register: "Please enter an email address to complete your registration."
   
   activerecord:
+    models:
+      pet: "Pet"
+      tracker: "Tracker"
+      user: "User"
     attributes:
       user:
         username: "Username"
@@ -449,3 +455,16 @@ en:
         love: "Love"
         weight: "Weight"
         note: "Note"
+    errors:
+      models:
+        tracker:
+          attributes:
+            amount:
+              greater_than_left_amount: "can't be greater than the remaining amount of dry food (%{left_amount})"
+        user:
+          attributes:
+            email_address:
+              taken: "has already been taken. Please choose another."
+              invalid: "must be a valid email format"
+            password_confirmation:
+              blank: "Upper and lower case should be the same."

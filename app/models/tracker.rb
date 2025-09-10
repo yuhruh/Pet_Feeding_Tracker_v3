@@ -20,7 +20,7 @@ class Tracker < ApplicationRecord
 
   def amount_less_than_dry_food_left_amount
     if amount.present? && dry_food.left_amount < amount
-      errors.add(:amount, "can't be greater than the remaining amount of dry food (#{dry_food.left_amount})")
+      errors.add(:amount, :greater_than_left_amount, left_amount: dry_food.left_amount)
     end
   end
 

@@ -9,19 +9,20 @@ class User < ApplicationRecord
   attr_accessor :email_address_confirmation
 
   validates :email_address, presence: true, 
-                    uniqueness: { case_sensitive: false,
-                    message: "has already been taken. Please choose another."}, 
+                    uniqueness: { case_sensitive: false}, 
                     length: { maximum: 105 },
-                    format: { with: URI::MailTo::EMAIL_REGEXP, 
-                    message: "must be a valid email format" }, allow_nil: true
+                    format: { with: URI::MailTo::EMAIL_REGEXP }, allow_nil: true
   validates :email_address, confirmation: true, on: :create
   validates :password, presence: true, 
                     length: { maximum: 105 }
-  validates :password_confirmation, presence: { message: "Upper and lower case should be the same."}
+  validates :password_confirmation, presence: true
   validates :timezone, presence: true, on: :create
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
+  def new_user?
+    sign_in_count == 1
+  end
 
   def self.from_omniauth(auth)
     # Find the connected account first

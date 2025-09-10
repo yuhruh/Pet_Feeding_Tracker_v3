@@ -204,7 +204,8 @@ zh-TW:
       google_signup_hint_html: '如果您使用 <i class="bi bi-google"></i> (Google) 註冊，請使用 <i class="bi bi-browser-chrome"></i> Chrome / <i class="bi bi-browser-edge"></i> Edge / <i class="bi bi-browser-firefox"></i> FireFox 開啟連結'
   sessions:
     create:
-      welcome: "歡迎使用貓咪餵食記錄 App"
+      welcome: "歡迎回來使用貓咪餵食記錄 App, %{username}"
+      new_user_welcome: "這是您第一次登入，請先新增一隻貓咪以進行後續的飲食記錄。"
       existing_connection: "您之前已使用您的 %{service} 帳戶登入。請用它登入。"
       invalid_credentials: "請試著輸入其他的電子郵件或密碼"
       try_again_later: "請稍後再試"
@@ -365,9 +366,10 @@ zh-TW:
   flash:
     notice:
       connected: "%{provider} 已連結"
-      signed_in: "您已成功登入，歡迎使用貓咪餵食記錄 App。"
+      signed_in: "您已成功登入，歡迎回來使用貓咪餵食記錄 App。 %{username}"
       existing_account: "此電子郵件已有帳戶，請使用您的 %{service_methods} 帳戶登入以進行關聯。"
       enter_email_for_line: "請輸入電子郵件以完成 LINE 註冊。"
+      new_user_welcome: "這是您第一次登入，請先新增一隻貓咪以進行後續的飲食記錄。"
     alert:
       must_be_logged_in: "您必須登入才能訪問此頁面"
       cancelled_signin: "您已取消登入流程，請再試一次。"
@@ -393,6 +395,7 @@ zh-TW:
     models:
       pet: "寵物"
       tracker: "飲食記錄"
+      user: "使用者"
     attributes:
       user:
         username: "使用者名稱"
@@ -429,3 +432,16 @@ zh-TW:
         love: "喜歡"
         weight: "體重"
         note: "註記"
+    errors:
+      models:
+        tracker:
+          attributes:
+            amount:
+              greater_than_left_amount: "不能大於乾糧的剩餘量 (%{left_amount})"
+        user:
+          attributes:
+            email_address:
+              taken: "此電子郵件已被註冊，請更換"
+              invalid: "電子郵件格式不正確"
+            password_confirmation:
+              blank: "密碼與確認密碼必須一致"

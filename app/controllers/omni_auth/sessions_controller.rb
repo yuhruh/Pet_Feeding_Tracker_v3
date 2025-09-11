@@ -15,11 +15,21 @@ class OmniAuth::SessionsController < ApplicationController
 
     if Current.user.present?
       flash[:notice] = t("flash.notice.connected", provider: @service.provider.to_s.humanize)
-      redirect_to new_pet_path
+      redirect_to pets_path
     else
       start_new_session_for @user
-      flash[:notice] = t("flash.notice.signed_in")
-      redirect_to new_pet_path
+      @user.last_sign_in_at = @user.current_sign_in_at
+      @user.current_sign_in_at = Time.current
+      @user.sign_in_count = @user.sign_in_count.to_i + 1
+      @user.save(validate: false)
+
+      if @user.new_user?
+        flash[:notice] = t("flash.notice.new_user_welcome")
+        redirect_to new_pet_path
+      else
+        flash[:notice] = t("flash.notice.signed_in", username: Current.user.username.capitalize)
+        redirect_to pets_path
+      end
     end
   end
 

@@ -7,9 +7,19 @@ class SessionsController < ApplicationController
 
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
-      start_new_session_for user
-      flash[:notice] = t(".welcome")
-      redirect_to after_authentication_url
+      user.last_sign_in_at = user.current_sign_in_at
+      user.current_sign_in_at = Time.current
+      user.sign_in_count = user.sign_in_count.to_i + 1
+      user.save(validate: false)
+
+      if user.new_user?
+        flash[:notice] = t(".new_user_welcome")
+        redirect_to after_authentication_url
+      else
+        start_new_session_for user
+        flash[:notice] = t(".welcome", username: Current.user.username.capitalzie)
+        redirect_to pets_path
+      end
     else
       local_user = User.find_by(email_address: params[:email_address])
       if local_user.connected_services.any?

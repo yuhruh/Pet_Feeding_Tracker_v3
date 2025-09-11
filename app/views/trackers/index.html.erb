@@ -6,6 +6,24 @@
   <%= link_to "#{image_tag('icon_add.png', width:'18px', height: '18px')} #{t('trackers.index.add', petname: @pet.petname.capitalize)}".html_safe, new_pet_tracker_path %>
 </div>
 
+<div class="container mb-4">
+  <%= form_with(url: pet_trackers_path(@pet), method: :get, local: true) do |form| %>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <%= form.label :brand, t('trackers.index.filter_by_brand'), class: "form-label" %>
+        <%= form.text_field :brand, value: params[:brand], class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :description, t('trackers.index.filter_by_description'), class: "form-label" %>
+        <%= form.text_field :description, value: params[:description], class: "form-control" %>
+      </div>
+      <div class="col-md-2 align-self-end">
+        <%= form.submit t('trackers.index.filter'), class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
 <fieldset>
   <%= link_to "#{image_tag('download.png', width:'25px', height: '25px')} #{t('trackers.index.export_csv')}".html_safe, pet_trackers_path(format: :csv), class:"d-flex justify-content-center mb-3", style: "color: #515a5a; font-weight: bold;", download: [@pet.petname.capitalize, "trackers", Date.today].join('_') %>
 </fieldset>

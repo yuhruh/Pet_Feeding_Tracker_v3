@@ -325,6 +325,9 @@ zh-TW:
       dry_total_ate_amount: "乾糧總進食量"
       other_total_ate_amount: "其他食物總進食量"
       weight_chart_title: "寵物%{petname}的體重圖表"
+      filter_by_brand: "以品牌篩選"
+      filter_by_description: "以描述篩選"
+      filter: "篩選"
     new:
       title: "新增%{petname}的飲食紀錄"
       back: "返回%{petname}的飲食記錄表"

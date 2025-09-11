@@ -363,6 +363,9 @@ en:
       dry_total_ate_amount: "Dry Total Ate Amount"
       other_total_ate_amount: "Other Total Ate Amount"
       weight_chart_title: "Pet %{petname}'s Weight Chart"
+      filter_by_brand: "Filter by Brand"
+      filter_by_description: "Filter by Description"
+      filter: "Filter"
     new:
       title: "Adding a New Record for %{petname}"
       back: "Back to %{petname}'s trackers"

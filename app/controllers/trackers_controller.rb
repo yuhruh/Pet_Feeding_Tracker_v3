@@ -6,7 +6,14 @@ class TrackersController < ApplicationController
 
   # GET /trackers or /trackers.json
   def index
-    @trackers = @pet.trackers.paginate(page: params[:page], per_page: 10).order(date: :asc, feed_time: :asc)
+    @trackers = @pet.trackers
+    if params[:brand].present?
+      @trackers = @trackers.where("LOWER(brand) LIKE ?", "%#{params[:brand].downcase}%")
+    end
+    if params[:description].present?
+      @trackers = @trackers.where("LOWER(description) LIKE ?", "%#{params[:description].downcase}%")
+    end
+    @trackers = @trackers.paginate(page: params[:page], per_page: 10).order(date: :asc, feed_time: :asc)
 
     respond_to do |format|
       format.html

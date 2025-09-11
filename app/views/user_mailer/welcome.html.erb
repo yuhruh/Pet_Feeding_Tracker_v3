@@ -1,6 +1,6 @@
 <div class="container text-center mb-2 mt-2">
   <div class="px-6 py-4 border border-dark-subtle rounded-3">
-    <h1><%= t('user_mailer.welcome.title', username: @user.username) %></h1>
+    <h1><%= t('user_mailer.welcome.title', username: @user.username.split(" ").map(&:capitalize).join(" ")) %></h1>
 
     <p>
       <%= t('user_mailer.welcome.description') %>

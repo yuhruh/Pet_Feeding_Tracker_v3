@@ -81,7 +81,12 @@ en:
     home:
       title: "Cat Feeding Tracker App"
       subtitle: "Track your cat's eating"
-      description: "The Cat Feeding Tracker V2 is a web-based application designed to help cat owners meticulously monitor cats' feeding habits and amounts. The app offers a clear, visualized approach to tracking dietary intake, catering to multiple indoor cats."
+      description: "The Cat Feeding Tracker V3 is a web-based application designed to help cat owners monitor cats' feeding habits and amounts trends over time. The app offers a clear, visualized approach to tracking dietary intake, catering to multiple indoor cats."
+      features: "Features"
+      pet: "Pet Management 😼"
+      tracker: "Trackers Monitor 📊"
+      dry_food: "Dry Food Inventory 🔎"
+      dry_food_description: "Automatically calculates the remaining amount of food in the bag and estimates how many days last."
   layouts:
     navigation:
       home: "Home"

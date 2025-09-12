@@ -43,7 +43,14 @@ zh-TW:
     home:
       title: "貓咪餵食飲食記錄"
       subtitle: "記錄你家貓主子的飲食"
-      description: "貓咪餵食飲食記錄第三版是一個網路應用程式，旨在幫助貓飼主仔細監控貓的餵食習慣和食量。該應用程式提供清晰、可視化的方法來追蹤飲食攝入量，適用於多隻室內貓。"
+      description: "貓咪餵食飲食記錄第三版是一個網路應用程式，旨在幫助貓飼主監控貓的餵食習慣及食量。此應用程式提供清晰、可視化的方法來追蹤飲食攝取量，適用於多隻室內貓。"
+      features: "功能"
+      pet: "寵物管理 😼"
+      pet_description: "寵物個別資訊及其飲食記錄"
+      tracker: "飲食記錄監控 📊"
+      tracker_description: "詳細記錄寵物每餐的狀況"
+      dry_food: "乾乾庫存管理 🔎"
+      dry_food_description: "自動計算乾乾剩餘量及預估吃完日期"
   layouts:
     navigation:
       home: "首頁"

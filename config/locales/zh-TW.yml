@@ -230,6 +230,7 @@ zh-TW:
       new_user: "新使用者？"
       sign_up_now: "立即註冊！"
       alternative: "或用以下方式登入"
+      google_signup_hint_html: '如果您使用 <i class="bi bi-google"></i> (Google) 登入，請使用 <i class="bi bi-browser-chrome"></i> Chrome / <i class="bi bi-browser-edge"></i> Edge / <i class="bi bi-browser-firefox"></i> FireFox 開啟連結'
   dry_food_form:
     add_dry_food_alert: "您尚未新增任何乾糧。要現在新增嗎？"
     no_favorite_wet_food_alert: "您還沒有任何喜愛的罐罐記錄（喜愛分數 > 20）。請手動填寫欄位。"

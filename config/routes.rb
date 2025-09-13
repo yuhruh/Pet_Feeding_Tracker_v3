@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "pages#home"
-  scope "(:locale)", locale: /en|zh-TW/ do
+  scope "(:locale)", locale: /en|zh-TW|ja/ do
     get '/signup', to: "registrations#new", as: :new_registrations
     post 'registration/create', to: "registrations#create", as: :registrations
     resource :session, except: [ :new ]

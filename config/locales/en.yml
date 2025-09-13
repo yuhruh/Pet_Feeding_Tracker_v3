@@ -84,7 +84,9 @@ en:
       description: "The Cat Feeding Tracker V3 is a web-based application designed to help cat owners monitor cats' feeding habits and amounts trends over time. The app offers a clear, visualized approach to tracking dietary intake, catering to multiple indoor cats."
       features: "Features"
       pet: "Pet Management 😼"
+      pet_description: "A detailed pet profile with associated trackers"
       tracker: "Trackers Monitor 📊"
+      tracker_description: "Log the details of each meal a pet eats."
       dry_food: "Dry Food Inventory 🔎"
       dry_food_description: "Automatically calculates the remaining amount of food in the bag and estimates how many days last."
   layouts:

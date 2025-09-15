@@ -8,7 +8,7 @@ gem "bootstrap", "~> 5.3.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use pg as the database for Active Record
-gem 'pg', '~>1.5.9'
+gem 'pg', '~>1.6.2'
 gem "sqlite3"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
